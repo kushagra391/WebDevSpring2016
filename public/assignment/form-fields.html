@@ -25,7 +25,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Form Maker</a>
         </div>
-        Navigation Links
+        <!--Navigation Links-->
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="register.html">Register</a></li>-->
@@ -233,14 +233,9 @@
                             <!--Roles Form Control-->
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="roles" class="col-sm-3 control-label">Roles:</label>
-                                </div>
+                                    <label for="roles" class="col-sm-6 col-md-8 control-label">Roles:</label>
 
-                                <div class="row">
-                                    <div class="form-field-margin col-sm-6 col-md-8">
-                                        <!--TODO: Add Checkboxes here   -->
-                                    </div>
-
+                                    <!--Icons for Roles-->
                                     <div class="col-sm-6 col-md-4 pull-right">
                                         <div class="col-xs-3 col-md-1">
                                                     <span class="glyphicon glyphicon-pencil icon-class"
@@ -262,17 +257,60 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!--<div class="row">-->
+                                <div class="form-field-margin col-sm-6 col-md-8">
+                                    <!--TODO: Add Checkboxes here   -->
+                                    <div class="checkbox" id="roles">
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox"> Admin
+                                            </label>
+                                        </div>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox"> Student
+                                            </label>
+                                        </div>
+                                        <div class="row">
+                                            <label>
+                                                <input type="checkbox"> User
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--</div>-->
                             </div>
 
                             <!--License Agreement Form Control-->
                             <div class="form-group">
+                                <div class="row"></div>
                                 <div class="row">
-                                    <label for="license" class="col-sm-3 control-label">License Agreement:</label>
+                                    <label for="license-agreement" class="col-sm-3 control-label">License Agreement:</label>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-field-margin col-sm-6 col-md-8">
                                         <!--TODO: Add Checkboxes here   -->
+                                        <div class="radio" id="license-agreement">
+                                            <div class="row">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="license-agreement-yes"
+                                                           value="yes">
+                                                    Yes
+                                                </label>
+                                            </div>
+
+                                            <div class="row">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" id="license-agreement-no"
+                                                           value="no">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-sm-6 col-md-4 pull-right">
@@ -322,7 +360,7 @@
                                             <option>Paragraph Text Field</option>
                                         </select>
                                         <!--<input type="password" class="form-control" id="firstName"-->
-                                               <!--placeholder="First Name">-->
+                                        <!--placeholder="First Name">-->
                                     </div>
 
                                     <div class="col-sm-6 col-md-4 pull-right">
