@@ -2,9 +2,159 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <!--Bootstrap CDN-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" rel="script">
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!--jQuery CDN-->
+    <link href="//code.jquery.com/jquery-1.12.0.min.js" rel="script">
+    <link href="//code.jquery.com/jquery-migrate-1.2.1.min.js" rel="script">
+
+    <title>Home Page</title>
 </head>
+
 <body>
 
+<!--Header / Navigation Bar-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!--ProjectName on the top left-->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Form Maker</a>
+        </div>
+        Navigation Links
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="#">Username</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Left Side Options Pane-->
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="profile.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li class="active"><a href="home.html">Forms<span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Inner Content-->
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="body-padding">Forms</h1>
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="forms.html">Forms</a></li>
+            <li role="presentation"><a href="form-fields.html">Fields</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="forms">
+
+                <!--Table Definition start below-->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Form name
+                        </th>
+                        <th>
+                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <!--Input field Row-->
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" placeholder="Username">
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!--Registration Form Row-->
+                    <tr>
+                        <td>
+                            Registration Form
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Contact List
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            To Do List
+                        </td>
+
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-remove icon-class" aria-hidden="true"></span>
+                                </div>
+                                <div class="col-xs-6">
+                                    <span class="glyphicon glyphicon-pencil icon-class" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
