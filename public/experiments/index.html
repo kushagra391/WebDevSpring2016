@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link href="js/bootstrap.min.js" rel="script">
+    <!--<link href="js/bootstrap.min.js" rel="script">-->
     <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!--correct way of linking js files-->
+    <script src="js/scripts.js"></script>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 
 <div class="container">
     <h1>Hello Experiments !</h1>
+
+    <div ng-app="myApp" ng-controller="mycontroller">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+    </div>
+
 </div>
 
 </body>
 </html>
+
