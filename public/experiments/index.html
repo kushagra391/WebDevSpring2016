@@ -23,14 +23,34 @@
 <div class="container">
     <h1>Hello Experiments !</h1>
 
-    <div ng-app="myApp" ng-controller="mycontroller">
+    <div id="appl" ng-app="myApp" ng-controller="mycontroller">
 
         First Name: <input type="text" ng-model="firstName"><br>
         Last Name: <input type="text" ng-model="lastName"><br>
         <br>
         Full Name: {{firstName + " " + lastName}}
-    </div>
 
+        Email:
+        <input type="email" name="myAddress" ng-model="text">
+        <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+
+        <br><br>
+
+
+        <div class="container">
+            <div class="row">
+                <input type="checkbox" ng-model="showHide1">Show Button
+                <button class="btn btn-default" ng-show="showHide1">Click Me!</button>
+            </div>
+
+            <div class="row pull-right">
+                <input type="checkbox" ng-model="edb">Disable Button
+                <button class="btn btn-default" ng-disabled="edb">Click Me!</button>
+            </div>
+        </div>
+
+
+    </div>
 </div>
 
 </body>
