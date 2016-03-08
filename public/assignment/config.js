@@ -33,7 +33,7 @@
                     controller: ""
                 })
                 .otherwise({
-                    redirectTo: "/home"
+                    redirectTo: "views/home/home.view.html"
                 });
         });
 
