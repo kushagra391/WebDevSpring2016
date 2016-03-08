@@ -1,23 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="FormBuilerApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Form Maker: A2</title>
+
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="../experiments/bower_components/bootstrap/dist/css/bootstrap.css">
 
     <!--jQuery-->
+    <script src="../experiments/bower_components/jquery/dist/jquery.min.js"></script>
     <!--BootStrap bowerlink-->
+    <script src="../experiments/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!--AngularJS -->
+    <script src="../experiments/bower_components/angular/angular.js"></script>
     <!--Angular Routing-->
-    <!---->
+    <script src="../experiments/bower_components/angular-route/angular-route.js"></script>
+
     <!--controllers-->
+    <script src="views/admin/admin.controller.js"></script>
+    <script src="views/forms/fields.controller.js"></script>
+    <script src="views/forms/forms.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/users/login.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
+
     <!--services-->
     <!--other js -->
     <!---->
     <!--app.js-->
+    <script src="app.js"></script>
     <!--config.js-->
+    <script src="config.js"></script>
+
 
 </head>
 <body>
+
+<div class="container">
+    Form Maker
+</div>
+
+<header>
+    <div></div>
+</header>
+
+<div class="container">
+    <div class="row row-full">
+
+        <div class="col-xs-12 col-md-3">
+            <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+        </div>
+        <div class="col-xs-12 col-md-9" ng-view>
+            <!--empty dynamic div-->
+        </div>
+
+    </div>
+</div>
 
 <!--declare MainController-->
 
