@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="FormBuilderApp">
 <head>
-    <meta charset="UTF-8">
-    <title>Form Maker: A2</title>
 
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="../experiments/bower_components/bootstrap/dist/css/bootstrap.css">
@@ -16,6 +14,10 @@
     <script src="../experiments/bower_components/angular/angular.js"></script>
     <!--Angular Routing-->
     <script src="../experiments/bower_components/angular-route/angular-route.js"></script>
+
+    <!--app.js, config.js-->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
 
     <!--controllers-->
     <script src="views/admin/admin.controller.js"></script>
@@ -31,11 +33,9 @@
     <!--services-->
     <!--other js -->
     <!---->
-    <!--app.js-->
-    <script src="app.js"></script>
-    <!--config.js-->
-    <script src="config.js"></script>
 
+    <meta charset="UTF-8">
+    <title>Form Maker: A2</title>
 
 </head>
 <body>
@@ -43,7 +43,7 @@
 <div class="container">
     <!--header-->
     <header>
-        <div ng-include src="'views/header/header.view.html'"></div>
+        <div ng-include="'views/header/header.view.html'"></div>
     </header>
     <code>Not complete yet, work in progress... </code>
     <div class="row">

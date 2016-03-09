@@ -1,8 +1,6 @@
-/**
- * Created by Kushagra on 2/23/2016.
- */
 (function () {
-    "use-strict";
+    "use strict";
 
-    angular.module("FormBuilderApp", ["ngRoute"]);
+    angular
+        .module("FormBuilderApp", ["ngRoute"]);
 })();

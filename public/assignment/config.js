@@ -3,41 +3,40 @@
  */
 (function () {
 
-    "use-strict";
+    "use strict";
     angular
-        .module("FormBuilderApp", ["ngRoute"])
+        .module("FormBuilderApp")
         .config(function($routeProvider){
             $routeProvider
                 .when("/home", {
-                    templateUrl: "views/home/home.view.html",
-                    controller: ""
+                    templateUrl: "views/home/home.view.html"
                 })
                 .when("/profile", {
-                    templateUrl: "views/users/profile.view.html",
-                    controller: ""
+                    templateUrl: "views/users/profile.view.html"
+                    //controller: ""
                 })
                 .when("/admin", {
-                    templateUrl: "views/admin/admin.view.html",
-                    controller: ""
+                    templateUrl: "views/admin/admin.view.html"
+                    //controller: ""
                 })
                 .when("/form", {
-                    templateUrl: "views/forms/forms.view.html",
-                    controller: ""
+                    templateUrl: "views/forms/forms.view.html"
+                    //controller: ""
                 })
                 .when("/field", {
-                    templateUrl: "views/forms/forms.view.html",
-                    controller: ""
+                    templateUrl: "views/forms/forms.view.html"
+                    //controller: ""
                 })
                 .when("/register", {
-                    templateUrl: "views/users/register.view.html",
-                    controller: ""
+                    templateUrl: "views/users/register.view.html"
+                    //controller: ""
                 })
                 .when("/login", {
-                    templateUrl: "views/users/login.view.html",
-                    controller: ""
+                    templateUrl: "views/users/login.view.html"
+                    //controller: ""
                 })
                 .otherwise({
-                    redirectTo: "views/home/home.view.html"
+                    redirectTo: "/home"
                 });
         });
 
