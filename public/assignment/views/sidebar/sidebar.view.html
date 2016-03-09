@@ -2,8 +2,13 @@
     <div class="col-sm-12 col-md-12 sidebar">
         <ul class="nav nav-sidebar">
             <li ng-class="{'active' : $location.url().indexOf('home') != -1}"><a href="#/home">Home</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin">Admin</a></li>
+
+            <li ng-show="currentUser"
+                ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
+
+            <li ng-show="isCurrentUserAdmin()"
+                ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin">Admin</a></li>
+
             <li ng-class="{'active' : $location.url().indexOf('form') != -1}"><a href="#/form">Forms</a></li>
         </ul>
     </div>
