@@ -19,6 +19,8 @@
     <script src="app.js"></script>
     <script src="config.js"></script>
 
+    <script src="views/main/main.controller.js"></script>
+
     <!--controllers-->
     <script src="views/admin/admin.controller.js"></script>
     <script src="views/forms/fields.controller.js"></script>
@@ -40,7 +42,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" ng-controller="MainController">
     <!--header-->
     <header>
         <div ng-include="'views/header/header.view.html'"></div>
@@ -51,22 +53,9 @@
         <div class="col-xs-12 col-sm-12 col-md-3">
             <div ng-include="'views/sidebar/sidebar.view.html'"></div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-9" ng-view>
-            <!--empty dynamic div-->
-        </div>
-
+        <div class="col-xs-12 col-sm-12 col-md-9" ng-view></div>
     </div>
 </div>
-
-<!--declare MainController-->
-
-<!--dynamic ng-view empty div-->
-
-<!--header content-->
-
-<!--sidebar content-->
-
-<!--other sections-->
 
 </body>
 </html>

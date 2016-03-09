@@ -2,7 +2,7 @@
     "use-strict";
 
     angular
-        .module("FormBuilderApp", [])
+        .module("FormBuilderApp")
         .controller("HeaderController", HeaderController);
 
     function HeaderController($scope, $location) {
