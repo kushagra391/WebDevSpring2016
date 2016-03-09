@@ -15,6 +15,8 @@
     <script src="details/details.controller.js"></script>
     <script src="services/movie.service.js"></script>
 
+    <script src="model.controller.js"></script>
+
     <meta charset="UTF-8">
     <title></title>
 </head>
@@ -28,7 +30,17 @@
             <li ng-class="{'active': $location.url()=='/home'}"><a href="#/home">Home</a></li>
             <li ng-class="{'active': $location.url()=='/search'}"><a href="#/search">Search</a></li>
         </ul>
+
+        <div class="modelHelper">
+            Name: <input type="text" ng-model="user.firstname">
+            <code>You Entered: {{user.firstname}}</code>
+            Age: <input type="text" ng-model="user.age">
+            <code>You Entered: {{user.age}}</code>
+
+            <code>Result: {{user}}</code>
+        </div>
     </nav>
+
 
     <!--Dynamic View-->
     <div ng-view></div>

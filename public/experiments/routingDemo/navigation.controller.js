@@ -5,5 +5,6 @@
 
     function NavController($location, $scope) {
         $scope.$location = $location;
+        $scope.user = '';
     }
 })();
