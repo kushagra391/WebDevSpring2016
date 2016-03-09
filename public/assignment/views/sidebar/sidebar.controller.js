@@ -10,7 +10,7 @@
         $scope.$location = $location;
     }
 
-    function isCurrentUserAdmin() {
+    function isAdmin() {
         return currentUser.roles.indexOf('admin') == -1;
     }
 
