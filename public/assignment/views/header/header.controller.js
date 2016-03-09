@@ -1,3 +1,11 @@
-/**
- * Created by Kushagra on 3/7/2016.
- */
+(function () {
+    "use-strict";
+
+    angular
+        .module("FormBuilderApp")
+        .controller("HeaderController", HeaderController);
+
+    function HeaderController($scope, $location) {
+        $scope.$location = $location;               // verify usage
+    }
+})
