@@ -1,3 +1,12 @@
-/**
- * Created by Kushagra on 3/7/2016.
- */
+(function () {
+    "use strict";
+
+    angular
+        .module("FormBuilderApp")
+        .controller("FieldsController", FieldsController);
+
+    function FieldsController($scope) {
+        $scope.hello = "From Scope";
+    }
+
+})();

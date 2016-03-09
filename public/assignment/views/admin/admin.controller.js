@@ -1,3 +1,12 @@
-/**
- * Created by Kushagra on 3/7/2016.
- */
+(function() {
+    "use strict";
+
+    angular
+        .module("FormBuilderApp")
+        .controller("AdminController", AdminController);
+
+    function AdminController($scope) {
+        $scope.hello = "From AdminController"
+    }
+
+})();

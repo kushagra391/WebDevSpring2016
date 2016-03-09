@@ -9,15 +9,16 @@
         .config(function($routeProvider){
             $routeProvider
                 .when("/home", {
-                    templateUrl: "views/home/home.view.html"
+                    templateUrl: "views/home/home.view.html",
+                    controller: 'HomeController'
                 })
                 .when("/profile", {
                     templateUrl: 'views/users/profile.view.html',
                     controller: 'ProfileController'
                 })
                 .when("/admin", {
-                    templateUrl: 'views/admin/admin.view.html'
-                    //controller: ""
+                    templateUrl: 'views/admin/admin.view.html',
+                    controller: 'AdminController'
                 })
                 .when("/form", {
                     templateUrl: 'views/forms/forms.view.html'
