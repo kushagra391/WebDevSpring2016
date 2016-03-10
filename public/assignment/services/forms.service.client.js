@@ -25,16 +25,16 @@
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
-            updateFormById: updateFormById
-            //findAllForms : findAllForms
+            updateFormById: updateFormById,
+            findAllForms : findAllForms
         };
 
         return model;
 
-        //function findAllForms() {
-        //    console.log("finding all forms.. ")
-        //    return model.forms;
-        //}
+        function findAllForms() {
+            console.log("finding all forms.. ");
+            return model.forms;
+        }
 
         function createFormForUser(userId, form) {
             var form = {
