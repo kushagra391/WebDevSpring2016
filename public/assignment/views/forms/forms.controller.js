@@ -6,7 +6,7 @@
     function FormsController($scope, FormService, UserService) {
         $scope.error = null;
         $scope.currentUser = UserService.getCurrentUser();
-        $scope.forms = FormService.findAllForms();
+        //$scope.forms = FormService.findAllForms();
         $scope.selectedFormId;
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;

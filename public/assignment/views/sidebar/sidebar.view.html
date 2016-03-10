@@ -7,7 +7,7 @@
                 ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
 
             <!--TODO: use a method instead-->
-            <li ng-show="currentUser.roles.indexOf('admin') == -1"
+            <li ng-show="currentUser.roles.indexOf('admin') >= 0"
                 ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin">Admin</a></li>
 
             <li ng-show="currentUser"
