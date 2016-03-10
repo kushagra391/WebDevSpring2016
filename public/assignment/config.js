@@ -21,8 +21,8 @@
                     controller: 'AdminController'
                 })
                 .when("/form", {
-                    templateUrl: 'views/forms/forms.view.html'
-                    //controller: ""
+                    templateUrl: 'views/forms/forms.view.html',
+                    controller: "FormsController"
                 })
                 .when("/fields", {
                     templateUrl: 'views/forms/fields.view.html',
