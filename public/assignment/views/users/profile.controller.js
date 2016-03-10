@@ -8,7 +8,7 @@
 
     function ProfileController($scope, $routeParams, $location, UserService) {
         $scope.currentUser = UserService.getCurrentUser();
-        $scope.error = null;
+        $scope.errorMessage = null;
         $scope.message = null;
         $scope.id = $routeParams.id;
 
@@ -17,18 +17,18 @@
             $location.url("/home");
         }
 
-        $scope.update = function () {
+        $scope.update = function (user) {
             UserService.updateUser($routeParams.id, user);
 
             if (user) {
                 $scope.message = "Successful: user updated.";
                 UserService.setCurrentUser($scope.currentUser);
             } else {
-                $scope.error = "Failed: User not updated.";
-                Console.log("Failed: user not updated")
+                $scope.errorMessage = "Failed: User not updated.";
+                console.log("Failed: user not updated")
             }
 
-            Console.log("List of All Users : " + UserService.findAllUsers());
+            console.log("List of All Users : " + UserService.findAllUsers());
         };
     }
 })();
