@@ -96,7 +96,7 @@
         }
 
         // TODO: usage of callbacks, return values
-        function updateUser(userId, user, callback) {
+        function updateUser(userId, user) {
             for (var u in model.users) {
                 if (model.users[u]._id === userId) {
                     model.users[u].username = user.username;

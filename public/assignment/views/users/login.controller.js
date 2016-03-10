@@ -9,7 +9,7 @@
     function LoginController($scope, $location, UserService) {
         $scope.message = null;
         $scope.error = null;
-        $scope.login = function(user) {
+        $scope.login = function (user) {
 
             console.log("Login attempted");
 
@@ -24,8 +24,5 @@
                 $scope.error = "Wrong username / password entered. Please retry."
             }
         };
-
     }
-
-
 })();
