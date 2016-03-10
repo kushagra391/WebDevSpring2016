@@ -5,35 +5,44 @@
 
     function RegisterController($scope, $rootScope, $location, UserService) {
         $scope.register = register;
-        $scope.error = null;
+        $scope.register_error = null;
 
         function register(user) {
-            $scope.error = null;
+            console.log("user registration attempted")
+
+            $scope.register_error = null;
             if (user == null) {
-                $scope.error = "Please fill in the required fields";
+                $scope.register_error = "Please fill in the required fields";
+                console.log('details not filled yet');
                 return;
             }
             if (!user.username) {
-                $scope.error = "Please provide a username";
+                $scope.register_error = "Please provide a username";
+                console.log('username not provided');
                 return;
             }
-            if (!user.password || !user.password2) {
-                $scope.error = "Please provide a password";
+            if (!user.password || !user.verifypassword) {
+                $scope.register_error = "Please provide a password";
+                console.log('password field not filled');
                 return;
             }
-            if (user.password != user.password2) {
-                $scope.error = "Passwords must match";
+            if (user.password != user.verifypassword) {
+                $scope.register_error = "Passwords must match";
+                console.log('passwords dont match');
                 return;
             }
             var user = UserService.findUserByUsername(user.username);
             if (user != null) {
-                $scope.error = "User already exists";
+                $scope.register_error = "User already exists";
+                console.log('user not found by username');
                 return;
             }
+
             var newUser = UserService.createUser($scope.user);
             UserService.setCurrentUser(newUser);
             $location.url("/profile");
 
+            console.log("registration successful");
             console.log("after register" + UserService.findAllUsers());
         }
     }
