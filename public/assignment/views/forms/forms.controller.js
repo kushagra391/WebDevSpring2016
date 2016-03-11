@@ -4,10 +4,10 @@
         .controller("FormsController", FormsController);
 
     function FormsController($scope, FormService, UserService) {
+        $scope.selectedFormId;
         $scope.error = null;
         $scope.currentUser = UserService.getCurrentUser();
         $scope.forms = FormService.findAllForms();
-        $scope.selectedFormId;
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
