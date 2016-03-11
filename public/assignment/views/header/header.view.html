@@ -27,9 +27,9 @@
                     <a href="#/profile">{{currentUser.username.toString().charAt(0).toUpperCase() +
                         currentUser.username.toString().slice(1)}}</span></a></li>
                 <!--Admin-->
-                <li ng-show="currentUser.roles.indexOf('admin') >= 0"
-                    ng-class="{'active' : $location.url=='/admin'}">
-                    <a href="/admin">Admin</span></a></li>
+                <!--<li ng-show="currentUser.roles.indexOf('admin') >= 0"-->
+                    <!--ng-class="{'active' : $location.url=='/admin'}">-->
+                    <!--<a href="/admin">Admin</span></a></li>-->
                 <!--Logout-->
                 <li ng-show="currentUser">
                     <a ng-click="logout()">Logout</span></a></li>

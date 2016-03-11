@@ -4,7 +4,8 @@
             <li ng-class="{'active' : $location.url().indexOf('home') != -1}"><a href="#/home">Home</a></li>
 
             <li ng-show="currentUser"
-                ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a></li>
+                ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile">Profile</a>
+            </li>
 
             <!--TODO: use a method instead-->
             <li ng-show="currentUser.roles.indexOf('admin') >= 0"
@@ -14,4 +15,5 @@
                 ng-class="{'active' : $location.url().indexOf('form') != -1}"><a href="#/form">Forms</a></li>
         </ul>
     </div>
+</div>
 </div>
