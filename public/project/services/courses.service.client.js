@@ -4,11 +4,11 @@
         .module('CourseraApp')
         .factory('CourseService', CourseService);
 
-    function CourseService() {
+    function CourseService($rootScope) {
         var model = {
             courses: [
                 {
-                    "_id": 001,
+                    "_id": 1,
                     "title": "Data Mining Techniques",
                     "description": "Lectures from Stanford University on Data Mining Techniques. " +
                     "Algorithm techniques range from Clustering, Classification and Prediction",
@@ -25,20 +25,23 @@
                     }]
                 },
                 {
-                    "_id": 010,
+                    "_id": 2,
                     "title": "Web Development",
                     "description": "Lectures from Northeastern University on Web Development Frameworks " +
                     "Course covers applications from MEAN Stack focussing equally well on frontend, backend and security",
                     "syllabus": "",
                     "videos": [{
                         "video_id": "",
-                        "video_url": ""
+                        "video_url": "",
+                        "video_thumbnail_url": ""
                     }, {
                         "video_id": "",
-                        "video_url": ""
+                        "video_url": "",
+                        "video_thumbnail_url": ""
                     }, {
                         "video_id": "",
-                        "video_url": ""
+                        "video_url": "",
+                        "video_thumbnail_url": ""
                     }]
                 }
             ],
