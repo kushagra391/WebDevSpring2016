@@ -22,6 +22,10 @@
 
         function render(respose) {
             console.log(respose);
+            $scope.data = respose;
+
+            console.log($scope.data.items[0].id.videoId);
+            console.log($scope.data.items[0].snippet.thumbnails.default.url);
         }
     }
 
