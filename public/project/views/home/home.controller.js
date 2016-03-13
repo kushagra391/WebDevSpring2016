@@ -1,15 +1,17 @@
-(function() {
+(function () {
 
     angular
         .module('CourseraApp')
         .controller('HomeController', HomeController);
 
     function HomeController($scope, $location) {
-        $scope.hello = "Hello from HomeController";
         $scope.searchKey = "";
+        $scope.search = search;
 
-        console.log("user entered" + $scope.searchKey);
-        console.log('Inside HomeController');
+        function search(keyword) {
+            console.log("User pressed: " + keyword);
+        }
     }
+
 
 })();
