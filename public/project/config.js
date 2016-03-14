@@ -34,8 +34,8 @@
                     controller: "RegisterController"
                 })
                 .when("/login", {
-                    templateUrl: 'views/login/login.view.html'
-                    //controller: ""
+                    templateUrl: 'views/login/login.view.html',
+                    controller: "LoginController"
                 })
                 .otherwise({
                     redirectTo: '/home'

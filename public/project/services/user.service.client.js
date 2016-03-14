@@ -39,7 +39,7 @@
             removeCourseFromUser: removeCourseFromUser,
             addCourseToDeveloper: addCourseToDeveloper,
 
-            getUserIdFromCredentials: getUserIdFromCredentials,
+            getUserFromCredentials: getUserFromCredentials,
             getListOfStudents: getListOfStudents,
             getListOfDevelopers: getListOfDevelopers
         };
@@ -52,6 +52,7 @@
         }
 
         function setCurrentUser(user) {
+            console.log("Updating currentUser: " + user);
             $rootScope.currentUser = user;
         }
 
@@ -73,9 +74,9 @@
         }
 
         function findUserById(userId) {
-            for (var index in users) {
-                if (users[index]._id == userId) {
-                    return users[index];
+            for (var index in model.users) {
+                if (model.users[index]._id == userId) {
+                    return model.users[index];
                 }
             }
         }
@@ -101,8 +102,8 @@
 
             var deleteIndex = -1;
 
-            for (userIndex in users) {
-                var id = users[userIndex]._id;
+            for (userIndex in model.users) {
+                var id = model.users[userIndex]._id;
                 if (id == userId) {
                     deleteIndex = userIndex;
                 }
@@ -153,9 +154,9 @@
             user.developed_course_ids.push(courseId);
         }
 
-        function getUserIdFromCredentials(useraname, password) {
-            for (var index in users) {
-                var user = users[index];
+        function getUserFromCredentials(useraname, password) {
+            for (var index in model.users) {
+                var user = model.users[index];
                 if (user.username == useraname && user.password == password) {
                     return user;
                 }
