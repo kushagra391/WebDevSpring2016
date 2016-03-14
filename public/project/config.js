@@ -29,14 +29,14 @@
                 //    templateUrl: 'views/forms/fields.view.html',
                 //    controller: "FieldsController"
                 //})
-                //.when("/register", {
-                //    templateUrl: 'views/users/register.view.html',
-                //    controller: "RegisterController"
-                //})
-                //.when("/login", {
-                //    templateUrl: 'views/users/login.view.html'
-                //    //controller: ""
-                //})
+                .when("/register", {
+                    templateUrl: 'views/register/register.view.html',
+                    controller: "RegisterController"
+                })
+                .when("/login", {
+                    templateUrl: 'views/login/login.view.html'
+                    //controller: ""
+                })
                 .otherwise({
                     redirectTo: '/home'
                 });

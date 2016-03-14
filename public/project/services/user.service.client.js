@@ -2,7 +2,7 @@
 
     angular
         .module('CourseraApp')
-        .factory('UserService', UserService);
+        .service('UserService', UserService);
 
     function UserService($rootScope) {
         var model = {
@@ -27,6 +27,9 @@
                 }
             ],
 
+            getCurrentUser: getCurrentUser,
+            setCurrentUser: setCurrentUser,
+
             registerUser: registerUser,
             findUserById: findUserById,
             deleteUserFromId: deleteUserFromId,
@@ -44,6 +47,14 @@
         return model;
 
         /* List of Methods */
+        function getCurrentUser() {
+            return $rootScope.currentUser;
+        }
+
+        function setCurrentUser(user) {
+            $rootScope.currentUser = user;
+        }
+
         function registerUser(user) {
             // TODO: also check for already present userIds
 
