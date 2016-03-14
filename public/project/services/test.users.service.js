@@ -1,4 +1,4 @@
-console.log("Hello World");
+console.log("UserService Tests");
 
 var users = [
     {
@@ -21,4 +21,18 @@ var users = [
     }
 ];
 
-console.log(users[0]);
+//console.log(users[0]);
+
+users.sp
+
+for (index in users) {
+    console.log(users[index]._id);
+    var user = users[index];
+    if (user.role === 'student') {
+        console.log(user.firstName + " is a student");
+    }
+    else {
+        console.log(user.firstName + " is a developer");
+    }
+
+}
