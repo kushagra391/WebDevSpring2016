@@ -58,7 +58,59 @@
             editCourseSyllabus: editCourseSyllabus,
             addVideoToCourse: addVideoToCourse,
             removeVideoFromCourse: removeVideoFromCourse
+        };
+
+        return model;
+
+
+        function getCourseFromId(courseId) {
+            for (var index in model.courses) {
+                var course = model.courses[index];
+                if (courseId == course._id) {
+                    return course;
+                }
+            }
+
+            console.log("getCourseFromId: course not found");
+        }
+
+        function getVideoListFromId(courseId) {
+            var course = getCourseFromId(courseId);
+            return course.videos;
+        }
+
+        function getSyllabusFromId(courseId) {
+            var course = getCourseFromId(courseId);
+            return course.syllabus;
+        }
+
+        function getDescriptionFromId(courseId) {
+            var course = getCourseFromId(courseId);
+            return course.description;
+        }
+
+        function editCourseTitle(courseId) {
+            return getCourseFromId(courseId).title;
+        }
+
+        function editCourseDescription(courseId, description) {
+            getCourseFromId(courseId).description = description;
+        }
+
+        function editCourseSyllabus(courseId, syllabus) {
+            getCourseFromId(courseId).syllabus = syllabus;
+        }
+
+        // video = id + url + thumbnail
+        function addVideoToCourse(courseId, video) {
+            var course = getCourseFromId(courseId);
+            course.videos.push(video);
+        }
+
+        function removeVideoFromCourse(courseId, video) {
+            var course = getCourseFromId(courseId);
+            var videoIndex = course.videos.indexOf(video);
+            course.videos.splice(videoIndex, 1);
         }
     }
-
 })();
