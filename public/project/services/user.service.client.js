@@ -57,7 +57,7 @@
         }
 
         function registerUser(user) {
-            console.log("registerUser: Registration initiated.")
+            console.log("registerUser: Registration initiated.");
             if (isDeveloper(user))
                 return registerDeveloper(user);
             else

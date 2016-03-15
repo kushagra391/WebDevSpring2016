@@ -1,4 +1,6 @@
-(function() {
+(function () {
+
+    "use strict";
 
     angular
         .module('CourseraApp')
@@ -16,7 +18,7 @@
             var userResult = UserService.getUserFromCredentials(user.username, user.password);
 
             // verify credentials
-            if (userResult == null) {
+            if (userResult === null) {
                 // print message and return
                 $scope.error = "Wrong username / password. Please retry";
                 return;
