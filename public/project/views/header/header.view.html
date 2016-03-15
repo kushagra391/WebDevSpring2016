@@ -1,27 +1,34 @@
-<!--Navigation Bar-->
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand active" href="#">Coursera</a>
-        </div>
+<div ng-controller="HeaderController">
 
-        <ul class="nav navbar-nav">
-            <!--<li class="active"><a href="#">Home</a></li>-->
-        </ul>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
-                <li ng-hide="currentUser"><a href="#/register">Register</a></li>
-                <li ng-hide="currentUser"><a href="#/login">Login</a></li>
-                <li ng-show="currentUser"><a href="#">UserName</a></li>
-                <li ng-show="currentUser"><a href="#">Sign Out</a></li>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand active" href="#">Coursera</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Home</a></li>-->
             </ul>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li ng-hide="currentUser"><a href="#/register">Register</a></li>
+                    <li ng-hide="currentUser"><a href="#/login">Login</a></li>
+                    <li ng-show="currentUser"><a href="#">
+                        {{currentUser.username.toString().charAt(0).toUpperCase() +
+                        currentUser.username.toString().slice(1)}}
+                    </a></li>
+                    <li ng-show="currentUser"
+                        ng-click="logout()"><a href="#">Sign Out</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
