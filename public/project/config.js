@@ -13,10 +13,10 @@
                     templateUrl: "views/home/home.view.html",
                     controller: 'HomeController'
                 })
-                //.when("/profile", {
-                //    templateUrl: 'views/users/profile.view.html',
-                //    controller: 'ProfileController'
-                //})
+                .when("/studentprofile", {
+                    templateUrl: 'views/student/studentprofile.view.html',
+                    controller: 'StudentProfileController'
+                })
                 //.when("/admin", {
                 //    templateUrl: 'views/admin/admin.view.html',
                 //    controller: 'AdminController'

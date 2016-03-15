@@ -26,7 +26,7 @@
             UserService.setCurrentUser(userResult);
 
             // set url
-            $location.url('/profile');
+            $location.url('/studentprofile');
         }
     }
 
