@@ -57,6 +57,18 @@
         }
 
         function registerUser(user) {
+            console.log("registerUser: Registration initiated.")
+            if (isDeveloper(user))
+                return registerDeveloper(user);
+            else
+                return registerStudent(user);
+
+            console.log("registerUser: Registration completed.")
+        }
+
+        function registerDeveloper(user) {
+            console.log("registerDeveloper: Registration initiated.")
+
             // TODO: also check for already present userIds
 
             var user = {
@@ -73,6 +85,23 @@
             return user;
         }
 
+        function registerStudent(user) {
+            // TODO: also check for already present userIds
+
+            var user = {
+                "_id": 22,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "username": user.username,
+                "password": user.password,
+                "role": 'student',
+                "registered_course_ids": []
+            };
+
+            model.users.push(user);
+            return user;
+        }
+
         function findUserById(userId) {
             for (var index in model.users) {
                 if (model.users[index]._id == userId) {
@@ -82,6 +111,7 @@
         }
 
         function registerStudent(user) {
+            console.log("registerStudent: Registration initiated.")
             // TODO: also check for already present userIds
 
             var user = {
