@@ -17,6 +17,10 @@
                     templateUrl: 'views/student/studentprofile.view.html',
                     controller: 'StudentProfileController'
                 })
+                .when("/studentcourses", {
+                    templateUrl: 'views/student/student.courses.view.html',
+                    controller: 'StudentCourseController'
+                })
                 //.when("/admin", {
                 //    templateUrl: 'views/admin/admin.view.html',
                 //    controller: 'AdminController'

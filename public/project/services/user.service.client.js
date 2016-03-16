@@ -14,7 +14,7 @@
                     "username": 'bob',
                     "password": 'bob',
                     "role": 'student',
-                    "registered_course_ids": [1]
+                    "registered_course_ids": [1, 2]
                 },
                 {
                     "_id": 22,
