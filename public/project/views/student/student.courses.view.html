@@ -17,7 +17,7 @@
 
         <div ng-repeat="course in courses">
             <div class="student-course-block">
-                <h3><a href="#">{{course.title}}</a></h3>
+                <h3><a ng-href="{{course.url}}">{{course.title}}</a></h3>
                 <h5>{{course.description}}</h5>
             </div>
         </div>

@@ -62,6 +62,7 @@
 
 
         function getCourseFromId(courseId) {
+            console.log("CourseService: getCourseFromId, courseId: " + courseId);
             for (var index in model.courses) {
                 var course = model.courses[index];
                 if (courseId == course._id) {

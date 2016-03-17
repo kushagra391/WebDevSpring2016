@@ -21,6 +21,10 @@
                     templateUrl: 'views/student/student.courses.view.html',
                     controller: 'StudentCourseController'
                 })
+                .when("/coursepage/:id", {
+                    templateUrl: 'views/coursepage/course.page.view.html',
+                    controller: 'CoursePageController'
+                })
                 //.when("/admin", {
                 //    templateUrl: 'views/admin/admin.view.html',
                 //    controller: 'AdminController'

@@ -20,6 +20,7 @@
             console.log("CourseDesc: " + CourseService.getCourseFromId(courseId).description);
 
             var course = {
+                    "url" : "#/coursepage/" + courseId,
                     "title": CourseService.getCourseFromId(courseId).title,
                     "description": CourseService.getCourseFromId(courseId).description
                 };
