@@ -13,14 +13,14 @@
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta sollicitudin turpis, ac accumsan diam rhoncus ut. Praesent vitae leo sed orci convallis fringilla. Pellentesque iaculis pulvinar auctor. Donec sed tincidunt felis. Fusce mollis posuere volutpat. Cras tincidunt quam aliquet erat convallis vulputate. In sed urna ac lacus porta auctor in nec diam. Fusce at felis nec felis condimentum fermentum. Proin id eleifend magna, et dignissim nunc. Donec aliquam tortor sit amet eleifend pulvinar. Suspendisse suscipit turpis in condimentum lacinia. Quisque ante est, malesuada quis nunc et, tincidunt lobortis erat. Duis egestas diam a condimentum pulvinar. Sed et lorem non leo efficitur finibus nec ut turpis",
                     "syllabus": "",
                     "videos": [{
-                        "video_id": "",
-                        "video_url": ""
+                        "video_id": "R-sGvh6tI04",
+                        "video_url": "dm_url_1"
                     }, {
-                        "video_id": "",
-                        "video_url": ""
+                        "video_id": "W44q6qszdqY",
+                        "video_url": "dm_url_2"
                     }, {
-                        "video_id": "",
-                        "video_url": ""
+                        "video_id": "Zr02fMBfuRA",
+                        "video_url": "dm_url_3"
                     }]
                 },
                 {
@@ -29,15 +29,15 @@
                     "description": "Curabitur pulvinar rhoncus mauris nec viverra. Suspendisse potenti. Vivamus consequat erat et feugiat venenatis. Maecenas faucibus nisi sed erat lobortis varius. Sed laoreet leo a lacus mattis sagittis. Vestibulum accumsan sapien sed nulla consequat tempor. Nullam vitae ante non nibh condimentum aliquet sed eu lorem. Nullam sed tortor id tellus molestie semper nec nec ex. Duis velit turpis, venenatis pharetra lacus non, euismod rutrum nisi. Nulla lacinia, odio vitae bibendum vestibulum, mauris lectus vehicula elit, in vehicula purus arcu eget orci. Aenean eu nunc quis ipsum ornare viverra. Aliquam erat volutpat. Praesent mattis imperdiet lorem, in iaculis felis vehicula in. Etiam eleifend nec nulla id auctor.",
                     "syllabus": "",
                     "videos": [{
-                        "video_id": "",
+                        "video_id": "Kan1sMNOlIc",
                         "video_url": "",
                         "video_thumbnail_url": ""
                     }, {
-                        "video_id": "",
+                        "video_id": "QvSC2wHjyAY",
                         "video_url": "",
                         "video_thumbnail_url": ""
                     }, {
-                        "video_id": "",
+                        "video_id": "YH5sFprHgl0",
                         "video_url": "",
                         "video_thumbnail_url": ""
                     }]
