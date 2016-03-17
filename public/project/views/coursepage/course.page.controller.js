@@ -7,9 +7,9 @@
         .controller('CoursePageController', CoursePageController);
 
     function CoursePageController($scope, $routeParams, CourseService) {
-        var courseid = $routeParams.param;
-        $scope.courseName = CourseService.getCourseFromId(courseid).title;
+        var courseid = $routeParams.id;
         console.log("CoursePageController: courseId: " + courseid);
+        $scope.courseName = CourseService.getCourseFromId(courseid).title;
         console.log("CoursePageController: courseName: " + $scope.courseName);
     }
 })();
