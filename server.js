@@ -7,7 +7,20 @@ app.get('/hello', function(req, res){
     res.send('hello world');
 });
 
-require("./public/experiments/examples/server-side/hello/app.js")(app);
+app.get('/api/json', function (req, res) {
+
+    var course = [
+        {title: 'Java 101', seats: 12, start: new Date()},
+        {title: 'C# 101', seats: 12, start: new Date()},
+        {title: 'ASP.NET 101', seats: 12, start: new Date()},
+        {title: 'Node.js 101', seats: 12, start: new Date()},
+        {title: 'AngularJS 101', seats: 12, start: new Date()}
+    ];
+    res.send(course);
+
+});
+
+// require("./public/experiments/examples/server-side/hello/app.js")(app);
 
 app.listen(port, ipaddress);
 
