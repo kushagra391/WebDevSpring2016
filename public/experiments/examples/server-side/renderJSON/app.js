@@ -22,7 +22,7 @@
         // console.log($scope.courses);
 
         // $http.get("/api/json")
-        $http.get("http://localhost:3000/api/json")
+        $http.get("/api/json")
             .success(function (response) {
                 console.log("ajax call succesfull");
                 $scope.courses = response;
