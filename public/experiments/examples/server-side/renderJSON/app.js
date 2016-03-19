@@ -4,7 +4,11 @@
 
     angular
         .module('App')
-        .controller('MainController', MainController);
+        .controller('MainController', MainController)
+        .config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.defaults.useXDomain = true;
+            delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        }]);
 
     function MainController($scope, $http) {
         // $scope.courses = [
@@ -17,8 +21,9 @@
         //
         // console.log($scope.courses);
 
-        $http.get("/api/json")
-            .success(function(response){
+        // $http.get("/api/json")
+        $http.get("http://localhost:3000/api/json")
+            .success(function (response) {
                 console.log("ajax call succesfull");
                 $scope.courses = response;
             });
