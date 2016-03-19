@@ -14,14 +14,43 @@
 <body>
 
 <div ng-app="App">
-    <div ng-controller="MainController">
-        {{courses}}
-        <tr ng-repeat="course in courses">
-            <h3>hello</h3>
-            <td>{{course.title}}</td>
-            <td>{{course.seats}}</td>
-            <td>{{course.start}}</td>
-        </tr>
+    <div class="container" ng-controller="MainController">
+        <!--{{courses}}-->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Seats</th>
+                <th>Start Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="course in courses">
+                <td>{{course.title}}</td>
+                <td>{{course.seats}}</td>
+                <td>{{course.start | date}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Title</td>
+                    <td>Seats</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            <tbody>
+            <div ng-repeat="course in courses">
+                <tr>
+                    <td>{{course.title}}</td>
+                    <td>{{course.seats}}</td>
+                    <td>{{course.start | date}}</td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+
     </div>
 </div>
 

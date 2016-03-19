@@ -20,7 +20,7 @@ app.get('/api/json', function (req, res) {
 
 });
 
-// require("./public/experiments/examples/server-side/hello/app.js")(app);
+require("./public/experiments/examples/server-side/hello/app.js")(app);
 
 app.listen(port, ipaddress);
 

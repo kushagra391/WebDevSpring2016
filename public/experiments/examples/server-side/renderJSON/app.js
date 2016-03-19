@@ -18,10 +18,11 @@
         //     {title: 'Node.js 101', seats: 12, start: new Date()},
         //     {title: 'AngularJS 101', seats: 12, start: new Date()}
         // ];
-        //
+
+        // $scope.courses = [1, 2, 3, 4];
+
         // console.log($scope.courses);
 
-        // $http.get("/api/json")
         $http.get("/api/json")
             .success(function (response) {
                 console.log("ajax call succesfull");
