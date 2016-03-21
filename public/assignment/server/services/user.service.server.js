@@ -36,4 +36,4 @@ module.exports = function (app, userModel, db) {
     function deleteUser(req, res) {
 
     }
-}
+};

@@ -69,9 +69,6 @@ module.exports = function (app, formModel, db) {
             }
             res.json(form);
             console.log("from serverside: new options" + newField.options.toSource());
-
         }
-
-
     }
-}
+};

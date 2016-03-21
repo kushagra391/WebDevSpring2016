@@ -32,6 +32,4 @@ module.exports = function (app, formModel, db) {
     function findAllForms(req, res) {
 
     }
-
-
-}
+};
