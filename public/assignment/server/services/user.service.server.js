@@ -14,7 +14,7 @@ module.exports = function (app, userModel, db) {
     app.delete(userIdPath, deleteUser);
 
     function createUser(req, res) {
-
+        
     }
 
     function findUser(req, res) {
