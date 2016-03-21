@@ -1,78 +1,50 @@
 (function () {
+    "use strict";
     angular
         .module('FormBuilderApp')
         .factory('FormService', FormService);
 
-    function FormService() {
-        var model = {
-            forms: [
-                {
-                    "_id": "123",
-                    "title": "Contacts",
-                    "userId": 123
-                },
-                {
-                    "_id": "123",
-                    "title": "ToDo",
-                    "userId": 195
-                },
-                {
-                    "_id": "020",
-                    "title": "CDs",
-                    "userId": 234
-                }
-            ],
+    function FormService($rootScope, $http) {
+        var api = {
             createFormForUser: createFormForUser,
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-            findAllForms : findAllForms
+            findAllForm: findAllForm,
+            setCurrentForm: setCurrentForm,
+            getCurrentForm: getCurrentForm
         };
 
-        return model;
+        return api;
 
-        function findAllForms() {
-            console.log("finding all forms.. ");
-            return model.forms;
+        // API Methods
+        function findAllForm() {
+            return $http.get("/api/assignment/form");
         }
 
         function createFormForUser(userId, form) {
-            var form = {
-                _id: (new Date).getTime(),
-                title: form.title,
-                userId: userId
-            };
-            model.forms.push(form);
-            return form;
+            return $http.post("/api/assignment/user/" + userId +"/form", form);
         }
 
         function findAllFormsForUser(userId) {
-            for (var i in model.forms) {
-                if (model.forms[i].userId === userId) {
-                    return model.forms[i];
-                }
-            }
-            return null;
+            return $http.get("/api/assignment/user/" + userId + "/form");
         }
 
         function deleteFormById(formId) {
-            for (var i in model.forms) {
-                if (model.forms[i]._id === formId) {
-                    model.forms.splice(i, 1);
-                }
-            }
-            return model.forms;
+            return $http.delete("/api/assignment/form/" + formId);
         }
 
         function updateFormById(formId, newForm) {
-            for (var i in model.forms) {
-                if (model.forms[i]._id === formId) {
-                    model.forms[i].title = newForm.title;
-                    model.forms[i].userId = newForm.userId;
-                    return model.forms[i];
-                }
-            }
-            return null;
+            return $http.put("/api/assignment/form/" + formId, newForm);
+        }
+
+        // Helper Methods
+        function setCurrentForm(form) {
+            $rootScope.currentForm = form;
+        }
+
+        function getCurrentForm() {
+            return $rootScope.currentForm;
         }
     }
 })();
