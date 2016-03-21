@@ -1,4 +1,7 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+
 var app = express();
 app.use(express.static(__dirname + '/public'));
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
@@ -16,7 +19,7 @@ app.get('/api/json', function (req, res) {
         {title: 'Node.js 101', seats: 12, start: new Date()},
         {title: 'AngularJS 101', seats: 12, start: new Date()}
     ];
-    res.send(course);
+    res.json(course);
 
 });
 

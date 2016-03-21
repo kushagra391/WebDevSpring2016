@@ -11,17 +11,17 @@ module.exports = function (app) {
 
     app.get('/api/hello', sayHello);
 
-    // app.get('/api/json', function (req, res) {
-    //     var course = [
-    //         {title: 'Java 101', seats: 12, start: new Date()},
-    //         {title: 'C# 101', seats: 12, start: new Date()},
-    //         {title: 'ASP.NET 101', seats: 12, start: new Date()},
-    //         {title: 'Node.js 101', seats: 12, start: new Date()},
-    //         {title: 'AngularJS 101', seats: 12, start: new Date()}
-    //     ];
-    //     res.send(course);
-    //
-    // });
+    app.get('/api/json', function (req, res) {
+        var course = [
+            {title: 'Java 101', seats: 12, start: new Date()},
+            {title: 'C# 101', seats: 12, start: new Date()},
+            {title: 'ASP.NET 101', seats: 12, start: new Date()},
+            {title: 'Node.js 101', seats: 12, start: new Date()},
+            {title: 'AngularJS 101', seats: 12, start: new Date()}
+        ];
+        res.send(course);
+    
+    });
 
 // app.listen(3000);
     console.log("Server running@: http://localhost:3000/");
