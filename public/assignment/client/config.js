@@ -12,7 +12,11 @@
                     templateUrl: "views/home/home.view.html",
                     controller: 'HomeController'
                 })
-                .when("/profile", {
+                // .when("/profile", {
+                //     templateUrl: 'views/users/profile.view.html',
+                //     controller: 'ProfileController'
+                // })
+                .when("/profile/:id", {
                     templateUrl: 'views/users/profile.view.html',
                     controller: 'ProfileController'
                 })
@@ -33,8 +37,8 @@
                     controller: "RegisterController"
                 })
                 .when("/login", {
-                    templateUrl: 'views/users/login.view.html'
-                    //controller: ""
+                    templateUrl: 'views/users/login.view.html',
+                    controller: "LoginController"
                 })
                 .otherwise({
                     redirectTo: '/home'

@@ -1,131 +1,62 @@
 (function () {
+
     "use strict";
 
     angular
         .module("FormBuilderApp")
         .service("UserService", UserService);
 
-    function UserService($rootScope) {
-        var model = {
-            users: [
-                {
-                    "_id": 123,
-                    "firstName": "Alice",
-                    "lastName": "Wonderland",
-                    "username": "alice",
-                    "password": "alice",
-                    "roles": ["student"]
-                },
-                {
-                    "_id": 234,
-                    "firstName": "Bob",
-                    "lastName": "Hope",
-                    "username": "bob",
-                    "password": "bob",
-                    "roles": ["admin"]
-                },
-                {
-                    "_id": 345,
-                    "firstName": "Charlie",
-                    "lastName": "Brown",
-                    "username": "charlie",
-                    "password": "charlie",
-                    "roles": ["faculty"]
-                },
-                {
-                    "_id": 456,
-                    "firstName": "Dan",
-                    "lastName": "Craig",
-                    "username": "dan",
-                    "password": "dan",
-                    "roles": ["faculty", "admin"]
-                },
-                {
-                    "_id": 567,
-                    "firstName": "Edward",
-                    "lastName": "Norton",
-                    "username": "ed",
-                    "password": "ed",
-                    "roles": ["student"]
-                }
-            ],
+    function UserService($rootScope, $http) {
+
+        var userPath = '/api/assignment/user';
+
+        var api = {
+            findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser,
-
-            getCurrentUser: getCurrentUser,
             setCurrentUser: setCurrentUser,
-            findUserByUsername: findUserByUsername
+            getCurrentUser: getCurrentUser
         };
+        return api;
 
-        return model;
+        // API methods
 
-        // TODO: resolve callbacks
-        function findUserByCredentials(username, password, callback) {
-            for (var uindex in model.users) {
-                if (model.users[uindex].username === username) {
-                    return model.users[uindex];
-                }
-            }
-            return null;
+        function findUserByUsername(username) {
+            return $http.get(userPath + '?username=' + username);
         }
 
-        function findAllUsers(callback) {
-            return model.users;
+        // TODO: refactor credentials
+        function findUserByCredentials(userCredentials) {
+            return $http.post(userPath + '/login', userCredentials);
         }
 
-        function createUser(user, callback) {
-            var user = {
-                _id: (new Date).getTime(),
-                username: user.username,
-                password: user.password,
-                email: user.email
-            };
-            model.users.push(user);
-            return user;
+        function findAllUsers() {
+            return $http.get(userPath);
         }
 
-        function deleteUserById(userid, callback) {
-            for (var u in model.users) {
-                if (model.users[u]._id === userId) {
-                    model.users.splice(u, 1);
-                }
-            }
+        function createUser(user) {
+            return $http.post(userPath, user);
         }
 
-        // TODO: usage of callbacks, return values
+        function deleteUserById(userId) {
+            return $http.delete(userPath + '/' + userId);
+        }
+
         function updateUser(userId, user) {
-            for (var u in model.users) {
-                if (model.users[u]._id === userId) {
-                    model.users[u].username = user.username;
-                    model.users[u].firstName = user.firstName;
-                    model.users[u].lastName = user.lastName;
-                    model.users[u].password = user.password;
+            return $http.put(userPath + '/' + userId, user);
+        }
 
-                    return model.users[u];
-                }
-            }
-            return null;
+        // Helper Methods
+        function setCurrentUser(user) {
+            $rootScope.currentUser = user;
         }
 
         function getCurrentUser() {
             return $rootScope.currentUser;
         }
-
-        function setCurrentUser(user) {
-            $rootScope.currentUser = user;
-        }
-
-        function findUserByUsername(username) {
-            for (var index in model.users) {
-                if (model.users[index].username === username) {
-                    return model.users[index];
-                }
-            }
-
-            return null;
-        }
     }
+
 })();
