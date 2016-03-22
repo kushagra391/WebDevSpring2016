@@ -9,20 +9,26 @@
     function LoginController($scope, $location, UserService) {
         $scope.message = null;
         $scope.error = null;
-        $scope.login = function (user) {
+        $scope.login = login;
 
-            console.log("Login attempted");
+        function login(user) {
+            if (!user) {
+                $scope.error = 'Error: User not set';
+                return;
+            }
 
-            var testUser = UserService.findUserByCredentials(user.username, user.password);
-            if (testUser != null) {
-                UserService.setCurrentUser(testUser);
-                $location.url('/profile');
-                console.log("Login successful");
-            }
-            else {
-                console.log("Login failed");
-                $scope.error = "Wrong username / password entered. Please retry."
-            }
-        };
+            var credential = {username: user.username, password: user.password};
+            UserService
+                .findUserByCredentials(credential)
+                .then(function (response) {
+                    if (response.data) {
+                        UserService.setCurrentUser(response.data);
+                        $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+
+                    } else {
+                        $scope.error = 'Failure: Please verify username / password';
+                    }
+                });
+        }
     }
 })();
