@@ -31,19 +31,48 @@
                 console.log('passwords dont match');
                 return;
             }
-            var user = UserService.findUserByUsername(user.username);
-            if (user != null) {
-                $scope.register_error = "User already exists";
-                console.log('user not found by username');
-                return;
-            }
 
-            var newUser = UserService.createUser($scope.user);
-            UserService.setCurrentUser(newUser);
-            $location.url("/profile");
+            UserService
+                .findUserByUsername(user.username)
+                .then(function (response) {
+                    if (response.data) {
+                        $scope.error = 'ERROR: user exists';
+                        return;
+                    } else {
+                        registerUser(user);
+                    }
+                });
 
-            console.log("registration successful");
-            console.log("after register" + UserService.findAllUsers());
+            // var user = UserService.findUserByUsername(user.username);
+            // if (user != null) {
+            //     $scope.register_error = "User already exists";
+            //     console.log('user not found by username');
+            //     return;
+            // }
+            //
+            // var newUser = UserService.createUser($scope.user);
+            // UserService.setCurrentUser(newUser);
+            // $location.url("/profile");
+            //
+            // console.log("registration successful");
+            // console.log("after register" + UserService.findAllUsers());
+        }
+
+        // Helper to execute final leg for user registration
+        function registerUser(user) {
+            UserService
+                .createUser(user)
+                .then(function (response) {
+                    if (response) {
+                        UserService.setCurrentUser(response.data.pop());
+                        $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+
+                        $scope.message = 'Success: Registration done.';
+                    } else {
+                        $scope.error = 'Failure: Registration failed';
+                    }
+
+                });
         }
     }
 
