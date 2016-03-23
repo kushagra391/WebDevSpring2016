@@ -22,6 +22,7 @@
             <th>Form Name</th>
             <th>Action</th>
         </tr>
+
         <tr>
             <th><input ng-model="form.title" class="form-control"/></th>
             <th>
@@ -42,9 +43,10 @@
                 <a href="#">{{form.title}}</a>
             </td>
             <td>
-                <button ng-click="deleteForm($index)" class="btn btn-danger"><span
+                <!--<button ng-click="deleteForm($index)" class="btn btn-danger"><span-->
+                <button ng-click="deleteForm(forms[$index])" class="btn btn-danger"><span
                         class="glyphicon glyphicon-remove"></span></button>
-                <button ng-click="selectForm($index)" class="btn btn-info"><span
+                <button ng-click="selectForm(forms[$index])" class="btn btn-info"><span
                         class="glyphicon glyphicon-pencil"></span></button>
             </td>
         </tr>

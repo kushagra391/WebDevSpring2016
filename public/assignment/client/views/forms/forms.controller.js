@@ -75,8 +75,10 @@
         }
 
         function deleteForm(form) {
-
+            console.log('Attempting to delete form: ' + JSON.stringify(form));
             var formId = form._id;
+
+            console.log('FormID: ' + formId);
 
             FormService
                 .deleteFormById(formId)

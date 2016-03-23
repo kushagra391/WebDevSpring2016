@@ -10,7 +10,7 @@
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
-            findAllForm: findAllForm,
+            findAllForms: findAllForms,
             setCurrentForm: setCurrentForm,
             getCurrentForm: getCurrentForm
         };
@@ -18,7 +18,7 @@
         return api;
 
         // API Methods
-        function findAllForm() {
+        function findAllForms() {
             return $http.get("/api/assignment/form");
         }
 
