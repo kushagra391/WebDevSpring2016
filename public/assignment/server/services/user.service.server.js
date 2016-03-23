@@ -4,16 +4,18 @@ module.exports = function (app, userModel, db) {
 
     var userPath = '/api/assignment/user';
     var userIdPath = '/api/assignment/user/:id';
-    var userLoginPath = '/api/assignment/user/:login';
+    // var userLoginPath = '/api/assignment/user/:login';
+    var userLoginPath = '/api/assignment/user/login';
 
     app.post(userPath, createUser);
     app.get(userPath, findUser);
     app.get(userIdPath, findUserById);
-    app.get(userLoginPath, findUserByCredentials);
+    app.post(userLoginPath, findUserByCredentials);
     app.put(userIdPath, updateUser);
     app.delete(userIdPath, deleteUser);
 
     function findUser(req, res) {
+        console.log('listening for /api/assignment/user');
         // TODO: ...
     }
 
@@ -31,8 +33,12 @@ module.exports = function (app, userModel, db) {
     }
 
     function findUserByCredentials(req, res) {
+
+        console.log('Trying to find user by credentials');
+
         var credentials = req.body;
-        var user = userModel.findUserByCredentials(credentials)
+        console.log(JSON.stringify(credentials));
+        var user = userModel.findUserByCredentials(credentials);
         res.json(user);
     }
 
