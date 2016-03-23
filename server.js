@@ -5,34 +5,14 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var db;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
-
-// Examples
-app.get('/hello', function(req, res){
-    res.send('hello world');
-});
-app.get('/api/json', function (req, res) {
-
-    var course = [
-        {title: 'Java 101', seats: 12, start: new Date()},
-        {title: 'C# 101', seats: 12, start: new Date()},
-        {title: 'ASP.NET 101', seats: 12, start: new Date()},
-        {title: 'Node.js 101', seats: 12, start: new Date()},
-        {title: 'AngularJS 101', seats: 12, start: new Date()}
-    ];
-    res.json(course);
-});
-
-// End of Examples
-
-require("./public/experiments/examples/server-side/hello/app.js")(app);
-
 require('./public/assignment/server/app.js')(app, db);
 
+console.log('listening @' + port);
 app.listen(port, ipaddress);
