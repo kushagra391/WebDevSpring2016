@@ -7,13 +7,16 @@
         .controller('ProfileController', ProfileController);
 
     function ProfileController($scope, $routeParams, $location, UserService) {
+        console.log('Inside ProfileController');
         $scope.currentUser = UserService.getCurrentUser();
         $scope.errorMessage = null;
         $scope.message = null;
         $scope.id = $routeParams.id;
 
+        console.log('Inside ProfileController: checking for currentUser');
         // TODO: when or how does the controller method get executed
         if (!$scope.currentUser) {
+            console.log('Inside ProfileController: checking for currentUser > Current User not found');
             $location.url("/home");
         }
 

@@ -23,9 +23,11 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^3.4.8",
     "multer": "^1.1.0",
     "promise": "^7.1.1"
+
   },
   "devDependencies": {},
   "bundleDependencies": [],

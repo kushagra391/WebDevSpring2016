@@ -4,18 +4,29 @@ module.exports = function (app, userModel, db) {
 
     var userPath = '/api/assignment/user';
     var userIdPath = '/api/assignment/user/:id';
-    var userLoginPath = '/api/assignment/user/:login';
+    // var userLoginPath = '/api/assignment/user/:login';
+    var userLoginPath = '/api/assignment/user/login';
 
     app.post(userPath, createUser);
     app.get(userPath, findUser);
     app.get(userIdPath, findUserById);
-    app.get(userLoginPath, findUserByCredentials);
+    app.post(userLoginPath, findUserByCredentials);
     app.put(userIdPath, updateUser);
     app.delete(userIdPath, deleteUser);
 
     function findUser(req, res) {
         console.log('listening for /api/assignment/user');
-        // TODO: ...
+
+        var username = req.param('username');
+        if (username) {
+            console.log('username already exists');
+            var user = userModel.findUserByUsername(username);
+            res.json(user);
+        } else {
+            console.log('username does not exists');
+            var users = userModel.findAllUsers();
+            res.json(users);
+        }
     }
 
     function createUser(req, res) {
@@ -32,8 +43,12 @@ module.exports = function (app, userModel, db) {
     }
 
     function findUserByCredentials(req, res) {
+
+        console.log('Trying to find user by credentials');
+
         var credentials = req.body;
-        var user = userModel.findUserByCredentials(credentials)
+        console.log(JSON.stringify(credentials));
+        var user = userModel.findUserByCredentials(credentials);
         res.json(user);
     }
 
