@@ -8,7 +8,7 @@
         $scope.register_error = null;
 
         function register(user) {
-            console.log("INFO: user registration attempted");
+            console.log("user registration attempted")
 
             $scope.register_error = null;
             if (user == null) {
@@ -36,8 +36,8 @@
                 .findUserByUsername(user.username)
                 .then(function (response) {
                     if (response.data) {
-                        console.log('user exists');
                         $scope.error = 'ERROR: user exists';
+                        return;
                     } else {
                         registerUser(user);
                     }
@@ -60,7 +60,6 @@
 
         // Helper to execute final leg for user registration
         function registerUser(user) {
-            console.log("confirmed: user registration attempted");
             UserService
                 .createUser(user)
                 .then(function (response) {
@@ -69,10 +68,8 @@
                         $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
 
                         $scope.message = 'Success: Registration done.';
-                        // console.log(UserService.findAllUsers());
                     } else {
                         $scope.error = 'Failure: Registration failed';
-                        // console.log(UserService.findAllUsers());
                     }
 
                 });

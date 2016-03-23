@@ -16,17 +16,7 @@ module.exports = function (app, userModel, db) {
 
     function findUser(req, res) {
         console.log('listening for /api/assignment/user');
-
-        var username = req.param('username');
-        if (username) {
-            console.log('username already exists');
-            var user = userModel.findUserByUsername(username);
-            res.json(user);
-        } else {
-            console.log('username does not exists');
-            var users = userModel.findAllUsers();
-            res.json(users);
-        }
+        // TODO: ...
     }
 
     function createUser(req, res) {

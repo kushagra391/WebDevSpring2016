@@ -26,9 +26,7 @@
         // API methods
 
         function findUserByUsername(username) {
-            console.log('INFO: trying to find username from user');
             return $http.get(userPath + '?username=' + username);
-
         }
 
         // TODO: refactor credentials

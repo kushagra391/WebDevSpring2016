@@ -11,10 +11,7 @@
     "firstName": "Bob",
     "lastName": "Hope",
     "username": "bob",
-    "password": "bob",
-    "roles": [
-      "admin"
-    ]
+    "password": "bob"
   },
   {
     "_id": "345",
