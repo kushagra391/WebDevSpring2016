@@ -9,6 +9,8 @@
         $scope.hello = "From Scope";
 
         var currentForm = FormService.getCurrentForm();
+        console.log('Current Form: ' + JSON.stringify(currentForm));
+
         $scope.addField = addField;
         $scope.removeField = removeField;
         $scope.updateField = updateField;
@@ -17,7 +19,7 @@
         $scope.error = null;
 
         $scope.dynamicPopover = {
-          templateUrl: 'myPopoverTemplate'
+            templateUrl: 'myPopoverTemplate'
         };
 
         // show the current fields
@@ -178,7 +180,7 @@
         function removeField(field) {
             FieldService
                 .deleteFieldFromForm(currentForm._id, field._id)
-                .then (function (response) {
+                .then(function (response) {
                     if (response.data) {
                         $scope.fields = response.data.fields;
                         $scope.message = 'Remove field successfully';
@@ -193,7 +195,7 @@
 
             FieldService
                 .updateFieldInForm(currentForm._id, field._id, field)
-                .then (function (response) {
+                .then(function (response) {
                     if (response.data) {
                         $scope.fields = response.data.fields;
                         $scope.message = 'Success: fields updated';
