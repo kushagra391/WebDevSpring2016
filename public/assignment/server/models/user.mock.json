@@ -11,7 +11,10 @@
     "firstName": "Bob",
     "lastName": "Hope",
     "username": "bob",
-    "password": "bob"
+    "password": "bob",
+    "roles": [
+      "admin"
+    ]
   },
   {
     "_id": "345",
