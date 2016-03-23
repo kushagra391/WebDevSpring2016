@@ -14,13 +14,7 @@ module.exports = function (app, userModel, db) {
     app.delete(userIdPath, deleteUser);
 
     function findUser(req, res) {
-<<<<<<< HEAD
-=======
         console.log('listening for /api/assignment/user');
-<<<<<<< HEAD
->>>>>>> parent of 8c56f0b... A3: pre-form ready
-=======
->>>>>>> parent of 8c56f0b... A3: pre-form ready
         // TODO: ...
     }
 
