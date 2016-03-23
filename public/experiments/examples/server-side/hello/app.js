@@ -1,6 +1,8 @@
 module.exports = function (app) {
 
     var express = require('express');
+// var cors = require('cors');
+
     var app = express();
 
     function sayHello(req, res) {

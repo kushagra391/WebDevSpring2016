@@ -18,11 +18,9 @@
             }
 
             var credential = {username: user.username, password: user.password};
-            console.log('LoginController::Login: ' + JSON.stringify(credential));
             UserService
                 .findUserByCredentials(credential)
                 .then(function (response) {
-                    console.log('login response: ' + JSON.stringify(response));
                     if (response.data) {
                         UserService.setCurrentUser(response.data);
                         $location.url('/profile' + '/' + UserService.getCurrentUser()._id);

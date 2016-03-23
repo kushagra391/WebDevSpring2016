@@ -9,7 +9,6 @@
     function UserService($rootScope, $http) {
 
         var userPath = '/api/assignment/user';
-        var userLoginPath = '/api/assignment/user/login';
 
         var api = {
             findUserByUsername: findUserByUsername,
@@ -31,8 +30,7 @@
 
         // TODO: refactor credentials
         function findUserByCredentials(userCredentials) {
-            console.log('client: ' + JSON.stringify(userCredentials));
-            return $http.post(userLoginPath, userCredentials);
+            return $http.post(userPath + '/login', userCredentials);
         }
 
         function findAllUsers() {

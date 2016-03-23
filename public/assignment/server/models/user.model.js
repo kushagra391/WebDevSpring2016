@@ -77,7 +77,6 @@ module.exports = function (app) {
     }
 
     function findUserByCredentials(credentials) {
-
         for (var index in mockUsers) {
             if (mockUsers[index].username === credentials.username
                 && mockUsers[index].password === credentials.password) {
