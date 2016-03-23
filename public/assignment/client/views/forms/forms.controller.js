@@ -92,7 +92,7 @@
                 });
         }
 
-        function selectForm(index) {
+        function selectForm(form) {
             $scope.selectedFormId = form._id;
             $scope.form = form;
 
