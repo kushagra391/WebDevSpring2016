@@ -19,7 +19,7 @@
         $scope.error = null;
 
         $scope.dynamicPopover = {
-            templateUrl: 'myPopoverTemplate'
+            templateUrl: 'fieldPopover'
         };
 
         // show the current fields
