@@ -1,0 +1,864 @@
+==> app-root/logs/mongodb.log <==
+Thu Mar 24 19:47:05.386 [initandlisten] MongoDB starting : pid=177217 port=27017 dbpath=/var/lib/openshift/56a21dfa0c1e66f2e0000011/mongodb/data/ 64-bit host=ex-std-node804.prod.rhcloud.com
+Thu Mar 24 19:47:05.386 [initandlisten] db version v2.4.9
+Thu Mar 24 19:47:05.386 [initandlisten] git version: nogitversion
+Thu Mar 24 19:47:05.386 [initandlisten] build info: Linux x86-025.build.eng.bos.redhat.com 2.6.32-431.5.1.el6.x86_64 #1 SMP Fri Jan 10 14:46:43 EST 2014 x86_64 BOOST_LIB_VERSION=1_41
+Thu Mar 24 19:47:05.386 [initandlisten] allocator: tcmalloc
+Thu Mar 24 19:47:05.386 [initandlisten] options: { auth: true, bind_ip: "127.6.157.130", command: [ "run" ], config: "/var/lib/openshift/56a21dfa0c1e66f2e0000011/mongodb//conf/mongodb.conf", dbpath: "/var/lib/openshift/56a21dfa0c1e66f2e0000011/mongodb/data/", nohttpinterface: "true", noprealloc: "true", pidfilepath: "/var/lib/openshift/56a21dfa0c1e66f2e0000011/mongodb/pid/mongodb.pid", quiet: "true", smallfiles: "true" }
+Thu Mar 24 19:47:05.392 [initandlisten] journal dir=/var/lib/openshift/56a21dfa0c1e66f2e0000011/mongodb/data/journal
+Thu Mar 24 19:47:05.392 [initandlisten] recover : no journal files present, no recovery needed
+Thu Mar 24 19:47:05.454 [initandlisten] waiting for connections on port 27017
+Thu Mar 24 19:47:06.142 [conn1]  authenticate db: admin { authenticate: 1, nonce: "6c65e42a07632f2d", user: "admin", key: "9e652ce4f78034a36147d8c11fd99f88" }
+
+==> app-root/logs/rockmongo.log <==
+[Thu Mar 24 13:47:54 2016] [notice] Apache/2.2.15 (Unix) PHP/5.3.3 configured -- resuming normal operations
+[Thu Mar 24 19:45:56 2016] [notice] caught SIGWINCH, shutting down gracefully
+- - - [24/Mar/2016:19:45:56 -0400] "OPTIONS * HTTP/1.0" 200 - "-" "Apache/2.2.15 (Red Hat) (internal dummy connection)"
+[Thu Mar 24 19:47:07 2016] [warn] module php5_module is already loaded, skipping
+[Thu Mar 24 19:47:07 2016] [notice] SELinux policy enabled; httpd running as context unconfined_u:system_r:openshift_t:s0:c3,c324
+[Thu Mar 24 19:47:07 2016] [warn] module php5_module is already loaded, skipping
+PHP Warning:  Module 'mongo' already loaded in Unknown on line 0
+[Thu Mar 24 19:47:07 2016] [notice] Digest: generating secret for digest authentication ...
+[Thu Mar 24 19:47:07 2016] [notice] Digest: done
+[Thu Mar 24 19:47:07 2016] [notice] Apache/2.2.15 (Unix) PHP/5.3.3 configured -- resuming normal operations
+
+==> app-root/logs/nodejs.log-20160323105652 <==
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+
+==> app-root/logs/nodejs.log-20160323065749 <==
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+
+==> app-root/logs/nodejs.log-20160324025603 <==
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+
+==> app-root/logs/nodejs.log-20160324105650 <==
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+
+==> app-root/logs/nodejs.log-20160324065745 <==
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+
+==> app-root/logs/nodejs.log <==
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'node-uuid'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/var/lib/openshift/56a21dfa0c1e66f2e0000011/app-root/runtime/repo/public/assignment/server/models/user.model.js:2:12)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+DEBUG: Program node server.js exited with code 8
+DEBUG: Starting child process with 'node server.js'
+module.js:340
