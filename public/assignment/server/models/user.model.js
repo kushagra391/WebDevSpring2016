@@ -1,5 +1,6 @@
 var mockUsers = require('./user.mock.json');
 // var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 module.exports = function (app) {
 
