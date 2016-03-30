@@ -1,5 +1,4 @@
 WebdevSpring2015
->> testing bugs again
 
 The OpenShift `nodejs` cartridge documentation can be found at:
 
