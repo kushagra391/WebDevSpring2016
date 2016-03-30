@@ -17,4 +17,5 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 require('./public/assignment/server/app.js')(app, db);
 
 console.log('listening @' + port);
+console.log('Sever should be restarted');
 app.listen(port, ipaddress);
