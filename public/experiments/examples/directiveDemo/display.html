@@ -18,6 +18,8 @@
     <!--Angular Source Files-->
     <script src="app.js"></script>
 
+    <script src="scripts.js"></script>
+
 </head>
 <body>
 <!--1. Bootstrap table / panel ready-->
@@ -55,8 +57,8 @@
                 </tr>
                 </thead>
 
-                <tbody>
-                <tr>
+                <tbody class="sortable-table">
+                <tr">
                     <td>Kushagra</td>
                     <td>27</td>
                     <td>M</td>
@@ -66,6 +68,11 @@
                     <td>27</td>
                     <td>M</td>
                 </tr>
+                <tr>
+                    <td>Shruti</td>
+                    <td>26</td>
+                    <td>F</td>
+                </tr>
                 </tbody>
 
             </table>
@@ -73,12 +80,11 @@
         </div>
 
         <div class="panel-footer">
-            <h5>Demo for a bootstrap / sortable table</h5>
+            <h5><i>Demo for a bootstrap / sortable table</i></h5>
         </div>
     </div>
 </div>
 
-<!--2. Make jQueryUI sortable-->
 <!--3. Test basic angular-->
 <!--4. Test basic directive-->
 <!--5. Test Directive + jQueryUI sortable-->
