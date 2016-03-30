@@ -1,0 +1,21 @@
+<!-- jgaTable.html -->
+<h2>{{users}}</h2>
+<h2>Caption here: </h2>
+<div class="table-responsive">
+    <table class="table table-striped" border="{{border}}">
+        <thead>
+        <tr>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in data">
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.gender}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

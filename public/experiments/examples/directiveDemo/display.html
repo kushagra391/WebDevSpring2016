@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="sortableApp">
 <head>
     <meta charset="UTF-8">
     <title>Directive's Demo</title>
@@ -15,10 +15,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
 
-    <!--Angular Source Files-->
-    <script src="app.js"></script>
-
     <script src="scripts.js"></script>
+
+    <!--Angular Source Files-->
+    <script src="directive/jgaTable.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+
 
 </head>
 <body>
@@ -39,7 +42,8 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" ng-controller="MainController">
+    <!--<div class="container">-->
     <!--Table Panel-->
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -49,32 +53,22 @@
         <div class="panel-body">
 
             <table class="table table-responsive table-striped table-hover">
+
                 <thead>
                 <tr>
-                    <th>Username</th>
+                    <th>Name</th>
                     <th>Age</th>
                     <th>Gender</th>
                 </tr>
                 </thead>
 
                 <tbody class="sortable-table">
-                <tr">
-                    <td>Kushagra</td>
-                    <td>27</td>
-                    <td>M</td>
-                </tr>
-                <tr>
-                    <td>Bhatta</td>
-                    <td>27</td>
-                    <td>M</td>
-                </tr>
-                <tr>
-                    <td>Shruti</td>
-                    <td>26</td>
-                    <td>F</td>
+                <tr ng-repeat="user in users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.gender}}</td>
                 </tr>
                 </tbody>
-
             </table>
 
         </div>
@@ -84,6 +78,30 @@
         </div>
     </div>
 </div>
+
+<div class="container" ng-controller="MainController">
+    <!--{{users}}-->
+    <!--<jga-table caption="jgaTable" border="3" data="users"></jga-table>-->
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>First</th>
+            <th>Last</th>
+        </tr>
+        </thead>
+        <tbody jga-table jga-axis="y">
+        <tr ng-repeat="user in users">
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.gender}}</td>
+        </tr>
+        </tbody>
+    </table>
+    {{users}}
+
+</div>
+
 
 <!--3. Test basic angular-->
 <!--4. Test basic directive-->

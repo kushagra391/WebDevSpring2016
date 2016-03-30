@@ -1,3 +1,5 @@
 $(function () {
-    $(".sortable-table").sortable();
+    $(".sortable-table").sortable({
+        axis: "y"
+    });
 });
