@@ -6,7 +6,13 @@
         .controller("HeaderController", HeaderController);
 
     function HeaderController($scope, $location, UserService) {
-        $scope.$location = $location;
+
+        function init() {
+            $scope.$location = $location;
+        }
+
+        init();
+
         $scope.logout = function () {
             UserService.setCurrentUser(null);
             $location.url('/home');
