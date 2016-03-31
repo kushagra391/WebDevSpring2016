@@ -4,21 +4,26 @@
         .controller("FormsController", FormsController);
 
     function FormsController($scope, FormService, UserService) {
-        $scope.selectedFormId = null;
-        $scope.error = null;
-        $scope.forms = FormService.findAllForms();
 
-        $scope.addForm = addForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
-        $scope.selectForm = selectForm;
+        function init() {
+            $scope.selectedFormId = null;
+            $scope.error = null;
+            $scope.forms = FormService.findAllForms();
 
-        $scope.currentUser = UserService.getCurrentUser();
-        FormService
-            .findAllForms()
-            .then(function (res) {
-                $scope.forms = res.data; // TODO: .data
-            });
+            $scope.addForm = addForm;
+            $scope.updateForm = updateForm;
+            $scope.deleteForm = deleteForm;
+            $scope.selectForm = selectForm;
+
+            $scope.currentUser = UserService.getCurrentUser();
+            FormService
+                .findAllForms()
+                .then(function (res) {
+                    $scope.forms = res.data; // TODO: .data
+                });
+        }
+
+        init();
 
 
         function addForm(form) {
@@ -33,18 +38,20 @@
 
             FormService
                 .createFormForUser($scope.currentUser._id, form)
-                .then(function (response) {
-                    if (response.data) {  // if, response not null
-                        $scope.forms = response.data;
-                        var formsCount = $scope.forms.length;
+                .then(addFormSuccess, addFormFailure);
 
-                        FormService.setCurrentForm($scope.forms[formsCount - 1]);
+            function addFormSuccess(response) {
+                console.log('addForm: Inside promise success');
 
-                        form.title = ''; // TODO: clear header fields
-                    } else {
-                        $scope.error = 'Failed: Form not created';
-                    }
-                });
+                $scope.forms = response.data;
+                var formsCount = $scope.forms.length;
+                FormService.setCurrentForm($scope.forms[formsCount - 1]);
+                form.title = ''; // TODO: clear header fields
+            }
+
+            function addFormFailure() {
+                $scope.error = 'Failed: Form not created';
+            }
         }
 
         function updateForm(form) {
@@ -57,21 +64,22 @@
                 form.userId = $scope.currentUser._id;
             }
 
-
             FormService
                 .updateFormById($scope.selectedFormId, form)
-                .then(function (response) {
-                    if (response.data) {
-                        $scope.forms = response.data;
-                        $scope.message = 'Success: Forms updated';
-
-                        form.title = '';
-                    } else {
-                        $scope.error = 'Failure: form not updated';
-                    }
-                });
+                .then(updateSuccess, updateError);
 
             $scope.selectedFormId = null;   // TODO: required ?
+
+            function updateSuccess(response) {
+                $scope.forms = response.data;
+                $scope.message = 'Success: Forms updated';
+
+                form.title = '';
+            }
+
+            function updateError(response) {
+                $scope.error = 'Failure: form not updated';
+            }
         }
 
         function deleteForm(form) {
@@ -82,14 +90,16 @@
 
             FormService
                 .deleteFormById(formId)
-                .then(function (response) {
-                    if (response.data) {
-                        $scope.forms = response.data;
-                        $scope.message = 'Success: form deleted';
-                    } else {
-                        $scope.error = 'Failure: form not deleted';
-                    }
-                });
+                .then(deleteSuccess, deleteError);
+
+            function deleteSuccess(response) {
+                $scope.forms = response.data;
+                $scope.message = 'Success: form deleted';
+            }
+
+            function deleteError(response){
+                $scope.error = 'Failure: form not deleted';
+            }
         }
 
         function selectForm(form) {
