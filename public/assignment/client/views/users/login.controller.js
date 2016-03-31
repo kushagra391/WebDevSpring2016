@@ -37,17 +37,6 @@
             UserService
                 .findUserByCredentials(credential)
                 .then(resolvedHandler, rejectHandler);
-
-                // .then(function (response) {
-                //     console.log('login response: ' + JSON.stringify(response));
-                //     if (response.data) {
-                //         UserService.setCurrentUser(response.data);
-                //         $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
-                //
-                //     } else {
-                //         $scope.error = 'Failure: Please verify username / password';
-                //     }
-                // });
         }
     }
 })();

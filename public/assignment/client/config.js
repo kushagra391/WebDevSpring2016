@@ -6,7 +6,7 @@
     "use strict";
     angular
         .module("FormBuilderApp")
-        .config(function($routeProvider){
+        .config(function ($routeProvider) {
             $routeProvider
                 .when("/home", {
                     templateUrl: "views/home/home.view.html",
@@ -32,6 +32,10 @@
                     templateUrl: 'views/forms/fields.view.html',
                     controller: "FieldsController"
                 })
+                // .when('form/:formId/fieldId', {
+                //     templateUrl: 'views/forms/fields.view.html',
+                //     controller: "FieldsController"
+                // })
                 .when("/register", {
                     templateUrl: 'views/users/register.view.html',
                     controller: "RegisterController"

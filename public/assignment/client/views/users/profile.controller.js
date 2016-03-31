@@ -7,18 +7,21 @@
         .controller('ProfileController', ProfileController);
 
     function ProfileController($scope, $routeParams, $location, UserService) {
-        $scope.currentUser = UserService.getCurrentUser();
-        $scope.errorMessage = null;
-        $scope.message = null;
 
-        $scope.id = $routeParams.id;
+        function init() {
+            $scope.currentUser = UserService.getCurrentUser();
+            $scope.errorMessage = null;
+            $scope.message = null;
+            $scope.id = $routeParams.id;
+            $scope.update = update;
 
-        $scope.update = update;
-
-        // TODO: when or how does the controller method get executed
-        if (!$scope.currentUser) {
-            $location.url("/home");
+            // TODO: when or how does the controller method get executed
+            if (!$scope.currentUser) {
+                $location.url("/home");
+            }
         }
+
+        init();
 
         function update(user) {
             if (!user) {
@@ -27,7 +30,7 @@
                 console.log('INFO: User getting updated');
                 UserService
                     .updateUser($routeParams.id, user)
-                    .then (function (response) {
+                    .then(function (response) {
                         if (response.data) {
                             UserService.setCurrentUser($scope.currentUser);
                             $scope.message = 'Success: User updated succesfully';

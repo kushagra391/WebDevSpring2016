@@ -4,8 +4,13 @@
         .controller("RegisterController", RegisterController);
 
     function RegisterController($scope, $rootScope, $location, UserService) {
-        $scope.register = register;
-        $scope.register_error = null;
+
+        function init() {
+            $scope.register = register;
+            $scope.register_error = null;
+        }
+
+        init();
 
         function register(user) {
             console.log("INFO: user registration attempted");
@@ -42,20 +47,6 @@
                         registerUser(user);
                     }
                 });
-
-            // var user = UserService.findUserByUsername(user.username);
-            // if (user != null) {
-            //     $scope.register_error = "User already exists";
-            //     console.log('user not found by username');
-            //     return;
-            // }
-            //
-            // var newUser = UserService.createUser($scope.user);
-            // UserService.setCurrentUser(newUser);
-            // $location.url("/profile");
-            //
-            // console.log("registration successful");
-            // console.log("after register" + UserService.findAllUsers());
         }
 
         // Helper to execute final leg for user registration
@@ -63,19 +54,18 @@
             console.log("confirmed: user registration attempted");
             UserService
                 .createUser(user)
-                .then(function (response) {
-                    if (response) {
-                        UserService.setCurrentUser(response.data.pop());
-                        $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+                .then(registerSuccess, registerError);
+        }
 
-                        $scope.message = 'Success: Registration done.';
-                        // console.log(UserService.findAllUsers());
-                    } else {
-                        $scope.error = 'Failure: Registration failed';
-                        // console.log(UserService.findAllUsers());
-                    }
+        function registerSuccess(response) {
+            UserService.setCurrentUser(response.data.pop());
+            $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
 
-                });
+            $scope.message = 'Success: Registration done.';
+        }
+
+        function registerError() {
+            $scope.error = 'Failure: Registration failed';
         }
     }
 
