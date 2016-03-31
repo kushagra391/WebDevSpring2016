@@ -1,6 +1,6 @@
 module.exports = function (app, db) {
 
-    console.log('Sever should be restarted again');
+    console.log('Starting A3 Server...');
     var userModel = require('./models/user.model.js')(app);
     var formModel = require('./models/form.model.js')(app);
 

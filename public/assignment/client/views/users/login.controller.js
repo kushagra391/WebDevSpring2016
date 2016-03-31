@@ -7,9 +7,24 @@
         .controller('LoginController', LoginController);
 
     function LoginController($scope, $location, UserService) {
-        $scope.message = null;
-        $scope.error = null;
-        $scope.login = login;
+
+        function init() {
+            $scope.message = null;
+            $scope.error = null;
+            $scope.login = login;
+        }
+        init();
+
+        function resolvedHandler(response) {
+            if (response.data) {
+                UserService.setCurrentUser(response.data);
+                $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+            }
+        }
+
+        function rejectHandler(response) {
+            $scope.error = 'Failure: Please verify username / password';
+        }
 
         function login(user) {
             if (!user) {
@@ -21,16 +36,18 @@
             console.log('LoginController::Login: ' + JSON.stringify(credential));
             UserService
                 .findUserByCredentials(credential)
-                .then(function (response) {
-                    console.log('login response: ' + JSON.stringify(response));
-                    if (response.data) {
-                        UserService.setCurrentUser(response.data);
-                        $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+                .then(resolvedHandler, rejectHandler);
 
-                    } else {
-                        $scope.error = 'Failure: Please verify username / password';
-                    }
-                });
+                // .then(function (response) {
+                //     console.log('login response: ' + JSON.stringify(response));
+                //     if (response.data) {
+                //         UserService.setCurrentUser(response.data);
+                //         $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
+                //
+                //     } else {
+                //         $scope.error = 'Failure: Please verify username / password';
+                //     }
+                // });
         }
     }
 })();

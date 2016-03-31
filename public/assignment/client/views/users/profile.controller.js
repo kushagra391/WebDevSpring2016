@@ -34,7 +34,7 @@
                         } else {
                             $scope.errorMessage = 'Failure: User Update Failed';
                         }
-                    })
+                    });
             }
         }
     }

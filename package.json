@@ -28,6 +28,7 @@
     "multer": "^1.1.0",
     "node-uuid": "^1.4.7",
     "promise": "^7.1.1",
+    "q": "^1.4.1",
     "uuid": "^2.0.1"
   },
   "devDependencies": {},
