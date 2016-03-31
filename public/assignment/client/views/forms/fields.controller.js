@@ -117,30 +117,30 @@
                     FieldService
                         .createFieldForForm(currentForm._id, multiLineTextField)
                         .then(fieldSuccess, fieldError);
-
                     break;
+
                 case "Date Field":
                     FieldService
                         .createFieldForForm(currentForm._id, dateField)
                         .then(fieldSuccess, fieldError);
-
                     break;
+
                 case "Dropdown Field":
                     FieldService
                         .createFieldForForm(currentForm._id, dropdownField)
                         .then(fieldSuccess, fieldError);
-
                     break;
+
                 case "Checkboxes Field":
                     FieldService
                         .createFieldForForm(currentForm._id, checkboxesField)
                         .then(fieldSuccess, fieldError);
                     break;
+
                 case "Radio Buttons Field":
                     FieldService
                         .createFieldForForm(currentForm._id, radioButtonsField)
                         .then(fieldSuccess, fieldError);
-
                     break;
             }
 
@@ -182,7 +182,6 @@
             function fieldSuccess(response) {
                 $scope.fields = response.data.fields;
                 $scope.message = 'Success: fields updated';
-
                 console.log(currentForm._id + ' ' + field._id);
             }
 
