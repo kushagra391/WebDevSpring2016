@@ -6,7 +6,6 @@
         .controller("FieldsController", FieldsController);
 
     function FieldsController($scope, FormService, FieldService) {
-        $scope.hello = "From Scope";
 
         var currentForm = FormService.getCurrentForm();
         console.log('Current Form: ' + JSON.stringify(currentForm));
@@ -32,6 +31,7 @@
                 }
             });
 
+
         function getOptionStrings() {
             var str = '';
             var fields = $scope.fields;
@@ -44,6 +44,7 @@
 
             return str;
         }
+
 
         $scope.options = [
             "Single Line Text Field",
@@ -109,83 +110,64 @@
                 case "Single Line Text Field":
                     FieldService
                         .createFieldForForm(currentForm._id, singleLineTextField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Single Line Text Field successfully.";
-                                //addMsg("Add Single Line Text Field successfully.");
-                            }
-                        });
-
+                        .then(fieldSuccess, fieldError);
                     break;
+
                 case "Multi Line Text Field":
                     FieldService
                         .createFieldForForm(currentForm._id, multiLineTextField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Multi Line Text Field successfully.";
-                            }
-                        });
+                        .then(fieldSuccess, fieldError);
+
                     break;
                 case "Date Field":
                     FieldService
                         .createFieldForForm(currentForm._id, dateField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Date Field successfully.";
-                            }
-                        });
+                        .then(fieldSuccess, fieldError);
+
                     break;
                 case "Dropdown Field":
                     FieldService
                         .createFieldForForm(currentForm._id, dropdownField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Dropdown Field successfully.";
-                            }
-                        });
+                        .then(fieldSuccess, fieldError);
+
                     break;
                 case "Checkboxes Field":
                     FieldService
                         .createFieldForForm(currentForm._id, checkboxesField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Checkboxes Field successfully.";
-                            }
-                        });
+                        .then(fieldSuccess, fieldError);
                     break;
                 case "Radio Buttons Field":
                     FieldService
                         .createFieldForForm(currentForm._id, radioButtonsField)
-                        .then(function (respond) {
-                            if (respond.data) {
-                                $scope.fields = respond.data.fields;
-                                FormService.setCurrentForm(respond.data);
-                                $scope.message = "Add Radio Buttons Field successfully.";
-                            }
-                        });
+                        .then(fieldSuccess, fieldError);
+
                     break;
+            }
+
+            function fieldSuccess(response) {
+                $scope.fields = response.data.fields;
+                FormService.setCurrentForm(response.data);
+                $scope.message = "Success: addField" + fieldType;
+            }
+
+            function fieldError(response) {
+                $scope.message = "Failure: addField" + fieldType;
             }
         }
 
         function removeField(field) {
             FieldService
                 .deleteFieldFromForm(currentForm._id, field._id)
-                .then(function (response) {
-                    if (response.data) {
-                        $scope.fields = response.data.fields;
-                        $scope.message = 'Remove field successfully';
-                    }
-                });
+                .then(fieldSuccess, fieldError);
+
+            function fieldSuccess(response) {
+                $scope.fields = response.data.fields;
+                $scope.message = 'Remove field successfully';
+            }
+
+            function fieldError(response) {
+                $scope.message = 'Failure: during removeField';
+            }
         }
 
         function updateField(field) {
@@ -195,14 +177,20 @@
 
             FieldService
                 .updateFieldInForm(currentForm._id, field._id, field)
-                .then(function (response) {
-                    if (response.data) {
-                        $scope.fields = response.data.fields;
-                        $scope.message = 'Success: fields updated';
+                .then(fieldSuccess, fieldError);
 
-                        console.log(currentForm._id + ' ' + field._id);
-                    }
-                });
+            function fieldSuccess(response) {
+                $scope.fields = response.data.fields;
+                $scope.message = 'Success: fields updated';
+
+                console.log(currentForm._id + ' ' + field._id);
+            }
+
+            function fieldError(response) {
+                $scope.message = 'Failure: during updateField';
+            }
         }
+
+
     }
 })();
