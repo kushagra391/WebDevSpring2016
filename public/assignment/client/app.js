@@ -2,5 +2,5 @@
     "use strict";
 
     angular
-        .module("FormBuilderApp", ["ngRoute", "ui.bootstrap"]);
+        .module("FormBuilderApp", ["ngRoute", "fieldSortable"]);
 })();

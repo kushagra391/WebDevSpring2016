@@ -29,8 +29,8 @@
             </thead>
 
             <!--Table Body-->
-            <tbody id="tbody-sortable">
-
+            <tbody id="tbody-sortable" field-sortable sortable-axis="y">
+            <!--{{fields}}-->
             <tr ng-repeat="field in fields">
 
                 <td ng-if="field.type=='TEXT'">
@@ -105,14 +105,6 @@
 
 
     <!--Javascript / Angular Section-->
-    <script>
-        $(function () {
-            $("#tbody-sortable").sortable({
-                axis: "y"
-            });
-        });
-    </script>
-
     <script type="text/ng-template" id="fieldPopover">
         <div class="form-group">
             <label>Lable:</label>
