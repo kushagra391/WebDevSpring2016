@@ -9,13 +9,11 @@
 
         function link(scope, element, attributes) {
 
-            var sortableAxis = attributes.sortableAxis;
-
             var start = null;
             var end = null;
 
+            var sortableAxis = attributes.sortableAxis;
             $(element).sortable({
-                // axis: "y",
                 axis: sortableAxis,
 
                 start: function (event, ui) {
@@ -26,14 +24,10 @@
 
                 stop: function (event, ui) {
                     end = ui.item.index();
-
-                    var temp = scope.fields[start];
-                    scope.fields[start] = scope.fields[end];
-                    scope.fields[end] = temp;
-
-                    scope.$apply();
-
                     console.log('end item index: ' + end);
+
+                    scope.swapFields(start, end);
+                    scope.$apply();
                 }
             });
         }

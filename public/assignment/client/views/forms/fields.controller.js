@@ -14,6 +14,8 @@
         $scope.removeField = removeField;
         $scope.updateField = updateField;
 
+        $scope.swapFields = swapFields;
+
         $scope.message = null;
         $scope.error = null;
 
@@ -45,6 +47,16 @@
             return str;
         }
 
+        function swapFields (start, end) {
+            var temp = $scope.fields[start];
+            $scope.fields[start] = $scope.fields[end];
+            $scope.fields[end] = temp;
+
+            console.log('FieldsController: fields swapped');
+
+            console.log('Server side work: sending updated fields');
+            FieldService.updateFieldsForForm(currentForm._id, $scope.fields);
+        }
 
         $scope.options = [
             "Single Line Text Field",
