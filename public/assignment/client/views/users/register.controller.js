@@ -3,11 +3,13 @@
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($scope, $rootScope, $location, UserService) {
+    function RegisterController($rootScope, $location, UserService) {
+
+        var vm = this;
 
         function init() {
-            $scope.register = register;
-            $scope.register_error = null;
+            vm.register = register;
+            vm.register_error = null;
         }
 
         init();
@@ -15,24 +17,24 @@
         function register(user) {
             console.log("INFO: user registration attempted");
 
-            $scope.register_error = null;
+            vm.register_error = null;
             if (user == null) {
-                $scope.register_error = "Please fill in the required fields";
+                vm.register_error = "Please fill in the required fields";
                 console.log('details not filled yet');
                 return;
             }
             if (!user.username) {
-                $scope.register_error = "Please provide a username";
+                vm.register_error = "Please provide a username";
                 console.log('username not provided');
                 return;
             }
             if (!user.password || !user.verifypassword) {
-                $scope.register_error = "Please provide a password";
+                vm.register_error = "Please provide a password";
                 console.log('password field not filled');
                 return;
             }
             if (user.password != user.verifypassword) {
-                $scope.register_error = "Passwords must match";
+                vm.register_error = "Passwords must match";
                 console.log('passwords dont match');
                 return;
             }
@@ -42,7 +44,7 @@
                 .then(function (response) {
                     if (response.data) {
                         console.log('user exists');
-                        $scope.error = 'ERROR: user exists';
+                        vm.error = 'ERROR: user exists';
                     } else {
                         registerUser(user);
                     }
@@ -61,11 +63,11 @@
             UserService.setCurrentUser(response.data.pop());
             $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
 
-            $scope.message = 'Success: Registration done.';
+            vm.message = 'Success: Registration done.';
         }
 
         function registerError() {
-            $scope.error = 'Failure: Registration failed';
+            vm.error = 'Failure: Registration failed';
         }
     }
 
