@@ -60,6 +60,9 @@
                 console.log('addForm: Inside promise success');
 
                 $scope.forms = response.data;
+
+                console.log('All forms: ' + JSON.stringify($scope.forms));
+
                 var formsCount = $scope.forms.length;
                 FormService.setCurrentForm($scope.forms[formsCount - 1]);
                 form.title = ''; // TODO: clear header fields

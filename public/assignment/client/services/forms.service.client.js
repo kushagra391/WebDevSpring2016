@@ -10,6 +10,7 @@
             findAllFormsForUser: findAllFormsForUser,
             deleteFormById: deleteFormById,
             updateFormById: updateFormById,
+            addForm: addForm,
             findAllForms: findAllForms,
             setCurrentForm: setCurrentForm,
             getCurrentForm: getCurrentForm
@@ -37,7 +38,11 @@
         function updateFormById(formId, newForm) {
             return $http.put("/api/assignment/form/" + formId, newForm);
         }
-
+        
+        function addForm(form) {
+            return $http.post("/api/assignment/form", form);
+        }
+        
         // Helper Methods
         function setCurrentForm(form) {
             $rootScope.currentForm = form;
