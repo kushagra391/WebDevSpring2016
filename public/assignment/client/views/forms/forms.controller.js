@@ -3,9 +3,12 @@
         .module("FormBuilderApp")
         .controller("FormsController", FormsController);
 
-    function FormsController($scope, FormService, UserService) {
+    function FormsController($scope, $location, FormService, UserService) {
 
         function init() {
+
+            $scope.$location = $location;
+
             $scope.selectedFormId = null;
             $scope.error = null;
             $scope.forms = FormService.findAllForms();
@@ -14,6 +17,8 @@
             $scope.updateForm = updateForm;
             $scope.deleteForm = deleteForm;
             $scope.selectForm = selectForm;
+
+            $scope.redirectToField = redirectToField;
 
             $scope.currentUser = UserService.getCurrentUser();
             FormService
@@ -24,6 +29,17 @@
         }
 
         init();
+
+        function redirectToField(form) {
+            $scope.selectedFormId = form._id;
+            $scope.form = form;
+
+            FormService.setCurrentForm(form);
+
+            console.log('redirecting to profile');
+            $location.url('/admin');
+            $scope.$location = $location;
+        }
 
 
         function addForm(form) {
