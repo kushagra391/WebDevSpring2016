@@ -30,12 +30,11 @@
             </td>
         </tr>
 
+        <!--Populate user entries-->
         <tr ng-repeat="user in users">
-            <!--<td>{{user.username }}</td>-->
             <td>{{user.username}}</td>
             <td></td>
             <td>
-                <!--{{user.roles}}-->
                 <div ng-repeat="role in user.roles">
                     {{role}}
                 </div>
@@ -52,58 +51,6 @@
                 </div>
             </td>
         </tr>
-
-
-        <!--&lt;!&ndash;dummy entry 1&ndash;&gt;-->
-        <!--<tr>-->
-        <!--<td> alice</td>-->
-        <!--<td></td>-->
-        <!--<td> student</td>-->
-        <!--<td>-->
-        <!--<div class="row">-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</td>-->
-        <!--</tr>-->
-
-        <!--&lt;!&ndash;dummy entry 2&ndash;&gt;-->
-        <!--<tr>-->
-        <!--<td> bob</td>-->
-        <!--<td></td>-->
-        <!--<td> faculty | admin</td>-->
-        <!--<td>-->
-        <!--<div class="row">-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</td>-->
-        <!--</tr>-->
-
-        <!--&lt;!&ndash;dummy entry 3&ndash;&gt;-->
-        <!--<tr>-->
-        <!--<td> charlie</td>-->
-        <!--<td></td>-->
-        <!--<td></td>-->
-        <!--<td>-->
-        <!--<div class="row">-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--<div class="col-xs-6">-->
-        <!--<span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</td>-->
-        <!--</tr>-->
         </tbody>
 
     </table>
