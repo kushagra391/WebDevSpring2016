@@ -6,12 +6,14 @@
         .module('FormBuilderApp')
         .controller('LoginController', LoginController);
 
-    function LoginController($scope, $location, UserService) {
+    function LoginController($location, UserService) {
+
+        var vm = this;
 
         function init() {
-            $scope.message = null;
-            $scope.error = null;
-            $scope.login = login;
+            vm.message = null;
+            vm.error = null;
+            vm.login = login;
         }
         init();
 
@@ -23,12 +25,12 @@
         }
 
         function rejectHandler(response) {
-            $scope.error = 'Failure: Please verify username / password';
+            vm.error = 'Failure: Please verify username / password';
         }
 
         function login(user) {
             if (!user) {
-                $scope.error = 'Error: User not set';
+                vm.error = 'Error: User not set';
                 return;
             }
 
