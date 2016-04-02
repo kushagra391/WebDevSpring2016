@@ -39,6 +39,11 @@
         <!--table body-->
         <tbody>
         <tr ng-repeat="form in forms" ng-show="form.userId == currentUser._id">
+
+            <td ng-click="redirectToField(forms[$index])">
+                <a>{{form.title}}</a>
+            </td>
+
             <td>
                 <a
                 href="#/fields"

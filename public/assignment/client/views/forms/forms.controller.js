@@ -36,8 +36,12 @@
 
             FormService.setCurrentForm(form);
 
-            console.log('redirecting to profile');
-            $location.url('/admin');
+            var formId = form._id;
+            var fieldUrl = '/form/' + formId + '/fields';
+
+            console.log('redirecting to fields: ' + fieldUrl);
+            // $location.url('/admin');
+            $location.url(fieldUrl);
             $scope.$location = $location;
         }
 
