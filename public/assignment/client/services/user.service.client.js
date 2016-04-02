@@ -38,7 +38,7 @@
         }
 
         function findAllUsers() {
-            return $http.get(userPath);
+            return $http.get(userPath + "/all");
         }
 
         function createUser(user) {

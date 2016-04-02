@@ -8,7 +8,7 @@ module.exports = function (app) {
 
     var api = {
         createUser: createUser,
-        findAllUser: findAllUser,
+        findAllUsers: findAllUsers,
         findUserById: findUserById,
         updateUser: updateUser,
         deleteUser: deleteUser,
@@ -29,7 +29,8 @@ module.exports = function (app) {
         return mockUsers;
     }
 
-    function findAllUser() {
+    function findAllUsers() {
+        console.log('SERVER: Inside findAllUsers');
         return mockUsers;
     }
 

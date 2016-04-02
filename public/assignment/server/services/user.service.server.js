@@ -3,11 +3,13 @@ module.exports = function (app, userModel, db) {
     "use strict";
 
     var userPath = '/api/assignment/user';
+    var allUserPath = '/api/assignment/user/all';
     var userIdPath = '/api/assignment/user/:id';
     // var userLoginPath = '/api/assignment/user/:login';
     var userLoginPath = '/api/assignment/user/login';
 
     app.post(userPath, createUser);
+    app.get(allUserPath, findAllUsers);
     app.get(userPath, findUser);
     app.get(userIdPath, findUserById);
     app.post(userLoginPath, findUserByCredentials);
@@ -29,6 +31,12 @@ module.exports = function (app, userModel, db) {
         }
     }
 
+    function findAllUsers(req, res) {
+        var users = userModel.findAllUsers();
+        console.log("SERVER SERVICE: " + JSON.stringify(users));
+        res.json(users);
+    }
+    
     function createUser(req, res) {
         var user = req.body;        // TODO: revisit
         var users = userModel.createUser(user);
