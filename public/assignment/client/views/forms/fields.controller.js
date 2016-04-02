@@ -37,6 +37,7 @@
         function getOptionStrings() {
             var str = '';
             var fields = $scope.fields;
+
             for (var index in fields) {
                 var options = fields[index].options;
                 for (var optionIndex in options) {
@@ -183,6 +184,7 @@
         }
 
         function updateField(field) {
+            console.log('in updateField');
             if (field.options) {
                 console.log($scope.userOptions.text);
             }
