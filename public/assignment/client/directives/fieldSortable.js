@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("fieldSortable", [])
         .directive("fieldSortable", fieldSortable);
@@ -31,8 +31,9 @@
                 }
             });
         }
+
         return {
             link: link
-        }
+        };
     }
 })();
