@@ -1,0 +1,7 @@
+<h3>Welcome to {{course.title}}</h3>
+<h4>{{course.description}}</h4>
+<div ng-repeat="video in course.videos" class="">
+    <iframe width="300" height="200"
+            ng-src={{getUrl(video.video_id)}}>
+    </iframe>
+</div>

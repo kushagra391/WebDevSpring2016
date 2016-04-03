@@ -1,0 +1,42 @@
+<!--Search Area-->
+<div class="container" ng-controller="HomeController">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <!--<code>Work in Progress, ETA 3/14</code>-->
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 search-mid">
+            <div class="input-group">
+                <input ng-model="searchkey"
+                       type="text" class="form-control" placeholder="Search catalog...">
+                <span class="input-group-btn">
+                    <button ng-click="search(searchkey)"
+                            class="btn btn-primary" type="button"><b>Go !</b></button></span>
+            </div><!-- /input-group -->
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+    </div>
+
+    <div class="col-lg-8 col-lg-offset-2">
+
+        <table class="table table-striped table-hover search-padding">
+            <thead>
+            <tr>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>LinkID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="video in data.items">
+                <td><img ng-src="{{video.snippet.thumbnails.default.url}}"></td>
+                <td>{{video.snippet.title}}</td>
+                <td>{{video.id.videoId}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

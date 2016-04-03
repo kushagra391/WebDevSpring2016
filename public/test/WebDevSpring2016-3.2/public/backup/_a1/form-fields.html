@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--Bootstrap CDN-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" rel="script">
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!--jQuery CDN-->
+    <link href="//code.jquery.com/jquery-1.12.0.min.js" rel="script">
+    <link href="//code.jquery.com/jquery-migrate-1.2.1.min.js" rel="script">
+
+    <title>Home Page</title>
+</head>
+
+<body>
+
+<!--Navigation Bar-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home.html"><span class=""></span>Form Maker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="register.html">Register</span></a></li>
+                <li><a href="login.html">Login</span></a></li>
+                <li><a href="#">Username</span></a></li>
+                <li><a href="login.html">Logout</span></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Sidebar and Form Containers-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--Sidebar-->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="profile.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li class="active"><a href="forms.html">Forms <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+
+
+        <!--end of parent row div    -->
+    </div>
+
+
+</div>
+
+
+<!--Left Side Options Pane-->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--Sidebar-->
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="profile.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li class="active"><a href="forms.html">Forms <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+
+
+        <!--Inner Content-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Forms : Registration Form</h1>
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="forms.html">Forms</a></li>
+                <li role="presentation" class="active"><a href="form-fields.html">Fields</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="forms">
+
+                    <div role="tabpanel" class="tab-panes active" id="fields">
+                        <div class="row tab-panes-margin">
+
+                            <form role="form">
+                                <br>
+                                <!--First Name Form Group-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="firstName" class="col-sm-3 control-label">First Name:</label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <input type="password" class="form-control" id="firstName"
+                                                   placeholder="First Name">
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                <span class="glyphicon glyphicon-pencil icon-class"
+                                                      aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Last Name Form Group-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="lastName" class="col-sm-3 control-label">Last Name:</label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <input type="password" class="form-control" id="lastName"
+                                                   placeholder="First Name">
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--DOB Form Group-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="dob" class="col-sm-3 control-label">Date of Birth:</label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <input type="date" class="form-control" id="dob"
+                                                   placeholder="Select Date">
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Gender Form Control-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="gender" class="col-sm-3 control-label">Gender:</label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <select class="form-control" id="gender">
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--Roles Form Control-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="roles" class="col-sm-6 col-md-8 control-label">Roles:</label>
+
+                                        <!--Icons for Roles-->
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-8">
+                                        <div class="checkbox" id="roles">
+                                            <label>
+                                                <input type="checkbox"> Admin
+                                            </label>
+                                            <br>
+                                            <label>
+                                                <input type="checkbox"> Student
+                                            </label>
+                                            <br>
+                                            <label>
+                                                <input type="checkbox"> User
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--License Agreement Form Control-->
+                                <div class="form-group">
+                                    <div class="row"></div>
+                                    <div class="row">
+                                        <label for="license-agreement" class="col-sm-6 col-md-8 control-label">License
+                                            Agreement:</label>
+
+                                        <!--Icons for Roles-->
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <div class="radio" id="license-agreement">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios"
+                                                           id="license-agreement-yes"
+                                                           value="yes">
+                                                    Yes
+                                                </label>
+                                                <br>
+                                                <label>
+                                                    <input type="radio" name="optionsRadios"
+                                                           id="license-agreement-no"
+                                                           value="no">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--TODO: Horizontal line not working fine-->
+                                <!--Line Separator-->
+                                <div class="col-md-10">
+                                    <hr>
+                                </div>
+
+                                <!--Add New Field Container-->
+                                <!--First Name Form Group-->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="firstName" class="col-sm-3 control-label">Add New Field:</label>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-field-margin col-sm-6 col-md-8">
+                                            <select class="form-control" id="add-field">
+                                                <option>Single Line Text</option>
+                                                <option>Date</option>
+                                                <option>Dropdown</option>
+                                                <option>Checkboxes</option>
+                                                <option>Radio buttons</option>
+                                                <option>Paragraph Text Field</option>
+                                            </select>
+                                            <!--<input type="password" class="form-control" id="firstName"-->
+                                            <!--placeholder="First Name">-->
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-4 pull-right">
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-pencil icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-plus icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+
+                                            <div class="col-xs-3 col-md-1">
+                                                    <span class="glyphicon glyphicon-remove icon-class"
+                                                          aria-hidden="true"></span>
+                                            </div>
+                                            <div class="col-xs-3 col-md-1">
+                                                     <span class="glyphicon glyphicon-align-justify icon-class"
+                                                           aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CourseraApp">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/courses.service.client.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/login/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/student/studentprofile.controller.js"></script>
+    <script src="views/student/student.courses.controller.js"></script>
+    <script src="views/coursepage/course.page.controller.js"></script>
+</head>
+<body>
+
+<div ng-controller="MainController">
+    <div id="header">
+        <div ng-include="'views/header/header.view.html'"></div>
+    </div>
+
+    <div id="page-content" class="container">
+        <div ng-view></div>
+    </div>
+
+    <!--<div class="">-->
+        <!--Work in Progress, ETA 3/14-->
+    <!--</div>-->
+    <div id="footer" class="visible-lg-block visible-md-block">
+        <div ng-include="'views/footbar/footbar.view.html'"></div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

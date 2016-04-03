@@ -45,12 +45,12 @@
 
                 <td ng-if="field.type=='TEXTAREA'">
                     <label>{{field.label}}:</label><br>
-                    <input type="textarea" placeholder={{field.placeholder}}>
+                    <input type="text" placeholder={{field.placeholder}}>
                 </td>
 
                 <td ng-if="field.type=='DATE'">
                     <label>{{field.label}}:</label><br>
-                    <input type="data" placeholder={{field.placeholder}}>
+                    <input type="date" placeholder={{field.placeholder}}>
                 </td>
 
                 <td ng-if="field.type=='CHECKBOXES'">
@@ -107,7 +107,7 @@
     <!--Javascript / Angular Section-->
     <script type="text/ng-template" id="fieldPopover">
         <div class="form-group">
-            <label>Lable:</label>
+            <label>Label:</label>
             <input type="text" ng-model="field.label" class="form-control">
         </div>
         <div class="form-group" ng-show="field.type==='TEXT'||field.type==='TEXTAREA'">

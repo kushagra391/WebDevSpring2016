@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-sm-3 col-md-2 col-lg-2 sidebar-backround">
+
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#/studentprofile">Profile</a></li>
+            <li class="active"><a href="#/studentcourses">Courses</a></li>
+        </ul>
+    </div>
+
+
+    <div class="col-sm-9 col-md-10 col-lg-10 main">
+        <!--<div class="col-sm-9 col-md-10 col-lg-10 main">-->
+
+        <h2>Registered Courses</h2>
+
+        <!--display course name, thumbnail, and progress-->
+
+        <div ng-repeat="course in courses">
+            <!--<div class="student-course-block">-->
+            <div class="well-lg">
+                <h3><a ng-href="{{course.url}}">{{course.title}}</a></h3>
+                <h5>{{course.description}}</h5>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
