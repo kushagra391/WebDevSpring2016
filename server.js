@@ -20,7 +20,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 require('./public/assignment/server/app.js')(app, db);
 
 // require('./public/experiments/examples/serverDemo/app.js')(app);
-require('./public/experiments/examples/mongoDemo/server/app.js')(app, db , mongoose);
+// require('./public/experiments/examples/mongoDemo/server/app.js')(app, db , mongoose);
 
 
 console.log('Listening at port: ' + port);
