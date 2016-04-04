@@ -4,7 +4,7 @@ module.exports = function (mongoose) {
         name: String,
         username: String,
         password: String
-    }, {collection: 'user'});
+    }, {collection: 'user'}); // TODO: can be renamed with OOP styling
 
     return UserSchema;
 

@@ -1,4 +1,4 @@
-
+var q = require('q');
 
 module.exports = function (db, mongoose) {
 
@@ -12,10 +12,10 @@ module.exports = function (db, mongoose) {
     // create user model from schema
     var UserModel = mongoose.model('User', UserSchema);
 
-    
+
     var api = {
-        findAllUsers : findAllUsers,
-        addUser : addUser
+        findAllUsers: findAllUsers,
+        addUser: addUser
     };
 
     return api;
@@ -23,11 +23,26 @@ module.exports = function (db, mongoose) {
     function findAllUsers() {
         return mockForm;
     }
-    
-    function addUser(newUser) {
-        mockForm.push(newUser);
-        
-        return mockForm;
+
+    function addUser(user) {
+
+        var deferred = q.defer();
+
+        // insert new user with mongoose user model's create
+        UserModel.create(user, function (err, doc) {
+
+            if (err) {
+                deferred.reject(err);
+                console.log('Error Ocurred');
+            }
+            else {
+                deferred.resolve(doc);
+                console.log(doc);
+            }
+        });
+
+        return deferred.promise;
+
     }
 
 }
