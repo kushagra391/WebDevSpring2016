@@ -1,7 +1,7 @@
 
 var mockForm = require('./user.model.mock.json');
 
-module.exports = function (app) {
+module.exports = function (db, mongoose) {
 
     "use strict";
 
