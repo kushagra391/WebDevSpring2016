@@ -21,7 +21,20 @@ module.exports = function (db, mongoose) {
     return api;
 
     function findAllUsers() {
-        return mockForm;
+        // return mockForm;
+
+        var deferred = q.defer();
+
+        UserModel.find(function (err, doc) {
+            if (err) {
+                console.log('ERROR');
+                deferred.reject(err);
+            } else {
+                deferred.resolve(doc);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function addUser(user) {
