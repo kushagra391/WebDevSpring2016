@@ -3,10 +3,12 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var mongoose = require('mongoose');
 
-var connectionString = 'mongodb://127.0.0.1:27017/testdb';
-var db = mongoose.connect(connectionString);
+var db;
+// var mongoose = require('mongoose');
+//
+// var connectionString = 'mongodb://127.0.0.1:27017/testdb';
+// var db = mongoose.connect(connectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
