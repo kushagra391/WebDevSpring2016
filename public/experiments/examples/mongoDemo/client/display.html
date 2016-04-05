@@ -26,6 +26,7 @@
     <script src="views/home/home.controller.js"></script>
     <script src="views/search/search.controller.js"></script>
     <script src="views/update/update.controller.js"></script>
+    <script src="views/modals/modal.controller.js"></script>
 
     <!--Services-->
     <script src="services/user.service.client.js"></script>
@@ -43,7 +44,7 @@
             <li ng-class="{'active' : $location.url().indexOf('home') == 1}"><a href="#">Home</a></li>
             <li ng-class="{'active' : $location.url().indexOf('search') != -1}"><a href="#/search">Search</a></li>
             <li ng-class="{'active' : $location.url().indexOf('update') != -1}"><a href="#/update">Update</a></li>
-            <!--<li><a href="#">Page 3</a></li>-->
+            <li ng-class="{'active' : $location.url().indexOf('update') != -1}"><a href="#/modal">Modals</a></li>
         </ul>
     </div>
 </nav>

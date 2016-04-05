@@ -24,6 +24,11 @@
                 controller: "UpdateController",
                 controllerAs: 'model'
             })
+            .when("/modal", {
+                templateUrl: "views/modals/modal.view.html",
+                controller: "ModalController",
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: '/home'
             });

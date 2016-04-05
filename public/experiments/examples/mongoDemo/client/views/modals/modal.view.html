@@ -1,0 +1,238 @@
+<div class="container">
+
+    <div class="col-sm-offset-2 col-sm-8">
+
+        <div class="panel panel-default ">
+            <div class="panel-heading"><h4>Register</h4></div>
+
+            <div class="panel-body">
+                <form class="form form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Name: </label>
+                        <div class="col-sm-9">
+                            <input ng-model="model.user.name"
+                                   type="text" class="form-control" placeholder="Enter Name">
+                        </div>
+                        <button class="btn btn-warning glyphicon glyphicon-edit "
+                                data-toggle="modal" data-target="{{model.modalName}}"></button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Username: </label>
+                        <div class="col-sm-9">
+                            <input ng-model="model.user.username"
+                                   type="text" class="form-control" placeholder="Enter Username">
+                        </div>
+                        <button class="btn btn-warning glyphicon glyphicon-edit "
+                                data-toggle="modal" data-target="{{model.modalUsername}}"></button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Password: </label>
+                        <div class="col-sm-9">
+                            <input ng-model="model.user.password"
+                                   type="text" class="form-control" placeholder="Enter Password">
+                        </div>
+                        <button class="btn btn-warning glyphicon glyphicon-edit "
+                                data-toggle="modal" data-target="{{model.modalPassword}}"></button>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button ng-click="model.submit(model.user)"
+                                    type="submit" class="btn btn-primary btn-block">Submit
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!--Modals-->
+    <!--Modal-1-->
+
+    <div class="modal fade modal" id="ModalName">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Name</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Name: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.name"
+                                       type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Username: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.username"
+                                       type="text" class="form-control" placeholder="Enter Username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Password: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.password"
+                                       type="text" class="form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button ng-click="model.submit(model.user)"
+                                        type="submit" class="btn btn-primary btn-block">Submit
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--Modal-2-->
+
+    <div class="modal fade modal" id="ModalUsername">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Username</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Name: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.name"
+                                       type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Username: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.username"
+                                       type="text" class="form-control" placeholder="Enter Username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Password: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.password"
+                                       type="text" class="form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button ng-click="model.submit(model.user)"
+                                        type="submit" class="btn btn-primary btn-block">Submit
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--Modal-3-->
+    <div class="modal fade modal" id="ModalPassword">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Password</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Name: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.name"
+                                       type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Username: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.username"
+                                       type="text" class="form-control" placeholder="Enter Username">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Password: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.user.password"
+                                       type="text" class="form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button ng-click="model.submit(model.user)"
+                                        type="submit" class="btn btn-primary btn-block">Submit
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
