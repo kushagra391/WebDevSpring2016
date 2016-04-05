@@ -3,6 +3,7 @@ module.exports = function (app, userModel) {
     "use strict";
 
     app.get('/api/mongodemo/user/all', findAllUsers);
+    app.get('/api/mongodemo/user', findUserByName);
     app.post('/api/mongodemo/user', addUser);
 
     function testConnection(req, res) {
@@ -41,6 +42,25 @@ module.exports = function (app, userModel) {
                 }
             );
 
+    }
+    
+    function findUserByName(req, res) {
+        
+        var username = req.param('username');
+        console.log('SERVER: ' + username);
+        
+        userModel.findUserByName(username)
+            .then(success, failure);
+        
+        function success(doc) {
+            res.json(doc);
+        }
+        
+        function failure(err) {
+            res.status(400).send(err);
+        }
+        
+        
     }
 
 

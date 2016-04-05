@@ -6,7 +6,7 @@
         .module('mongoApp')
         .controller('MainController', MainController);
 
-    function MainController() {
+    function MainController($location) {
 
     }
 

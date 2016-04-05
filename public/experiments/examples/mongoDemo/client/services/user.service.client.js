@@ -10,7 +10,8 @@
 
         var api = {
             findAllUsers : findAllUsers,
-            addUser : addUser
+            addUser : addUser,
+            findUserByName: findUserByName
         };
         return api;
 
@@ -22,6 +23,10 @@
         
         function addUser(user) {
             return $http.post('/api/mongodemo/user', user);
+        }
+        
+        function findUserByName(username) {
+            return $http.get('/api/mongodemo/user?username=' + username);
         }
 
     }
