@@ -18,7 +18,7 @@
 
             console.log("Searching for: " + username);
 
-            UserService.findUserByName(username)
+            UserService.findUsersByName(username)
                 .then(success, failure);
 
             function success(response) {

@@ -6,7 +6,9 @@
         .module('mongoApp')
         .controller('MainController', MainController);
 
-    function MainController($location) {
+    function MainController($scope, $location) {
+
+        $scope.$location = $location;
 
     }
 

@@ -19,6 +19,11 @@
                 controller: "SearchController",
                 controllerAs: 'model'
             })
+            .when("/update", {
+                templateUrl: "views/update/update.view.html",
+                controller: "UpdateController",
+                controllerAs: 'model'
+            })
             .otherwise({
                 redirectTo: '/home'
             });

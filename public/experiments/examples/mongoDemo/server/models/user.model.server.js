@@ -16,6 +16,7 @@ module.exports = function (db, mongoose) {
     var api = {
         findAllUsers: findAllUsers,
         addUser: addUser,
+        findUsersByName: findUsersByName,
         findUserByName: findUserByName
     };
 
@@ -58,7 +59,7 @@ module.exports = function (db, mongoose) {
         return deferred.promise;
     }
 
-    function findUserByName(username) {
+    function findUsersByName(username) {
 
         var deferred = q.defer();
 
@@ -81,5 +82,27 @@ module.exports = function (db, mongoose) {
         return deferred.promise;
     }
 
+    function findUserByName(username) {
 
-}
+        var deferred = q.defer();
+
+        var searchJSON = {
+            "username": username
+        };
+
+        UserModel.findOne(searchJSON, function (err, doc) {
+
+            if (err) {
+                deferred.reject(err);
+                console.log('Error Ocurred');
+            }
+            else {
+                deferred.resolve(doc);
+                console.log(doc);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+};
