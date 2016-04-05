@@ -5,6 +5,7 @@ module.exports = function (app, userModel) {
     app.get('/api/mongodemo/user/all', findAllUsers);
     app.get('/api/mongodemo/user', findUsersByName);
     app.post('/api/mongodemo/user', addUser);
+    app.get('/api/mongodemo/user/search', findUserByName);
 
     function testConnection(req, res) {
         res.json('successfully connected');
@@ -61,6 +62,25 @@ module.exports = function (app, userModel) {
         }
         
         
+    }
+
+    function findUserByName(req, res) {
+
+        var username = req.param('username');
+        console.log('SERVER: ' + username);
+
+        userModel.findUserByName(username)
+            .then(success, failure);
+
+        function success(doc) {
+            res.json(doc);
+        }
+
+        function failure(err) {
+            res.status(400).send(err);
+        }
+
+
     }
 
 
