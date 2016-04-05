@@ -4,14 +4,9 @@
 
     angular
         .module('mongoApp')
-        .controller('MainController', MainController);
+        .controller('HomeController', HomeController);
 
-    function MainController() {
-
-    }
-
-    /*
-    function MainController(UserService) {
+    function HomeController(UserService) {
         var vm = this;
 
         vm.msg = "Hello From MainController";
@@ -65,7 +60,9 @@
         function failure(response) {
             console.log(response);
         }
+
+
     }
-    */
+
 
 })();
