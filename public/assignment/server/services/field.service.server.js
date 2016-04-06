@@ -1,3 +1,10 @@
+/*
+ TODO:
+ 1. findFieldInForm
+ 2. deleteFieldFromForm
+ 3. More revisit and test carefully
+ */
+
 module.exports = function (app, formModel, fieldModel) {
 
     app.get('/api/assignment/form/:formId/field', findFieldsByFormId);
@@ -8,16 +15,32 @@ module.exports = function (app, formModel, fieldModel) {
     app.put('/api/assignment/form/:formId/field', updateFieldsForForm);
 
     function findFieldsByFormId(req, res) {
-        var formId = req.params.formId;
-        var fields = formModel.findFormById(formId).fields;
 
-        res.json(fields);
+        var formId = req.params.formId;
+
+        formModel.findFormById(formId)
+            .then(
+                function (form) {
+                    //console.log(form.fields);
+                    res.json(form.fields);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+
+        // var formId = req.params.formId;
+        // var fields = formModel.findFormById(formId).fields;
+        //
+        // res.json(fields);
     }
 
+    // TODO: does not require to be refactored ??
     function findFieldInForm(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var form = formModel.findFormById(formId);
+
+        var form = formModel.findFormById(formId);      //TODO: revisit !
         var fields = form.fields;
 
         for (var index in fields) {
@@ -27,59 +50,105 @@ module.exports = function (app, formModel, fieldModel) {
         }
     }
 
+    // TODO: revisit
     function deleteFieldFromForm(req, res) {
+
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var form = formModel.findFormById(formId);
-        var fields = form.fields;
 
-        for (var index in fields) {
-            if (fields[index]._id === fieldId) {
-                fields.splice(index, 1);
-            }
-        }
-        res.json(form);
+        fieldModel.deleteFieldInForm(formId, fieldId)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+
+        // var formId = req.params.formId;
+        // var fieldId = req.params.fieldId;
+        // var form = formModel.findFormById(formId);
+        // var fields = form.fields;
+        //
+        // for (var index in fields) {
+        //     if (fields[index]._id === fieldId) {
+        //         fields.splice(index, 1);
+        //     }
+        // }
+        // res.json(form);
     }
 
     function createFieldInForm(req, res) {
-        var formId = req.params.formId;
-        var field = req.body;
-        var form = formModel.createFieldInForm(formId, field);
 
-        res.json(form);
+        var formId = req.params.formId;
+        var fieldType = req.query.fieldType;
+
+        fieldModel.createFieldInForm(formId, fieldType)
+            .then(
+                function (form) {
+                    //console.log(form);
+                    res.json(form);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+
+
+        // var formId = req.params.formId;
+        // var field = req.body;
+        // var form = formModel.createFieldInForm(formId, field);
+        //
+        // res.json(form);
     }
 
-    // TODO: Refactor...
+    // TODO: Refactor
     function updateFieldInForm(req, res) {
+
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
         var newField = req.body;
 
-        var form = formModel.findFormById(formId);
-        var fields = form.fields;
-
-        console.log("FieldOption Boolean: " + !fields.options);
-        // console.log("Fields: " + JSON.stringify(fields));
-
-
-        for (var index in fields) {
-            if (fields[index]._id == fieldId) {
-                if (!fields[index].options) {
-                    console.log("Options not found");
-                    fields[index].label = newField.label;
-                    fields[index].placeholder = newField.placeholder;
+        fieldModel.updateFieldInForm(formId, fieldId, newField)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.status(400).send(err);
                 }
-                else {
-                    console.log("Options found");
-                    fields[index].label = newField.label;
-                    fields[index].options = newField.options;
-                }
-            }
-        }
+            );
 
-        res.json(form);
+        // var formId = req.params.formId;
+        // var fieldId = req.params.fieldId;
+        // var newField = req.body;
+        //
+        // var form = formModel.findFormById(formId);
+        // var fields = form.fields;
+        //
+        // console.log("FieldOption Boolean: " + !fields.options);
+        //
+        // for (var index in fields) {
+        //     if (fields[index]._id == fieldId) {
+        //         if (!fields[index].options) {
+        //             console.log("Options not found");
+        //             fields[index].label = newField.label;
+        //             fields[index].placeholder = newField.placeholder;
+        //         }
+        //         else {
+        //             console.log("Options found");
+        //             fields[index].label = newField.label;
+        //             fields[index].options = newField.options;
+        //         }
+        //     }
+        // }
+        //
+        // res.json(form);
     }
 
+
+    // used by sortable directive
     function updateFieldsForForm(req, res) {
         var formId = req.params.formId;
         var fields = req.body;
