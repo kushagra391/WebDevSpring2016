@@ -35,11 +35,13 @@
             })
             .when('/form/:formId/fields', {
                 templateUrl: 'views/forms/fields.view.html',
-                controller: "FieldsController"
+                controller: "FieldsController",
+                controllerAs: 'model'
             })
             .when("/fields", {
                 templateUrl: 'views/forms/fields.view.html',
-                controller: "FieldsController"
+                controller: "FieldsController",
+                controllerAs: 'model'
             })
             .when("/register", {
                 templateUrl: 'views/users/register.view.html',

@@ -5,21 +5,23 @@
         .module("FormBuilderApp")
         .controller("FieldsController", FieldsController);
 
-    function FieldsController($scope, FormService, FieldService) {
-
+    function FieldsController(FormService, FieldService) {
+        
+        var vm = this;
+        
         var currentForm = FormService.getCurrentForm();
         console.log('Current Form: ' + JSON.stringify(currentForm));
 
-        $scope.addField = addField;
-        $scope.removeField = removeField;
-        $scope.updateField = updateField;
+        vm.addField = addField;
+        vm.removeField = removeField;
+        vm.updateField = updateField;
 
-        $scope.swapFields = swapFields;
+        vm.swapFields = swapFields;
 
-        $scope.message = null;
-        $scope.error = null;
+        vm.message = null;
+        vm.error = null;
 
-        $scope.dynamicPopover = {
+        vm.dynamicPopover = {
             templateUrl: 'fieldPopover'
         };
 
@@ -28,7 +30,7 @@
             .getFieldsForForm(currentForm._id)
             .then(function (response) {
                 if (response.data) {
-                    $scope.fields = response.data;
+                    vm.fields = response.data;
                     console.log('optionString: ' + getOptionStrings());
                 }
             });
@@ -36,8 +38,8 @@
 
         // New code
 
-        $scope.initNewField = initNewField;
-        $scope.setNewField = setNewField;
+        vm.initNewField = initNewField;
+        vm.setNewField = setNewField;
         
         // helper method to parse options into label:value pairs
         function createOptions(options) {
@@ -62,8 +64,8 @@
         // intermediate method that calls updateField from within the controller
         function setNewField(field) {
 
-            var newFieldId = $scope.newFieldID;
-            var newfieldType = $scope.newFieldType;
+            var newFieldId = vm.newFieldID;
+            var newfieldType = vm.newFieldType;
 
             var newField = {};
             newField._id = newFieldId;
@@ -76,7 +78,8 @@
                     newField.placeholder= field.placeholder;
                     break;
 
-                case "Date":
+                case "DATE":
+                    newField.label = field.label;
                     break;
 
                 case "OPTIONS":
@@ -97,25 +100,25 @@
                 .then(fieldSuccess, fieldError);
 
             function fieldSuccess(response) {
-                $scope.fields = response.data.fields;
-                $scope.message = 'Success: fields updated';
+                vm.fields = response.data.fields;
+                vm.message = 'Success: fields updated';
                 console.log(currentForm._id + ' ' + newFieldId);
-                console.log("Updated FieldS: " + JSON.stringify($scope.fields));
+                console.log("Updated FieldS: " + JSON.stringify(vm.fields));
             }
 
             function fieldError(response) {
-                $scope.message = 'Failure: during updateField';
+                vm.message = 'Failure: during updateField';
             }
         }
 
         function initNewField(index, fieldType) {
 
             // Lookup purposes
-            $scope.newFieldID = $scope.fields[index]._id;
-            $scope.newFieldType = fieldType;
+            vm.newFieldID = vm.fields[index]._id;
+            vm.newFieldType = fieldType;
 
-            console.log("NewfieldID: " + $scope.newFieldID);
-            console.log("fieldType: " + $scope.newFieldType);
+            console.log("NewfieldID: " + vm.newFieldID);
+            console.log("fieldType: " + vm.newFieldType);
         }
 
 
@@ -126,7 +129,7 @@
 
         function getOptionStrings() {
             var str = '';
-            var fields = $scope.fields;
+            var fields = vm.fields;
 
             for (var index in fields) {
                 var options = fields[index].options;
@@ -139,17 +142,17 @@
         }
 
         function swapFields (start, end) {
-            var temp = $scope.fields[start];
-            $scope.fields[start] = $scope.fields[end];
-            $scope.fields[end] = temp;
+            var temp = vm.fields[start];
+            vm.fields[start] = vm.fields[end];
+            vm.fields[end] = temp;
 
             console.log('FieldsController: fields swapped');
 
             console.log('Server side work: sending updated fields');
-            FieldService.updateFieldsForForm(currentForm._id, $scope.fields);
+            FieldService.updateFieldsForForm(currentForm._id, vm.fields);
         }
 
-        $scope.options = [
+        vm.options = [
             "Single Line Text Field",
             "Multi Line Text Field",
             "Date Field",
@@ -203,7 +206,7 @@
 
         function addField(fieldType) {
             if (!currentForm) {
-                $scope.error = "Add or select a form first.";
+                vm.error = "Add or select a form first.";
                 return;
             }
 
@@ -248,13 +251,13 @@
             }
 
             function fieldSuccess(response) {
-                $scope.fields = response.data.fields;
+                vm.fields = response.data.fields;
                 FormService.setCurrentForm(response.data);
-                $scope.message = "Success: addField" + fieldType;
+                vm.message = "Success: addField" + fieldType;
             }
 
             function fieldError(response) {
-                $scope.message = "Failure: addField" + fieldType;
+                vm.message = "Failure: addField" + fieldType;
             }
         }
 
@@ -264,19 +267,19 @@
                 .then(fieldSuccess, fieldError);
 
             function fieldSuccess(response) {
-                $scope.fields = response.data.fields;
-                $scope.message = 'Remove field successfully';
+                vm.fields = response.data.fields;
+                vm.message = 'Remove field successfully';
             }
 
             function fieldError(response) {
-                $scope.message = 'Failure: during removeField';
+                vm.message = 'Failure: during removeField';
             }
         }
 
         function updateField(field) {
             console.log('in updateField');
             if (field.options) {
-                console.log($scope.userOptions.text);
+                console.log(vm.userOptions.text);
             }
 
             FieldService
@@ -284,13 +287,13 @@
                 .then(fieldSuccess, fieldError);
 
             function fieldSuccess(response) {
-                $scope.fields = response.data.fields;
-                $scope.message = 'Success: fields updated';
+                vm.fields = response.data.fields;
+                vm.message = 'Success: fields updated';
                 console.log(currentForm._id + ' ' + field._id);
             }
 
             function fieldError(response) {
-                $scope.message = 'Failure: during updateField';
+                vm.message = 'Failure: during updateField';
             }
         }
 
