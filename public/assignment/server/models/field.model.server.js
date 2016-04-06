@@ -114,7 +114,8 @@ module.exports = function (db, mongoose, formModel) {
         );
         return deferred.promise;
     }
-
+    
+    // TODO: refactor for correct cases for with and without option cases for fields
     function updateFieldInForm(formId, fieldId, newField) {
         var deferred = q.defer();
         FormModel.findById(formId,
