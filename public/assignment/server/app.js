@@ -1,11 +1,10 @@
-module.exports = function (app, db) {
+module.exports = function (app, db, mongoose) {
 
     console.log('Starting A3 Server...');
-    var userModel = require('./models/user.model.js')(app);
-    var formModel = require('./models/form.model.js')(app);
+    var userModel = require('./models/user.model.js')(db, mongoose);
+    var formModel = require('./models/form.model.js')(db, mongoose);
 
-    var userService = require('./services/user.service.server.js')(app, userModel, db);
-    var formService = require('./services/form.service.js')(app, formModel, db);
-    var fieldService = require('./services/field.service.server.js')(app, formModel, db);
-
+    var userService = require('./services/user.service.server.js')(app, userModel);
+    var formService = require('./services/form.service.js')(app, formModel);
+    var fieldService = require('./services/field.service.server.js')(app, formModel);
 };

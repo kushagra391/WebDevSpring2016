@@ -1,4 +1,4 @@
-module.exports = function (app, userModel, db) {
+module.exports = function (app, userModel) {
 
     "use strict";
 

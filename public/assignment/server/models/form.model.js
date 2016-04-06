@@ -1,7 +1,7 @@
 var uuid = require('uuid');
 var mockForms = require('./form.mock.json');
 
-module.exports = function (app) {
+module.exports = function (dp, mongoose) {
 
     "use strict";
 
