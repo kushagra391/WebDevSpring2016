@@ -48,7 +48,7 @@ module.exports = function (app, formModel, db) {
 
         res.json(form);
     }
-    
+
     // TODO: Refactor...
     function updateFieldInForm(req, res) {
         var formId = req.params.formId;
@@ -58,23 +58,26 @@ module.exports = function (app, formModel, db) {
         var form = formModel.findFormById(formId);
         var fields = form.fields;
 
-        if (!fields.options) {
-            for (var index in fields) {
-                if (fields[index]._id === fieldId) {
+        console.log("FieldOption Boolean: " + !fields.options);
+        // console.log("Fields: " + JSON.stringify(fields));
+
+
+        for (var index in fields) {
+            if (fields[index]._id == fieldId) {
+                if (!fields[index].options) {
+                    console.log("Options not found");
                     fields[index].label = newField.label;
                     fields[index].placeholder = newField.placeholder;
                 }
+                else {
+                    console.log("Options found");
+                    fields[index].label = newField.label;
+                    fields[index].options = newField.options;
+                }
             }
-
-            res.json(form);
         }
-        else {
-            for (var index in fields) {
-                fields[index].options = newField.options;
-            }
 
-            res.json(form);
-        }
+        res.json(form);
     }
 
     function updateFieldsForForm(req, res) {

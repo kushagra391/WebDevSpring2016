@@ -34,6 +34,104 @@
             });
 
 
+        // New code
+
+        $scope.initNewField = initNewField;
+        $scope.setNewField = setNewField;
+        
+        // helper method to parse options into label:value pairs
+        function createOptions(options) {
+            var fields = [];
+
+            var lines = options.split("\n");
+            for (var index in lines) {
+
+                var pairs = lines[index].split(":");
+
+                var label = pairs[0];
+                var value = pairs[1];
+                var option = {label: pairs[0], value: pairs[1]};
+
+                fields.push(option);
+            }
+
+            console.log("parsed fields: " + JSON.stringify(fields));
+            return fields;
+        }
+        
+        // intermediate method that calls updateField from within the controller
+        function setNewField(field) {
+
+            var newFieldId = $scope.newFieldID;
+            var newfieldType = $scope.newFieldType;
+
+            var newField = {};
+            newField._id = newFieldId;
+            newField.type = newfieldType;
+
+            switch(newfieldType) {
+                case "TEXT":
+                    newField.label = field.label;
+                    newField.placeholder= field.placeholder;
+                    break;
+
+                case "TEXTAREA":
+                    newField.label = field.label;
+                    newField.placeholder= field.placeholder;
+                    break;
+
+                case "Date":
+                    break;
+
+                case "OPTIONS":
+                    newField.label = field.label;
+                    newField.options = createOptions(field.options);
+                    break;
+
+                case "CHECKBOXES":
+                    break;
+
+                case "RADIOS":
+                    break;
+
+                default:
+                    console.log('ERROR: bad field type encountered');
+                    break;
+            }
+
+            console.log('setting new field values' + JSON.stringify(newField));
+            FieldService
+                .updateFieldInForm(currentForm._id, newFieldId, newField)
+                .then(fieldSuccess, fieldError);
+
+            function fieldSuccess(response) {
+                $scope.fields = response.data.fields;
+                $scope.message = 'Success: fields updated';
+                console.log(currentForm._id + ' ' + newFieldId);
+                console.log("Updated FieldS: " + JSON.stringify($scope.fields));
+            }
+
+            function fieldError(response) {
+                $scope.message = 'Failure: during updateField';
+            }
+        }
+
+        function initNewField(index, fieldType) {
+
+            // Lookup purposes
+            $scope.newFieldID = $scope.fields[index]._id;
+            $scope.newFieldType = fieldType;
+
+            console.log("NewfieldID: " + $scope.newFieldID);
+            console.log("fieldType: " + $scope.newFieldType);
+        }
+
+
+
+        // End of new code
+
+
+
         function getOptionStrings() {
             var str = '';
             var fields = $scope.fields;
