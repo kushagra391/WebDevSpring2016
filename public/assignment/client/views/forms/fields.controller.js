@@ -71,10 +71,6 @@
 
             switch(newfieldType) {
                 case "TEXT":
-                    newField.label = field.label;
-                    newField.placeholder= field.placeholder;
-                    break;
-
                 case "TEXTAREA":
                     newField.label = field.label;
                     newField.placeholder= field.placeholder;
@@ -84,14 +80,10 @@
                     break;
 
                 case "OPTIONS":
+                case "CHECKBOXES":
+                case "RADIOS":
                     newField.label = field.label;
                     newField.options = createOptions(field.options);
-                    break;
-
-                case "CHECKBOXES":
-                    break;
-
-                case "RADIOS":
                     break;
 
                 default:

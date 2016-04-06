@@ -109,17 +109,12 @@
 
                 <!--* Dynamic Button Section *-->
                 <td>
-                    <button class="btn btn-success"
+                    <button class="btn btn-warning"
                             ng-click="initNewField($index, field.type)"
                             data-toggle="modal" data-target="#{{field.type}}">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </button>
-
-                    <button class="btn btn-warning"
-                            uib-popover-template="dynamicPopover.templateUrl"
-                            popover-title={{field.type}}>
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
+
                     <button class="btn btn-success" ng-click="">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -136,28 +131,6 @@
 
         </table>
     </form>
-
-
-    <!--Javascript / Angular Section-->
-    <script type="text/ng-template" id="fieldPopover">
-        <div class="form-group">
-            <label>Label:</label>
-            <input type="text" ng-model="field.label" class="form-control">
-        </div>
-        <div class="form-group" ng-show="field.type==='TEXT'||field.type==='TEXTAREA'">
-            <label>Placeholder:</label>
-            <input type="text" ng-model="field.placeholder" class="form-control">
-        </div>
-        <div class="form-group" ng-show="field.type==='CHECKBOXES'||field.type==='OPTIONS'||field.type==='RADIOS'">
-            <label>Options:</label>
-            <textarea ng-model="userOptions.text"></textarea>
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-primary" ng-click="updateField(field)">Ok</button>
-        </div>
-    </script>
-    <!--End of JS / Angular Section-->
 
     <!--Modals-->
     <!--Type TEXT -->
@@ -371,7 +344,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Checkbox Field</h4>
+                    <h4 class="modal-title">Dropdown Field</h4>
                 </div>
                 <div class="modal-body">
 
@@ -380,7 +353,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Label: </label>
                             <div class="col-sm-10">
-                                <input ng-model="model.field.label"
+                                <input ng-model="newField.label"
                                        type="text" class="form-control" placeholder="Enter Label">
                             </div>
                         </div>
@@ -388,7 +361,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Options: </label>
                             <div class="col-sm-10">
-                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                                <textarea ng-model="newField.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
                             </div>
                         </div>
 
@@ -404,7 +377,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6">
-                            <button ng-click="model.submitOptions(model.field)"
+                            <button ng-click="setNewField(newField)"
                                     type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
                             </button>
                         </div>
@@ -423,7 +396,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Radio Button Field</h4>
+                    <h4 class="modal-title">Dropdown Field</h4>
                 </div>
                 <div class="modal-body">
 
@@ -432,7 +405,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Label: </label>
                             <div class="col-sm-10">
-                                <input ng-model="model.field.label"
+                                <input ng-model="newField.label"
                                        type="text" class="form-control" placeholder="Enter Label">
                             </div>
                         </div>
@@ -440,7 +413,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2">Options: </label>
                             <div class="col-sm-10">
-                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                                <textarea ng-model="newField.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
                             </div>
                         </div>
 
@@ -456,7 +429,7 @@
                             </button>
                         </div>
                         <div class="col-sm-6">
-                            <button ng-click="model.submitOptions(model.field)"
+                            <button ng-click="setNewField(newField)"
                                     type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
                             </button>
                         </div>
