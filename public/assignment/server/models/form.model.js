@@ -15,10 +15,15 @@ module.exports = function (dp, mongoose) {
         updateForm: updateForm,
         deleteForm: deleteForm,
         findFormByTitle: findFormByTitle,
-        findFormByUser: findFormByUser
-
+        findFormByUser: findFormByUser,
+        getFormModel: getFormModel
     };
     return api;
+
+    function getFormModel() {
+        return FormModel;
+    }
+
 
     // TODO: check behaviour, revisit
     function createFormForUser(userId, form) {
