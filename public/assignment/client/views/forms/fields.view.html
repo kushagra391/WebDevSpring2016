@@ -109,10 +109,8 @@
 
                 <!--* Dynamic Button Section *-->
                 <td>
-                    <button class="btn btn-warning"
-                            uib-popover-template="dynamicPopover.templateUrl"
-                            popover-title={{field.type}}>
-                        <span class="glyphicon glyphicon-pencil"></span>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#{{field.type}}">
+                        <span class="glyphicon glyphicon-edit"></span>
                     </button>
 
                     <button class="btn btn-warning"
@@ -160,6 +158,316 @@
     <!--End of JS / Angular Section-->
 
     <!--Modals-->
+    <!--Type TEXT -->
+    <div class="modal fade" id="TEXT">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Single Line Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.newfield.label"
+                                       type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Placeholder: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.newfield.placeholder"
+                                       type="text" class="form-control" placeholder="Enter Username">
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submit(model.newfield)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Type MUTLILINE-->
+    <div class="modal fade" id="TEXTAREA">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Multiple Lines Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.field.label"
+                                       type="text" class="form-control" placeholder="Enter Label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Options: </label>
+                            <div class="col-sm-10">
+                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submitOptions(model.field)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Type Date-->
+    <div class="modal fade" id="DATE">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Date Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.newfield.label"
+                                       type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group">-->
+                        <!--<label class="control-label col-sm-2">Placeholder: </label>-->
+                        <!--<div class="col-sm-10">-->
+                        <!--<input ng-model="model.newfield.placeholder"-->
+                        <!--type="text" class="form-control" placeholder="Enter Username">-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submit(model.newfield)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Type OPTIONS-->
+    <div class="modal fade" id="OPTIONS">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Dropdown Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.field.label"
+                                       type="text" class="form-control" placeholder="Enter Label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Options: </label>
+                            <div class="col-sm-10">
+                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submitOptions(model.field)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Type CHECKBOXES-->
+    <div class="modal fade" id="CHECKBOXES">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Checkbox Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.field.label"
+                                       type="text" class="form-control" placeholder="Enter Label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Options: </label>
+                            <div class="col-sm-10">
+                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submitOptions(model.field)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Type RADIOS-->
+    <div class="modal fade" id="RADIOS">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Radio Button Field</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Label: </label>
+                            <div class="col-sm-10">
+                                <input ng-model="model.field.label"
+                                       type="text" class="form-control" placeholder="Enter Label">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Options: </label>
+                            <div class="col-sm-10">
+                                <textarea ng-model="model.field.options" class="form-control" rows="5" id="options" placeholder="LABEL:VALUE"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class='row'>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                                Cancel
+                            </button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button ng-click="model.submitOptions(model.field)"
+                                    type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>

@@ -18,7 +18,7 @@
             console.log("Options: " + JSON.stringify(user));
 
             var options = createOptions(user.options);
-            var field = {"label" : user.label, "options" : options};
+            var field = {"label": user.label, "options": options};
 
             // pass on to the master method
             submit(field);
@@ -35,11 +35,12 @@
 
             var lines = options.split("\n");
             for (var index in lines) {
+
                 var pairs = lines[index].split(":");
 
                 var label = pairs[0];
                 var value = pairs[1];
-                var option = {label: value};
+                var option = {label: pairs[0], value: pairs[1]};
 
                 fields.push(option);
             }
@@ -49,4 +50,4 @@
 
     }
 
-}) ();
+})();
