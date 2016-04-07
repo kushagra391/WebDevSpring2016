@@ -41,19 +41,6 @@ module.exports = function (app, userModel) {
                     }
                 );
         }
-
-        // console.log('listening for /api/assignment/user');
-        //
-        // var username = req.param('username');
-        // if (username) {
-        //     console.log('username already exists');
-        //     var user = userModel.findUserByUsername(username);
-        //     res.json(user);
-        // } else {
-        //     console.log('username does not exists');
-        //     var users = userModel.findAllUsers();
-        //     res.json(users);
-        // }
     }
 
     function findAllUsers(req, res) {
@@ -68,10 +55,6 @@ module.exports = function (app, userModel) {
                     res.status(400).send(err);
                 }
             );
-
-        // var users = userModel.findAllUsers();
-        // console.log("SERVER SERVICE: " + JSON.stringify(users));
-        // res.json(users);
     }
 
     function createUser(req, res) {
@@ -91,10 +74,6 @@ module.exports = function (app, userModel) {
                     res.status(400).send(err);
                 }
             );
-        // var user = req.body;        // TODO: revisit
-        // var users = userModel.createUser(user);
-        //
-        // res.json(users);
     }
 
     function findUserById(req, res) {
@@ -111,9 +90,6 @@ module.exports = function (app, userModel) {
                 }
             );
 
-        // var userId = req.params.id;
-        // var user = userModel.findUserById(userId);
-        // res.json(user);
     }
 
     function findUserByCredentials(req, res) {
@@ -133,13 +109,6 @@ module.exports = function (app, userModel) {
                     res.status(400).send(err);
                 }
             );
-
-        // console.log('Trying to find user by credentials');
-        //
-        // var credentials = req.body;
-        // console.log(JSON.stringify(credentials));
-        // var user = userModel.findUserByCredentials(credentials);
-        // res.json(user);
     }
 
     function updateUser(req, res) {
@@ -160,10 +129,6 @@ module.exports = function (app, userModel) {
                 }
             );
 
-        // var userId = req.params.id;
-        // var user = req.body;
-        // var users = userModel.updateUser(userId, user);
-        // res.json(users);
     }
 
     function deleteUser(req, res) {
@@ -181,10 +146,6 @@ module.exports = function (app, userModel) {
                     res.status(400).send(err);
                 }
             );
-
-        // var userId = req.param.id;
-        // var users = userModel.deleteUser(userId);
-        // res.json(users);
     }
 
     // Methods for session / cookies

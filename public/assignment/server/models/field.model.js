@@ -35,13 +35,6 @@ module.exports = function (db, mongoose, formModel) {
 
     function createFieldInForm(formId, newField) {
         var deferred = q.defer();
-        //console.log("model formId + fieldType " + formId + fieldType);
-
-        // var newField;
-        //
-        // newField.type = fieldType;
-        // createField(newField)
-        //     .then(success, failure);
 
         FormModel.findById(formId,
             function (err, form) {
@@ -51,7 +44,6 @@ module.exports = function (db, mongoose, formModel) {
                     newField["_id"] = fieldId;
 
                     form.fields.push(newField);
-                    // form.fields.push({"type": fieldType});
                     form.save(function (err, doc) {
                         if (err) {
                             deferred.reject(err);
@@ -123,15 +115,6 @@ module.exports = function (db, mongoose, formModel) {
                             });
                         }
                     }
-                    
-                    // form.fields.id(fieldId).remove();
-                    // form.save(function (err, doc) {
-                    //     if (err) {
-                    //         deferred.reject(err);
-                    //     } else {
-                    //         deferred.resolve(doc);
-                    //     }
-                    // });
                 } else {
                     deferred.reject(err);
                 }
@@ -141,11 +124,8 @@ module.exports = function (db, mongoose, formModel) {
         return deferred.promise;
     }
 
-    // TODO: refactor for correct cases for with and without option cases for fields
+    // TODO: not saving to form
     function updateFieldInForm(formId, fieldId, newField) {
-
-        console.log(">> updateFieldInForm(): NewField: " + JSON.stringify(newField));
-
 
         var deferred = q.defer();
 
@@ -156,30 +136,20 @@ module.exports = function (db, mongoose, formModel) {
                     for (var i = 0; i < form.fields.length; i++) {
                         if (form.fields[i]._id == fieldId) {
 
-                            console.log(">> updateFieldInForm(): Field IDs got matched");
-
                             newField["_id"] = fieldId;
                             form.fields[i] = newField;
 
-                            form.save(function (err, form) {
-                                if (form) console.log("Save Succesful: " + JSON.stringify(form.fields));
-                                deferred.resolve(form.fields);
+                            form.save(function (err, doc) {
+                                if (doc) {
+                                    console.log("Save Succesful: " + JSON.stringify(doc));
+                                    deferred.resolve(doc.fields);
+                                } else {
+                                    console.log("ERROR: " + err);
+                                    deferred.reject(err);
+                                }
                             });
                         }
                     }
-
-                    // var field = form.fields.id(fieldId);
-                    // field.label = newField.label;
-                    // field.placeholder = newField.placeholder;
-                    // field.options = newField.options;
-                    //
-                    // form.save(function (err, doc) {
-                    //     if (err) {
-                    //         deferred.reject(err);
-                    //     } else {
-                    //         deferred.resolve(doc);
-                    //     }
-                    // });
                 } else {
                     deferred.reject(err);
                 }

@@ -6,7 +6,7 @@ var multer = require('multer');
 
 // Mongoose + db
 var mongoose = require('mongoose');
-var connectionString = 'mongodb://127.0.0.1:27017/cs5610';
+var connectionString = 'mongodb://127.0.0.1:27017/webdebDB';
 //Openshift mongoDB
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
