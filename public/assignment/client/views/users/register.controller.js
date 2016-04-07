@@ -50,7 +50,8 @@
                 var responseUser = response.data;
 
                 if (responseUser == null) {
-                    console.log("null >> user already exists");
+                    console.log("null >> user does not exists");
+                    registerUser(user);
                     return;
                 }
 
