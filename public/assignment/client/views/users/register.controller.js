@@ -49,20 +49,18 @@
 
                 var responseUser = response.data;
 
+                // no user found with the user name
                 if (responseUser == null) {
                     console.log("null >> user does not exists");
                     registerUser(user);
                     return;
                 }
 
+                // user already exists with a similar name
                 if (responseUser.username === user.username) {
                     console.log("== >> user already exists");
                     return;
                 }
-
-                // else go ahead to create a user
-                console.log('Creating a user AS No earlier entries of the user found');
-                registerUser(user);
             }
 
             function failure(response) {

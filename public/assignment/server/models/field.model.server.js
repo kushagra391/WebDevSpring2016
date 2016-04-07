@@ -96,6 +96,7 @@ module.exports = function (db, mongoose, formModel) {
 
     function deleteFieldInForm(formId, fieldId) {
         var deferred = q.defer();
+
         FormModel.findById(formId,
             function(err, form) {
                 if (!err) {
@@ -112,6 +113,7 @@ module.exports = function (db, mongoose, formModel) {
                 }
             }
         );
+
         return deferred.promise;
     }
     

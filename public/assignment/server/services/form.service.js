@@ -88,11 +88,13 @@ module.exports = function (app, formModel) {
         var userId = req.params.userId;
         var form = req.body;
 
+        console.log("createFormForUser(): " + userId + ", " + form);
+
         formModel
-            .createFormForUser(form)
+            .createFormForUser(userId, form)
             .then(
                 function (form) {
-                    req.session.currentForm = form;
+                    // req.session.currentForm = form;
                     res.json(form);
                 },
                 function (err) {

@@ -82,8 +82,11 @@ module.exports = function (app, formModel, fieldModel) {
     function createFieldInForm(req, res) {
 
         var formId = req.params.formId;
-        var fieldType = req.query.fieldType;
+        // var fieldType = req.query.fieldType;
+        var fieldType = req.body.type;
 
+        console.log(">> createFieldInForm(): " + formId + ", " + fieldType);
+        console.log("FIELD_MODEL" + fieldModel);
         fieldModel.createFieldInForm(formId, fieldType)
             .then(
                 function (form) {
