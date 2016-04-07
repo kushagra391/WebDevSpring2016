@@ -7,9 +7,9 @@
 
 module.exports = function (app, formModel, fieldModel) {
 
-    app.get('/api/assignment/form/:formId/field', findFieldsByFormId);
-    app.get('/api/assignment/form/:formId/field/:fieldId', findFieldInForm);
-    app.delete('/api/assignment/form/:formId/field/:fieldId', deleteFieldFromForm);
+    app.get('/api/assignment/form/:formId/field', findFieldsByFormId);                          // OK
+    app.get('/api/assignment/form/:formId/field/:fieldId', findFieldInForm);                    // OK
+    app.delete('/api/assignment/form/:formId/field/:fieldId', deleteFieldFromForm);             // OK
     app.post('/api/assignment/form/:formId/field', createFieldInForm);
     app.put('/api/assignment/form/:formId/field/:fieldId', updateFieldInForm);
     app.put('/api/assignment/form/:formId/field', updateFieldsForForm);
@@ -21,7 +21,7 @@ module.exports = function (app, formModel, fieldModel) {
         formModel.findFormById(formId)
             .then(
                 function (form) {
-                    //console.log(form.fields);
+                    console.log(form.fields);
                     res.json(form.fields);
                 },
                 function (err) {
@@ -35,19 +35,40 @@ module.exports = function (app, formModel, fieldModel) {
         // res.json(fields);
     }
 
-    // TODO: does not require to be refactored ??
     function findFieldInForm(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        var form = formModel.findFormById(formId);      //TODO: revisit !
-        var fields = form.fields;
+        console.log("FormID: " + formId);
+        console.log("FieldID: " + fieldId);
 
-        for (var index in fields) {
-            if (fields[index]._id === fieldId) {
-                res.json(fields[index]);
-            }
-        }
+        formModel
+            .findFormById(formId)
+            .then(
+                function (form) {
+                    var fields = form.fields;
+                    for (var index in fields) {
+                        console.log("CurrentFieldID: " + fields[index]._id +
+                            " : " + (fields[index]._id == fieldId));
+                        if (fields[index]._id == fieldId) {
+                            console.log("Matching fields found !");
+                            res.json(fields[index]);
+                        }
+                    }
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+
+        // var form = formModel.findFormById(formId);      //TODO: revisit !
+        // var fields = form.fields;
+        //
+        // for (var index in fields) {
+        //     if (fields[index]._id === fieldId) {
+        //         res.json(fields[index]);
+        //     }
+        // }
     }
 
     // TODO: revisit
@@ -85,9 +106,12 @@ module.exports = function (app, formModel, fieldModel) {
         // var fieldType = req.query.fieldType;
         var fieldType = req.body.type;
 
+        var newField = req.body;
+
         console.log(">> createFieldInForm(): " + formId + ", " + fieldType);
         console.log("FIELD_MODEL" + fieldModel);
-        fieldModel.createFieldInForm(formId, fieldType)
+        // fieldModel.createFieldInForm(formId, fieldType)
+        fieldModel.createFieldInForm(formId, newField)
             .then(
                 function (form) {
                     //console.log(form);

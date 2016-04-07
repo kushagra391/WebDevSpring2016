@@ -100,10 +100,14 @@
                 .then(fieldSuccess, fieldError);
 
             function fieldSuccess(response) {
-                vm.fields = response.data.fields;
+                // vm.fields = response.data.fields;
+                vm.fields = response.data;
                 vm.message = 'Success: fields updated';
                 console.log(currentForm._id + ' ' + newFieldId);
                 console.log("Updated FieldS: " + JSON.stringify(vm.fields));
+                console.log(response.data);
+
+                currentForm.fields = vm.fields;
             }
 
             function fieldError(response) {
@@ -210,7 +214,7 @@
                 return;
             }
 
-            console.log("current form: " + currentForm._id + "-" + currentForm.title);
+            console.log("current form: " + currentForm._id + "-" + currentForm.title + ", fieldType" + fieldType);
 
             switch (fieldType) {
                 case "Single Line Text Field":
@@ -251,12 +255,17 @@
             }
 
             function fieldSuccess(response) {
+
+                console.log('fieldSuccess' + JSON.stringify(response.data));
+
                 vm.fields = response.data.fields;
                 FormService.setCurrentForm(response.data);
                 vm.message = "Success: addField" + fieldType;
             }
 
             function fieldError(response) {
+                console.log('fieldError' + response.data);
+
                 vm.message = "Failure: addField" + fieldType;
             }
         }
