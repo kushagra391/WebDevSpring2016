@@ -230,7 +230,6 @@ module.exports = function (dp, mongoose) {
                 deferred.reject(err);
             }
             else {
-
                 console.log("## Form Obtained: " + form);
                 console.log("## Fields Obtained: " + form.fields);
 
@@ -242,7 +241,6 @@ module.exports = function (dp, mongoose) {
                         form.save(function (err, form) {
                             deferred.resolve(form.fields);
                         });
-
                     }
                 }
             }
