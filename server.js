@@ -6,7 +6,7 @@ var multer = require('multer');
 
 // Mongoose + db
 var mongoose = require('mongoose');
-var connectionString = 'mongodb://127.0.0.1:27017/testdb';
+var connectionString = 'mongodb://127.0.0.1:27017/cs5610';
 //Openshift mongoDB
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -33,7 +33,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 // Linkages to other .js files
 require('./public/assignment/server/app.js')(app, db, mongoose);
 // require('./public/experiments/examples/serverDemo/app.js')(app);
-require('./public/experiments/examples/mongoDemo/server/app.js')(app, db, mongoose);
+// require('./public/experiments/examples/mongoDemo/server/app.js')(app, db, mongoose);
 
 // Start server
 console.log('Listening at port: ' + port);

@@ -42,6 +42,7 @@
         }
 
         function createUser(user) {
+            console.log("createUser(): " + JSON.stringify(user));
             return $http.post(userPath, user);
         }
 

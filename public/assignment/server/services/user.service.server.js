@@ -2,28 +2,25 @@ module.exports = function (app, userModel) {
 
     "use strict";
 
-    var userPath = '/api/assignment/user';
-    var allUserPath = '/api/assignment/user/all';
-    var userIdPath = '/api/assignment/user/:id';
-    var userLoginPath = '/api/assignment/user/login';
-
-    app.post(userPath, createUser);
-    app.get(allUserPath, findAllUsers);
-    app.get(userPath, findUser);
-    app.get(userIdPath, findUserById);
-    app.post(userLoginPath, findUserByCredentials);
-    app.put(userIdPath, updateUser);
-    app.delete(userIdPath, deleteUser);
+    app.get('/api/assignment/user/all', findAllUsers);                          // OK
+    app.get("/api/assignment/user", findUser);                                  // OK ?username
+    app.get('/api/assignment/user/:id', findUserById);                          // OK
+    app.post("/api/assignment/user", createUser);                               // OK
+    app.post('/api/assignment/user/login', findUserByCredentials);              // OK
+    app.put('/api/assignment/user/:id', updateUser);                            // OK
+    app.delete('/api/assignment/user/:id', deleteUser);                         // Check, successful but still showing
 
     app.get("/api/assignment/loggedin", loggedin);
     app.post("/api/assignment/logout", logout);
 
     function findUser(req, res) {
 
-        var username = req.params.username;
+        var username = req.param('username');
+
+        console.log('findUser: Username from client: ' + username);
         if (!username) {
             userModel
-                .findAllUser()
+                .findAllUsers()
                 .then(
                     function (users) {
                         res.json(users);
@@ -62,7 +59,7 @@ module.exports = function (app, userModel) {
     function findAllUsers(req, res) {
 
         userModel
-            .findAllUser()
+            .findAllUsers()
             .then(
                 function (users) {
                     res.json(users);
@@ -78,15 +75,19 @@ module.exports = function (app, userModel) {
     }
 
     function createUser(req, res) {
+        console.log("in: createUser()");
+
         var user = req.body;
 
         userModel.createUser(user)
             .then(
                 function (user) {
-                    req.session.currentUser = user;
+                    console.log("in: createUser() --> user" + JSON.stringify(user));
+                    // req.session.currentUser = user;
                     res.json(user);
                 },
                 function (err) {
+                    console.log("in: createUser() --> err");
                     res.status(400).send(err);
                 }
             );
@@ -119,11 +120,13 @@ module.exports = function (app, userModel) {
 
         var credentials = req.body;
 
+        console.log("findUserByCredentials(): " + JSON.stringify(credentials));
+
         userModel
             .findUserByCredentials(credentials)
             .then(
                 function (user) {
-                    req.session.currentUser = user;
+                    // req.session.currentUser = user;
                     res.json(user);
                 },
                 function (err) {
@@ -171,6 +174,7 @@ module.exports = function (app, userModel) {
             .deleteUser(userId)
             .then(
                 function (users) {
+                    console.log('deleteUser(): User deleted');
                     res.json(users);
                 },
                 function (err) {
