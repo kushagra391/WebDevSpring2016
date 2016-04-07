@@ -2,12 +2,12 @@ module.exports = function (app, formModel) {
 
     "use strict";
 
-    app.get("/api/assignment/user/:userId/form", findFormByUser);
-    app.get("/api/assignment/form/:formId", findFormById);
-    app.delete("/api/assignment/form/:formId", deleteForm);
-    app.post("/api/assignment/user/:userId/form", createFormForUser);
-    app.put("/api/assignment/form/:formId", updateForm);
-    app.get("/api/assignment/form", findAllForms);
+    app.get("/api/assignment/user/:userId/form", findFormByUser);                   // OK
+    app.get("/api/assignment/form/:formId", findFormById);                          // OK
+    app.delete("/api/assignment/form/:formId", deleteForm);                         // OK
+    app.post("/api/assignment/user/:userId/form", createFormForUser);               // OK
+    app.put("/api/assignment/form/:formId", updateForm);                            // OK
+    app.get("/api/assignment/form", findAllForms);                                  // OK
 
     function findAllForms(req, res) {
 
