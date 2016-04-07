@@ -60,6 +60,12 @@
                 .createFormForUser($scope.currentUser._id, form)
                 .then(addFormSuccess, addFormFailure);
 
+            FormService
+                .findAllForms()
+                .then(function (res) {
+                    $scope.forms = res.data; // TODO: .data
+                });
+
             function addFormSuccess(response) {
                 console.log('addForm: Inside promise success');
 
