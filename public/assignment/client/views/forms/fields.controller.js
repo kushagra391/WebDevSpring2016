@@ -25,6 +25,19 @@
             templateUrl: 'fieldPopover'
         };
 
+
+        function refreshFields() {
+            // show the current fields
+            FieldService
+                .getFieldsForForm(currentForm._id)
+                .then(function (response) {
+                    if (response.data) {
+                        vm.fields = response.data;
+                    }
+                });
+        }
+
+
         // show the current fields
         FieldService
             .getFieldsForForm(currentForm._id)
@@ -283,6 +296,8 @@
             function fieldError(response) {
                 vm.message = 'Failure: during removeField';
             }
+
+            refreshFields();
         }
 
         function updateField(field) {
