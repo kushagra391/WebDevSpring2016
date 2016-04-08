@@ -3,36 +3,38 @@
         .module("FormBuilderApp")
         .controller("FormsController", FormsController);
 
-    function FormsController($scope, $location, FormService, UserService) {
+    function FormsController($location, FormService, UserService) {
+
+        var vm = this;
 
         function init() {
 
-            $scope.$location = $location;
+            vm.$location = $location;
 
-            $scope.selectedFormId = null;
-            $scope.error = null;
-            $scope.forms = FormService.findAllForms();
+            vm.selectedFormId = null;
+            vm.error = null;
+            vm.forms = FormService.findAllForms();
 
-            $scope.addForm = addForm;
-            $scope.updateForm = updateForm;
-            $scope.deleteForm = deleteForm;
-            $scope.selectForm = selectForm;
+            vm.addForm = addForm;
+            vm.updateForm = updateForm;
+            vm.deleteForm = deleteForm;
+            vm.selectForm = selectForm;
 
-            $scope.redirectToField = redirectToField;
+            vm.redirectToField = redirectToField;
 
-            $scope.currentUser = UserService.getCurrentUser();
+            vm.currentUser = UserService.getCurrentUser();
             FormService
                 .findAllForms()
                 .then(function (res) {
-                    $scope.forms = res.data; // TODO: .data
+                    vm.forms = res.data; // TODO: .data
                 });
         }
 
         init();
 
         function redirectToField(form) {
-            $scope.selectedFormId = form._id;
-            $scope.form = form;
+            vm.selectedFormId = form._id;
+            vm.form = form;
 
             FormService.setCurrentForm(form);
 
@@ -42,72 +44,72 @@
             console.log('redirecting to fields: ' + fieldUrl);
             // $location.url('/admin');
             $location.url(fieldUrl);
-            $scope.$location = $location;
+            vm.$location = $location;
         }
 
 
         function addForm(form) {
             if (!form.title) {
-                $scope.error = "Please provide a form name.";
+                vm.error = "Please provide a form name.";
                 return;
             }
-            if ($scope.currentUser == null) {
-                $scope.error = "Please login.";
+            if (vm.currentUser == null) {
+                vm.error = "Please login.";
                 return;
             }
 
             FormService
-                .createFormForUser($scope.currentUser._id, form)
+                .createFormForUser(vm.currentUser._id, form)
                 .then(addFormSuccess, addFormFailure);
 
             FormService
                 .findAllForms()
                 .then(function (res) {
-                    $scope.forms = res.data; // TODO: .data
+                    vm.forms = res.data; // TODO: .data
                 });
 
             function addFormSuccess(response) {
                 console.log('addForm: Inside promise success');
 
-                $scope.forms = response.data;
+                vm.forms = response.data;
 
-                console.log('All forms: ' + JSON.stringify($scope.forms));
+                console.log('All forms: ' + JSON.stringify(vm.forms));
 
-                var formsCount = $scope.forms.length;
-                FormService.setCurrentForm($scope.forms[formsCount - 1]);
+                var formsCount = vm.forms.length;
+                FormService.setCurrentForm(vm.forms[formsCount - 1]);
                 form.title = ''; // TODO: clear header fields
             }
 
             function addFormFailure() {
-                $scope.error = 'Failed: Form not created';
+                vm.error = 'Failed: Form not created';
             }
         }
 
         function updateForm(form) {
-            if ($scope.selectedFormId == null) {
-                $scope.error = "Please select a form.";
+            if (vm.selectedFormId == null) {
+                vm.error = "Please select a form.";
                 return;
             }
 
             if (form.userId == null) {
-                form.userId = $scope.currentUser._id;
+                form.userId = vm.currentUser._id;
             }
 
             FormService
-                .updateFormById($scope.selectedFormId, form)
+                .updateFormById(vm.selectedFormId, form)
                 .then(updateSuccess, updateError);
 
-            $scope.selectedFormId = null;   // TODO: required ?
+            vm.selectedFormId = null;   // TODO: required ?
 
             function updateSuccess(response) {
-                $scope.forms = response.data;
-                $scope.message = 'Success: Forms updated';
+                vm.forms = response.data;
+                vm.message = 'Success: Forms updated';
 
                 form.title = '';
             }
 
             function updateError(response) {
-                $scope.error = 'Failure: form not updated';
+                vm.error = 'Failure: form not updated';
             }
         }
 
@@ -122,18 +124,18 @@
                 .then(deleteSuccess, deleteError);
 
             function deleteSuccess(response) {
-                $scope.forms = response.data;
-                $scope.message = 'Success: form deleted';
+                vm.forms = response.data;
+                vm.message = 'Success: form deleted';
             }
 
             function deleteError(response){
-                $scope.error = 'Failure: form not deleted';
+                vm.error = 'Failure: form not deleted';
             }
         }
 
         function selectForm(form) {
-            $scope.selectedFormId = form._id;
-            $scope.form = form;
+            vm.selectedFormId = form._id;
+            vm.form = form;
 
             FormService.setCurrentForm(form);
             console.log('Current Form: ' + FormService.getCurrentForm()._id + ': ' + FormService.getCurrentForm().title);

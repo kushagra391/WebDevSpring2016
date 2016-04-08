@@ -4,7 +4,7 @@
     <h2 class="page-header">Forms</h2>
 
     <!--message label area-->
-    <div ng-show="error" class="alert alert-danger" role="alert">{{error}}</div>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
 
     <!--tabs -->
     <ul class="nav nav-tabs">
@@ -26,10 +26,10 @@
         <tr>
             <th><input ng-model="form.title" class="form-control"/></th>
             <th>
-                <button ng-click="addForm(form)"
+                <button ng-click="model.addForm(form)"
                         class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span></button>
-                <button ng-click="updateForm(form)"
+                <button ng-click="model.updateForm(form)"
                         class="btn btn-success">
                     <span class="glyphicon glyphicon-ok"></span></button>
             </th>
@@ -38,17 +38,17 @@
 
         <!--table body-->
         <tbody>
-        <tr ng-repeat="form in forms" ng-show="form.userId == currentUser._id">
+        <tr ng-repeat="form in model.forms" ng-show="form.userId == model.currentUser._id">
 
-            <td ng-click="redirectToField(forms[$index])">
+            <td ng-click="model.redirectToField(model.forms[$index])">
                 <a>{{form.title}}</a>
             </td>
 
             <td>
                 <!--<button ng-click="deleteForm($index)" class="btn btn-danger"><span-->
-                <button ng-click="deleteForm(forms[$index])" class="btn btn-danger"><span
+                <button ng-click="model.deleteForm(model.forms[$index])" class="btn btn-danger"><span
                         class="glyphicon glyphicon-remove"></span></button>
-                <button ng-click="selectForm(forms[$index])" class="btn btn-info"><span
+                <button ng-click="model.selectForm(model.forms[$index])" class="btn btn-info"><span
                         class="glyphicon glyphicon-pencil"></span></button>
             </td>
         </tr>
