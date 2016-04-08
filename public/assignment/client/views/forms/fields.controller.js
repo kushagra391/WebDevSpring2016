@@ -12,69 +12,31 @@
         var currentForm = FormService.getCurrentForm();
         console.log('Current Form: ' + JSON.stringify(currentForm));
 
-        vm.addField = addField;
-        vm.removeField = removeField;
-        vm.updateField = updateField;
+        function init() {
+            vm.addField = addField;
+            vm.removeField = removeField;
+            vm.updateField = updateField;
+            vm.swapFields = swapFields;
+            vm.initNewField = initNewField;
+            vm.setNewField = setNewField;
 
-        vm.swapFields = swapFields;
+            vm.message = null;
+            vm.error = null;
 
-        vm.message = null;
-        vm.error = null;
-
-        vm.dynamicPopover = {
-            templateUrl: 'fieldPopover'
-        };
-
-
-        function refreshFields() {
             // show the current fields
             FieldService
                 .getFieldsForForm(currentForm._id)
                 .then(function (response) {
                     if (response.data) {
                         vm.fields = response.data;
+                        console.log('optionString: ' + getOptionStrings());
                     }
                 });
         }
 
+        init();
 
-        // show the current fields
-        FieldService
-            .getFieldsForForm(currentForm._id)
-            .then(function (response) {
-                if (response.data) {
-                    vm.fields = response.data;
-                    console.log('optionString: ' + getOptionStrings());
-                }
-            });
-
-
-        // New code
-
-        vm.initNewField = initNewField;
-        vm.setNewField = setNewField;
-        
-        // helper method to parse options into label:value pairs
-        function createOptions(options) {
-            var fields = [];
-
-            var lines = options.split("\n");
-            for (var index in lines) {
-
-                var pairs = lines[index].split(":");
-
-                var label = pairs[0];
-                var value = pairs[1];
-                var option = {label: pairs[0], value: pairs[1]};
-
-                fields.push(option);
-            }
-
-            console.log("parsed fields: " + JSON.stringify(fields));
-            return fields;
-        }
-        
-        // intermediate method that calls updateField from within the controller
+        // Scope methods
         function setNewField(field) {
 
             var newFieldId = vm.newFieldID;
@@ -137,89 +99,6 @@
             console.log("NewfieldID: " + vm.newFieldID);
             console.log("fieldType: " + vm.newFieldType);
         }
-
-
-
-        // End of new code
-
-
-
-        function getOptionStrings() {
-            var str = '';
-            var fields = vm.fields;
-
-            for (var index in fields) {
-                var options = fields[index].options;
-                for (var optionIndex in options) {
-                    str = str + options[optionIndex].label + ':' + options[optionIndex].value + '\n';
-                }
-            }
-
-            return str;
-        }
-
-        function swapFields (start, end) {
-            var temp = vm.fields[start];
-            vm.fields[start] = vm.fields[end];
-            vm.fields[end] = temp;
-
-            console.log('FieldsController: fields swapped');
-
-            console.log('Server side work: sending updated fields');
-            FieldService.updateFieldsForForm(currentForm._id, vm.fields);
-        }
-
-        vm.options = [
-            "Single Line Text Field",
-            "Multi Line Text Field",
-            "Date Field",
-            "Dropdown Field",
-            "Checkboxes Field",
-            "Radio Buttons Field"
-        ];
-
-        var singleLineTextField = {
-            "_id": null,
-            "label": "New Text Field",
-            "type": "TEXT",
-            "placeholder": "New Field"
-        };
-
-        var multiLineTextField = {
-            "_id": null,
-            "label": "New Text Field",
-            "type": "TEXTAREA",
-            "placeholder": "New Field"
-        };
-
-        var dateField = {"_id": null, "label": "New Date Field", "type": "DATE"};
-
-        var dropdownField = {
-            "_id": null, "label": "New Dropdown", "type": "OPTIONS",
-            "options": [
-                {"label": "Option 1", "value": "OPTION_1"},
-                {"label": "Option 2", "value": "OPTION_2"},
-                {"label": "Option 3", "value": "OPTION_3"}
-            ]
-        };
-
-        var checkboxesField = {
-            "_id": null, "label": "New Checkboxes", "type": "CHECKBOXES",
-            "options": [
-                {"label": "Option A", "value": "OPTION_A"},
-                {"label": "Option B", "value": "OPTION_B"},
-                {"label": "Option C", "value": "OPTION_C"}
-            ]
-        };
-
-        var radioButtonsField = {
-            "_id": null, "label": "New Radio Buttons", "type": "RADIOS",
-            "options": [
-                {"label": "Option X", "value": "OPTION_X"},
-                {"label": "Option Y", "value": "OPTION_Y"},
-                {"label": "Option Z", "value": "OPTION_Z"}
-            ]
-        };
 
         function addField(fieldType) {
             if (!currentForm) {
@@ -321,6 +200,114 @@
             }
         }
 
+        // Helper methods
+        // helper method to parse options into label:value pairs
+        function createOptions(options) {
+            var fields = [];
 
+            var lines = options.split("\n");
+            for (var index in lines) {
+
+                var pairs = lines[index].split(":");
+
+                var label = pairs[0];
+                var value = pairs[1];
+                var option = {label: pairs[0], value: pairs[1]};
+
+                fields.push(option);
+            }
+
+            console.log("parsed fields: " + JSON.stringify(fields));
+            return fields;
+        }
+
+        function refreshFields() {
+            // show the current fields
+            FieldService
+                .getFieldsForForm(currentForm._id)
+                .then(function (response) {
+                    if (response.data) {
+                        vm.fields = response.data;
+                    }
+                });
+        }
+
+        function getOptionStrings() {
+            var str = '';
+            var fields = vm.fields;
+
+            for (var index in fields) {
+                var options = fields[index].options;
+                for (var optionIndex in options) {
+                    str = str + options[optionIndex].label + ':' + options[optionIndex].value + '\n';
+                }
+            }
+
+            return str;
+        }
+
+        function swapFields (start, end) {
+            var temp = vm.fields[start];
+            vm.fields[start] = vm.fields[end];
+            vm.fields[end] = temp;
+
+            console.log('FieldsController: fields swapped');
+
+            console.log('Server side work: sending updated fields');
+            FieldService.updateFieldsForForm(currentForm._id, vm.fields);
+        }
+
+        // Global constants
+        vm.options = [
+            "Single Line Text Field",
+            "Multi Line Text Field",
+            "Date Field",
+            "Dropdown Field",
+            "Checkboxes Field",
+            "Radio Buttons Field"
+        ];
+
+        var singleLineTextField = {
+            "_id": null,
+            "label": "New Text Field",
+            "type": "TEXT",
+            "placeholder": "New Field"
+        };
+
+        var multiLineTextField = {
+            "_id": null,
+            "label": "New Text Field",
+            "type": "TEXTAREA",
+            "placeholder": "New Field"
+        };
+
+        var dateField = {"_id": null, "label": "New Date Field", "type": "DATE"};
+
+        var dropdownField = {
+            "_id": null, "label": "New Dropdown", "type": "OPTIONS",
+            "options": [
+                {"label": "Option 1", "value": "OPTION_1"},
+                {"label": "Option 2", "value": "OPTION_2"},
+                {"label": "Option 3", "value": "OPTION_3"}
+            ]
+        };
+
+        var checkboxesField = {
+            "_id": null, "label": "New Checkboxes", "type": "CHECKBOXES",
+            "options": [
+                {"label": "Option A", "value": "OPTION_A"},
+                {"label": "Option B", "value": "OPTION_B"},
+                {"label": "Option C", "value": "OPTION_C"}
+            ]
+        };
+
+        var radioButtonsField = {
+            "_id": null, "label": "New Radio Buttons", "type": "RADIOS",
+            "options": [
+                {"label": "Option X", "value": "OPTION_X"},
+                {"label": "Option Y", "value": "OPTION_Y"},
+                {"label": "Option Z", "value": "OPTION_Z"}
+            ]
+        };
     }
 })();
