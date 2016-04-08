@@ -235,8 +235,15 @@ module.exports = function (dp, mongoose) {
 
                 for (var i = 0; i < form.fields.length; i++) {
                     if (form.fields[i]._id == fieldId) {
-                        newField["_id"] = fieldId;
-                        form.fields[i] = newField;
+
+                        // newField["_id"] = fieldId;
+                        // form.fields[i] = newField;
+
+                        form.fields[i].label = newField.label;
+                        form.fields[i].placeholder = newField.placeholder;
+                        if (newField.options) {
+                            form.fields[i].options = newField.options;
+                        }
 
                         form.save(function (err, form) {
                             deferred.resolve(form.fields);
