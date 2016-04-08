@@ -26,7 +26,7 @@
                     end = ui.item.index();
                     console.log('end item index: ' + end);
 
-                    scope.swapFields(start, end);
+                    scope.model.swapFields(start, end);
                     scope.$apply();
                 }
             });
