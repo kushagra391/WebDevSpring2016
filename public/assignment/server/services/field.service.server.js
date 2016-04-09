@@ -117,7 +117,7 @@ module.exports = function (app, formModel) {
 
 
     // used by sortable directive
-    function updateFieldsForForm(req, res) {
+    function _updateFieldsForForm(req, res) {
         var formId = req.params.formId;
         var fields = req.body;
 
@@ -130,6 +130,24 @@ module.exports = function (app, formModel) {
         form.fields = fields;
 
         res.json(form);
+    }
+
+    function updateFieldsForForm(req, res) {
+        var formId = req.params.formId;
+        var fields = req.body;
+
+        console.log('updateFieldsForForm' + JSON.stringify(formId));
+        console.log(fields);
+
+        formModel.updateAllFieldsForForm(formId, fields)
+            .then(
+                function (form) {
+                    res.json(form)
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
 };
