@@ -47,7 +47,6 @@
             vm.$location = $location;
         }
 
-
         function addForm(form) {
             if (!form.title) {
                 vm.error = "Please provide a form name.";
@@ -128,7 +127,7 @@
                 vm.message = 'Success: form deleted';
             }
 
-            function deleteError(response){
+            function deleteError(response) {
                 vm.error = 'Failure: form not deleted';
             }
         }

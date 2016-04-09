@@ -115,7 +115,6 @@ module.exports = function (app, formModel) {
             );
     }
 
-
     // used by sortable directive
     function _updateFieldsForForm(req, res) {
         var formId = req.params.formId;

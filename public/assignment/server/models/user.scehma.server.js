@@ -12,5 +12,4 @@ module.exports = function (mongoose) {
 
     return UserSchema;
 
-
-}
+};

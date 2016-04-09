@@ -6,9 +6,9 @@
         .controller("FieldsController", FieldsController);
 
     function FieldsController(FormService, FieldService) {
-        
+
         var vm = this;
-        
+
         var currentForm = FormService.getCurrentForm();
         console.log('Current Form: ' + JSON.stringify(currentForm));
 
@@ -46,11 +46,11 @@
             newField._id = newFieldId;
             newField.type = newfieldType;
 
-            switch(newfieldType) {
+            switch (newfieldType) {
                 case "TEXT":
                 case "TEXTAREA":
                     newField.label = field.label;
-                    newField.placeholder= field.placeholder;
+                    newField.placeholder = field.placeholder;
                     break;
 
                 case "DATE":
@@ -246,7 +246,7 @@
             return str;
         }
 
-        function swapFields (start, end) {
+        function swapFields(start, end) {
             var temp = vm.fields[start];
             vm.fields[start] = vm.fields[end];
             vm.fields[end] = temp;

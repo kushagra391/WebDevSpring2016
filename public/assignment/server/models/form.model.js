@@ -24,7 +24,6 @@ module.exports = function (dp, mongoose) {
         findFieldsByFormId: findFieldsByFormId,
         updateAllFieldsForForm: updateAllFieldsForForm
 
-
     };
     return api;
 
@@ -48,7 +47,6 @@ module.exports = function (dp, mongoose) {
         return deferred.promise;
     }
 
-
     // TODO: revisit if required
     function createFieldInForm(formId, field) {
         // var form = findFormById(formId);
@@ -56,7 +54,6 @@ module.exports = function (dp, mongoose) {
         // form.fields.push(field);
         // return form;
     }
-
 
     function findAllForms() {
         var deferred = q.defer();
@@ -276,13 +273,11 @@ module.exports = function (dp, mongoose) {
                     })
                 }
 
-
             }
         );
 
         return deferred.promise;
     }
-
 
     function findFieldsByFormId(formId) {
         var deferred = q.defer();
@@ -300,6 +295,5 @@ module.exports = function (dp, mongoose) {
 
         return deferred.promise;
     }
-
 
 };

@@ -59,7 +59,6 @@
             });
     }
 
-
     function checkLoggedIn(UserService, $q, $location) {
 
         var deferred = $q.defer();

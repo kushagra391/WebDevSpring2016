@@ -15,6 +15,7 @@
             vm.error = null;
             vm.login = login;
         }
+
         init();
 
         function resolvedHandler(response) {

@@ -7,7 +7,7 @@
     "use strict";
     angular
         .module("CourseraApp")
-        .config(function($routeProvider){
+        .config(function ($routeProvider) {
             $routeProvider
                 .when("/home", {
                     templateUrl: "views/home/home.view.html",

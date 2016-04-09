@@ -18,7 +18,6 @@ module.exports = function (db, mongoose, formModel) {
     };
     return api;
 
-
     function createField(field) {
         var deferred = q.defer();
         FieldModel.create(field,

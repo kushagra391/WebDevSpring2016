@@ -7,7 +7,7 @@
         .controller("HomeController", HomeController);
 
     function HomeController() {
-        
+
     }
 
 })();
