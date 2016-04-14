@@ -8,7 +8,7 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var connectionString = 'mongodb://127.0.0.1:27017/webdebDB';
 //Openshift mongoDB
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
         process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
@@ -20,7 +20,7 @@ var db = mongoose.connect(connectionString);
 
 // Body Parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Multer
 app.use(multer());
@@ -34,6 +34,11 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 require('./public/assignment/server/app.js')(app, db, mongoose);
 // require('./public/experiments/examples/serverDemo/app.js')(app);
 // require('./public/experiments/examples/mongoDemo/server/app.js')(app, db, mongoose);
+
+app.get("/", function (req, res) {
+    res.json("Hello !");
+    redirectTo("hello.html");
+});
 
 // Start server
 console.log('Listening at port: ' + port);
