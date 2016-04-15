@@ -40,8 +40,11 @@ module.exports = function (db, mongoose) {
         return UserModel.find();
     }
 
-    function findUserByCredentials() {
+    function findUserByCredentials(credentials) {
+        var username = credentials.username;
+        var passowrd = credentials.password;
 
+        return UserModel.find({username: username, password: passowrd});
     }
 
     function createUser(user) {

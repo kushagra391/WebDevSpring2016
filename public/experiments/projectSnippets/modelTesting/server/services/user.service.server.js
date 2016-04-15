@@ -17,7 +17,7 @@ module.exports = function (app, userModel) {
 
     function findUserByUsername(req, res) {
         console.log(">> findUserByUsername");
-        
+
         var username = req.params.username;
         userModel
             .findUserByName(username)
@@ -29,8 +29,7 @@ module.exports = function (app, userModel) {
                     res.json(err);
                 }
             );
-        
-        
+
         res.json(200);
 
     }
@@ -47,7 +46,7 @@ module.exports = function (app, userModel) {
                     res.json(doc);
                 },
                 function (err) {
-                   res.json(err);
+                    res.json(err);
                 }
             );
     }
@@ -70,8 +69,19 @@ module.exports = function (app, userModel) {
 
     function findUserByCredentials(req, res) {
         console.log(">> findUserByCredentials");
+        var credentials = req.body;
 
-        res.json(200);
+
+        userModel
+            .findUserByCredentials(credentials)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
     }
 
     function createUser(req, res) {
