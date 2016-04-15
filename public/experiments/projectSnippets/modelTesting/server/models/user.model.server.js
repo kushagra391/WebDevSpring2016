@@ -30,8 +30,9 @@ module.exports = function (db, mongoose) {
 
     }
 
-    function findUserByName() {
-
+    function findUserByName(name) {
+       
+        return UserModel.find({name: name});
     }
 
     function findAllUsers() {

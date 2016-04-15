@@ -27,7 +27,18 @@ module.exports = function (app, userModel) {
     function findUserByName(req, res) {
         console.log(">> findUserByName");
 
-        res.json(200);
+        var name = req.params.name;
+
+        userModel
+            .findUserByName(name)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                   res.json(err);
+                }
+            );
     }
 
     function findAllUsers(req, res) {
