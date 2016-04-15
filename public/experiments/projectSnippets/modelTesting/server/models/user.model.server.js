@@ -1,3 +1,5 @@
+var q = require('q');
+
 module.exports = function (db, mongoose) {
 
     "use strict";
@@ -5,10 +7,61 @@ module.exports = function (db, mongoose) {
     var UserSchema = require('./user.schema.server')(mongoose);
     var UserModel = mongoose.model('User', UserSchema);
 
-
     var api = {
+
+        findUserByUsername: findUserByUsername,
+        findUserByName: findUserByName,
+        findAllUsers: findAllUsers,
+
+        findUserByCredentials: findUserByCredentials,
+        createUser: createUser,
+
+        updateUserById: updateUserById,
+        updateUserByName: updateUserByName,
+
+        deleteUserById: deleteUserById,
+        deleteUserByName: deleteUserByName
+
     };
 
     return api;
+
+    function findUserByUsername() {
+
+    }
+
+    function findUserByName() {
+
+    }
+
+    function findAllUsers() {
+
+    }
+
+    function findUserByCredentials() {
+
+    }
+
+    function createUser(user) {
+
+        return UserModel.create(user);
+
+    }
+
+    function updateUserById() {
+
+    }
+
+    function updateUserByName() {
+
+    }
+
+    function deleteUserById() {
+
+    }
+
+    function deleteUserByName() {
+
+    }
 
 };

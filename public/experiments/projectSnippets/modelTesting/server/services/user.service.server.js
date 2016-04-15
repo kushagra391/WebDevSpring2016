@@ -15,12 +15,10 @@ module.exports = function (app, userModel) {
     app.delete("/api/test/user/:id", deleteUserById);
     app.delete("/api/test/user/:name", deleteUserByName);
 
-
     function findUserByUsername(req, res) {
         console.log(">> findUserByUsername");
         var username = req.params.username;
         console.log(username);
-
 
         res.json(200);
 
@@ -50,8 +48,18 @@ module.exports = function (app, userModel) {
         var user = req.body;
         console.log(user);
 
+        userModel
+            .createUser(user)
+            .then(success, failure);
 
-        res.json(200);
+        function success(doc) {
+            res.json(doc);
+        }
+
+        function failure(err) {
+            res.json(err)
+        }
+
     }
 
     function updateUserById(req, res) {
