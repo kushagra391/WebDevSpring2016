@@ -31,13 +31,14 @@ var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 // Linkages to other .js files
-require('./public/assignment/server/app.js')(app, db, mongoose);
+// require('./public/assignment/server/app.js')(app, db, mongoose);
 // require('./public/experiments/examples/serverDemo/app.js')(app);
 // require('./public/experiments/examples/mongoDemo/server/app.js')(app, db, mongoose);
 
+require('./public/experiments/projectSnippets/modelTesting/server/app')(app, db, mongoose);         // modelTesting
+
 app.get("/", function (req, res) {
     res.json("Hello !");
-    redirectTo("hello.html");
 });
 
 // Start server
