@@ -17,9 +17,20 @@ module.exports = function (app, userModel) {
 
     function findUserByUsername(req, res) {
         console.log(">> findUserByUsername");
+        
         var username = req.params.username;
-        console.log(username);
-
+        userModel
+            .findUserByName(username)
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
+        
+        
         res.json(200);
 
     }

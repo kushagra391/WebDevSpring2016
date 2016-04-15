@@ -26,12 +26,12 @@ module.exports = function (db, mongoose) {
 
     return api;
 
-    function findUserByUsername() {
-
+    function findUserByUsername(username) {
+        return UserModel.find({username: username});
     }
 
     function findUserByName(name) {
-       
+
         return UserModel.find({name: name});
     }
 
