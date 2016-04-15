@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--Bootstrap-->
+    <link href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+    <!--jQuery, jQueryUI-->
+    <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+    <!--<script src="../../../bower_components/jquery-ui/jquery-ui.js"></script>-->
+
+    <!--Bootstrap JS-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--Angular, Angular Route-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="main.controller.js"></script>
+
+    <script src="views/home/home.controller.js"></script>
+
+</head>
+<body>
+
+<div class="container" ng-controller="MainController">
+
+    <div ng-view></div>
+
+</div>
+
+
+
+</body>
+</html>
