@@ -13,6 +13,16 @@
                 controller: "HomeController",
                 controllerAs: "model"
             })
+            .when("/login", {
+                templateUrl: "views/login/login.view.html",
+                controller: "LoginController",
+                controllerAs: "model"
+            })
+            .when("/register", {
+                templateUrl: "views/register/register.view.html",
+                controller: "RegisterController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

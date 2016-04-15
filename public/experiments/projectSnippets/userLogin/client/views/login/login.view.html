@@ -1,0 +1,39 @@
+
+    <div class="col-sm-offset-2 col-sm-12 col-md-8 col-lg-6">
+        <h2 class="page-header">Login</h2>
+
+        <!--alert message area-->
+        <div ng-show="error" class="alert alert-danger" role="alert">{{error}}</div>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username: </label>
+                <div class="col-sm-10">
+                    <input ng-model="user.username"
+                           id="username" type="text" class="form-control" placeholder="bob">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password: </label>
+                <div class="col-sm-10">
+                    <input ng-model="user.password"
+                           id="password" type="password" class="form-control" placeholder="bob">
+                </div>
+            </div>
+
+            <!--Add button at the bottom-->
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10 pull right">
+                    <button ng-click="login(user)"
+                            class="btn btn-primary btn-block form-control">Login
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+
