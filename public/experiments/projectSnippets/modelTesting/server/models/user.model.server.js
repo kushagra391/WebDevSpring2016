@@ -36,6 +36,7 @@ module.exports = function (db, mongoose) {
 
     function findAllUsers() {
 
+        return UserModel.find();
     }
 
     function findUserByCredentials() {

@@ -33,7 +33,17 @@ module.exports = function (app, userModel) {
     function findAllUsers(req, res) {
         console.log(">> findAllUsers");
 
-        res.json(200);
+        userModel
+            .findAllUsers()
+            .then(success, failure);
+
+        function success(doc) {
+            res.json(doc);
+        }
+
+        function failure(err) {
+            res.json(err)
+        }
     }
 
     function findUserByCredentials(req, res) {
@@ -57,7 +67,7 @@ module.exports = function (app, userModel) {
         }
 
         function failure(err) {
-            res.json(err)
+            res.json(err);
         }
 
     }
