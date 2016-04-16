@@ -1,5 +1,3 @@
-var q = require('q');
-
 module.exports = function (db, mongoose) {
 
     "use strict";
@@ -20,7 +18,9 @@ module.exports = function (db, mongoose) {
         updateUserByName: updateUserByName,
 
         deleteUserById: deleteUserById,
-        deleteUserByName: deleteUserByName
+        deleteUserByName: deleteUserByName,
+
+        createCourseForUser : createCourseForUser
 
     };
 
@@ -67,6 +67,30 @@ module.exports = function (db, mongoose) {
 
     function deleteUserByName() {
 
+    }
+    
+    
+    // --------------------------------------- //
+
+    // TODO: fix this part
+    function createCourseForUser(user, course) {
+        console.log("model: createCourseForUser >> saving to db");
+        user.courses.push(course);
+        console.log(user);
+
+        return UserModel.save(user);
+
+        // user.save(function (err, doc) {
+        //     if (err) {
+        //         return err;
+        //     }
+        //     else {
+        //         return doc;
+        //     }
+        // });
+        //
+        //
+        // UserModel.save(user, );
     }
 
 };

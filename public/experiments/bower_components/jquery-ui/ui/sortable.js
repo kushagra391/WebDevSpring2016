@@ -108,7 +108,7 @@ return $.widget("ui.sortable", $.ui.mouse, {
 		this.element.find( ".ui-sortable-handle" ).removeClass( "ui-sortable-handle" );
 		$.each( this.items, function() {
 			( this.instance.options.handle ?
-				this.item.find( this.instance.options.handle ) : this.item )
+				this.videoItem.find( this.instance.options.handle ) : this.videoItem )
 				.addClass( "ui-sortable-handle" );
 		});
 	},
