@@ -6,7 +6,7 @@
         .module('testApp')
         .factory('StudentService', StudentService);
 
-    function StudentService($rootScope) {
+    function StudentService($rootScope, CourseService) {
 
         var model = {
             students: [
@@ -15,21 +15,21 @@
                     "name" : "Kushagra",
                     "username" : "kv391",
                     "password" : "123",
-                    "courses_registerd" : ["course1", "course3"]
+                    "courses_registerd" : [CourseService.courses[0], CourseService.courses[2]]
                 },
                 {
                     "_id" : "202",
                     "name" : "Nikhil",
                     "username" : "nikhil34",
                     "password" : "234",
-                    "courses_registerd" : ["course2", "course3", "course4"]
+                    "courses_registerd" : [CourseService.courses[1], CourseService.courses[2], CourseService.courses[3]]
                 },
                 {
                     "_id" : "303",
                     "name" : "Bhatta",
                     "username" : "bhatta21",
                     "password" : "523",
-                    "courses_registerd" : ["course1", "course4"]
+                    "courses_registerd" : [CourseService.courses[0], CourseService.courses[3]]
                 }
             ],
 

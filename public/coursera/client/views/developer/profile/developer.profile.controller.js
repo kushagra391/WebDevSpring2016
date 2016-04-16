@@ -11,7 +11,8 @@
         console.log("UserID: " + $routeParams.profileId);
 
         vm.courses = DeveloperService.getCurrentUser().courses_created;
-        console.log(vm.courses);
+        populateCourseURL();
+        console.log("URLed courses: " + JSON.stringify(vm.courses));
 
         vm.$location = $location;
         vm.searchKey = "";
@@ -22,6 +23,12 @@
             $location.url('/searchYoutube/' + searchKey);
         }
 
+        function populateCourseURL() {
+            for (var i in vm.courses) {
+                var course = vm.courses[i];
+                course.url = "#/course/" + course._id;
+            }
+        }
     }
 
 })();

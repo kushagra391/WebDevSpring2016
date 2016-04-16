@@ -6,7 +6,7 @@
         .module('testApp')
         .factory('DeveloperService', DeveloperService);
 
-    function DeveloperService($rootScope) {
+    function DeveloperService($rootScope, CourseService) {
 
         var model = {
             developers: [
@@ -15,21 +15,21 @@
                     "name": "Sharad",
                     "username": "sp",
                     "password": "sp",
-                    "courses_created": ["course1"]
+                    "courses_created": [CourseService.courses[0]]
                 },
                 {
                     "_id": "502",
                     "name": "Manish",
                     "username": "ma",
                     "password": "ma",
-                    "courses_created": ["course3", "course4"]
+                    "courses_created": [CourseService.courses[2], CourseService.courses[3]]
                 },
                 {
                     "_id": "503",
                     "name": "Yudhistra",
                     "username": "yp",
                     "password": "yp",
-                    "courses_created": ["course2"]
+                    "courses_created": [CourseService.courses[1]]
                 }
             ],
 

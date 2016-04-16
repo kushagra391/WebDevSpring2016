@@ -11,6 +11,7 @@
 
         vm.currentStudent = StudentService.getCurrentUser();
         vm.courses = vm.currentStudent.courses_registerd;
+        populateCourseURL();
         vm.$location = $location;
         vm.searchKey = ""; // init
         vm.searchCatalog = searchCatalog;
@@ -20,6 +21,12 @@
             $location.url('/searchCatalog/' + searchKey);
         }
 
+        function populateCourseURL() {
+            for (var i in vm.courses) {
+                var course = vm.courses[i];
+                course.url = "#/course/" + course._id;
+            }
+        }
     }
 
 })();

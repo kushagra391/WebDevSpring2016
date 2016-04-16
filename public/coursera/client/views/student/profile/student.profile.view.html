@@ -1,9 +1,11 @@
 <h3>Hello! {{model.currentStudent.name}}</h3>
 
 <h3>List of courses</h3>
-<h3 ng-repeat="course in model.courses">
-    {{course}}
-</h3>
+<div ng-repeat="course in model.courses">
+    <h3><a href="{{course.url}}">{{course.name}}</a></h3>
+    <h4>{{course.description}}</h4>
+    <h4>{{course.url}}</h4>
+</div>
 
 <div class="col-sm-6 col-md-6 col-lg-6 search-mid">
     <div class="input-group">

@@ -43,6 +43,11 @@
                 controller: "SearchYoutubeController",
                 controllerAs: "model"
             })
+            .when("/course/:courseId", {
+                templateUrl: "views/course/coursePage/course.view.html",
+                controller: "CourseController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });
