@@ -1,6 +1,15 @@
-<h3>CoursePage</h3>
 
-<h4>{{course.name}}</h4>
-<h4>{{course.description}}</h4>
-<h4>{{course.likes}}</h4>
-<h4>{{course.videos}}</h4>
+    <h3>CoursePage</h3>
+    <div class="row">
+        <button ng-click="model.addCourse()" class="btn btn-primary pull-right">Add Course</button>
+    </div>
+    <hr>
+    <div class="row">
+        <button ng-click="model.removeCourse()" class="btn btn-danger pull-right">Remove Course</button>
+    </div>
+
+    <h3>{{model.course.name}}</h3>
+    <h5>{{model.course.description}}</h5>
+    <h4>{{model.course.likes}}</h4>
+    <h5 ng-repeat="video in model.course.videos">{{video}}</h5>
+

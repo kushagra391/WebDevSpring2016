@@ -14,29 +14,33 @@
             console.log("searchKey:" + $routeParams.searchKey);
 
             vm.$location = $location;
-
-            // search and display entries / init controller
             vm.searchKey = $routeParams.searchKey;
-            vm.searchCatalogResults = searchCatalogResults;
-            searchCatalogResults();
 
+            vm.addCourse = addCourse;
             vm.redirectToCourse = redirectToCourse;
+            vm.searchCatalogResults = searchCatalogResults;
+
+            searchCatalogResults();
         }
 
         init();
 
         function searchCatalogResults() {
-
             var searchkey = vm.searchKey;
-
             vm.courses = CourseService.searchCourseByQueryString(searchkey);
 
+            $location.url("/searchCatalog/" + searchkey);
         }
 
         function redirectToCourse(index) {
             var course = vm.courses[index];
             console.log("Redirecting to: " + course.name);
             $location.url("/course/" + course._id);
+        }
+
+        function addCourse() {
+            console.log("Adding course to student");
+
         }
 
     }

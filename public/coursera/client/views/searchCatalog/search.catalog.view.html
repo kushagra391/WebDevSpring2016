@@ -5,7 +5,7 @@
         <input ng-model="model.searchKey"
                type="text" class="form-control" placeholder="Search catalog...">
                 <span class="input-group-btn">
-                    <button ng-click="model.searchCatalog(model.searchKey)"
+                    <button ng-click="model.searchCatalogResults(model.searchKey)"
                             class="btn btn-primary" type="button"><b>Go !</b></button></span>
     </div><!-- /input-group -->
 </div>
@@ -22,10 +22,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="course in model.courses" ng-click="model.redirectToCourse($index)">
-            <td>{{course.name}}</td>
-            <td>{{course.description}}</td>
-            <td>{{course.likes}}</td>
+        <tr ng-repeat="course in model.courses" >
+            <td ng-click="model.redirectToCourse($index)">{{course.name}}</td>
+            <td ng-click="model.redirectToCourse($index)">{{course.description}}</td>
+            <td ng-click="model.redirectToCourse($index)">{{course.likes}}</td>
+            <td><button ng-click="model.addCourse($index)" class="btn btn-primary">+</button></td>
         </tr>
 
         </tbody>
