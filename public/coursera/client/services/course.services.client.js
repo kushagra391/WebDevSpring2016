@@ -41,7 +41,8 @@
             ],
 
             findCourseById: findCourseById,
-            searchCourseByQueryString: searchCourseByQueryString
+            searchCourseByQueryString: searchCourseByQueryString,
+            addVideoToCourse: addVideoToCourse
         };
 
         return model;
@@ -90,6 +91,21 @@
             }
 
             return results;
+        }
+
+        function addVideoToCourse(newVideo, courseId, userId) {
+
+            console.log("CourseController: adding video to course");
+
+            for (var i in model.courses) {
+                var course = model.courses[i];
+
+                if (course._id == courseId) {
+                    course.videos.push(newVideo);
+
+                    // console.log(JSON.stringify(model.courses));
+                }
+            }
         }
 
     }
