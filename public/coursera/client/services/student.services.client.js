@@ -13,8 +13,8 @@
                 {
                     "_id" : "101",
                     "name" : "Kushagra",
-                    "username" : "kv391",
-                    "password" : "123",
+                    "username" : "kv",
+                    "password" : "kv",
                     "courses_registerd" : [CourseService.courses[0], CourseService.courses[2]]
                 },
                 {

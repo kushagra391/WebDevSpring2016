@@ -12,21 +12,21 @@
             developers: [
                 {
                     "_id": "501",
-                    "name": "Sharad",
+                    "name": "Sharad Prakash",
                     "username": "sp",
                     "password": "sp",
                     "courses_created": [CourseService.courses[0]]
                 },
                 {
                     "_id": "502",
-                    "name": "Manish",
+                    "name": "Manish Anand",
                     "username": "ma",
                     "password": "ma",
                     "courses_created": [CourseService.courses[2], CourseService.courses[3]]
                 },
                 {
                     "_id": "503",
-                    "name": "Yudhistra",
+                    "name": "Yudhistra Pathak",
                     "username": "yp",
                     "password": "yp",
                     "courses_created": [CourseService.courses[1]]

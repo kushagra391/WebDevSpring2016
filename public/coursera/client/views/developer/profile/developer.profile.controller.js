@@ -9,7 +9,8 @@
     function DeveloperProfileController($routeParams, $location, DeveloperService) {
         var vm = this;
         console.log("UserID: " + $routeParams.profileId);
-
+        
+        vm.developer = DeveloperService.getCurrentUser();
         vm.courses = DeveloperService.getCurrentUser().courses_created;
         populateCourseURL();
         console.log("URLed courses: " + JSON.stringify(vm.courses));

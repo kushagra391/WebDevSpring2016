@@ -1,0 +1,33 @@
+<h3>Search Catalog: <i>{{model.searchKey}}</i></h3>
+
+<div class="col-sm-6 col-md-6 col-lg-6 search-mid">
+    <div class="input-group">
+        <input ng-model="model.searchKey"
+               type="text" class="form-control" placeholder="Search catalog...">
+                <span class="input-group-btn">
+                    <button ng-click="model.searchCatalog(model.searchKey)"
+                            class="btn btn-primary" type="button"><b>Go !</b></button></span>
+    </div><!-- /input-group -->
+</div>
+
+<h3>Search Results</h3>
+<div class="col-lg-8 col-lg-offset-2">
+
+    <table class="table table-striped table-hover search-padding">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Likes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="course in model.courses" ng-click="model.redirectToCourse($index)">
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.likes}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
