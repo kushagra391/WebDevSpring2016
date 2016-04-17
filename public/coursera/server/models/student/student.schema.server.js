@@ -6,6 +6,7 @@ module.exports = function (mongoose) {
         name: String,
         username: String,
         password: String,
+        // courses_registerd: [{ type : mongoose.Types.ObjectId}]
         courses_registerd: [String]
     }, {collection: 'student'});
 

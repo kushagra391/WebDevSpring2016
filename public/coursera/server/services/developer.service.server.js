@@ -1,4 +1,4 @@
-module.exports = function (app, studentModel, developerModel) {
+module.exports = function (app, studentModel, developerModel, courseModel) {
 
     "use strict";
 
@@ -8,8 +8,7 @@ module.exports = function (app, studentModel, developerModel) {
     app.post("/api/coursera/developer/login", findUserByCredentials);                                   // OK
 
     app.post("/api/coursera/developer/:developerId/course", addCourseForDeveloper);                     // OK
-    app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // OK
-
+    app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // 
 
     function findDeveloperById(req, res) {
         var developerId = req.params.developerId;
@@ -80,17 +79,29 @@ module.exports = function (app, studentModel, developerModel) {
         console.log("   > DeveloperID: " + developerId);
         console.log("   > newCourse: " + JSON.stringify(newCourse));
 
-        developerModel
-            .findDeveloperById(developerId)
+        // add course
+        // add courseId to developer
+
+        courseModel
+            .createNewCourse(newCourse)
             .then(
-                function (developer) {
-                    console.log("Developer Found: " + JSON.stringify(developer));
+                function (course) {
 
                     developerModel
-                        .addCourseForDeveloper(developer, newCourse)
+                        .findDeveloperById(developerId)
                         .then(
-                            function (doc) {
-                                res.json(doc);
+                            function (developer) {
+                                console.log("Pushing course");
+                                developerModel
+                                    .addCourseForDeveloper(developer, course._id)
+                                    .then(
+                                        function (developer) {
+                                            res.json(developer);
+                                        },
+                                        function (err) {
+                                            res.json(err);
+                                        }
+                                    );
                             },
                             function (err) {
                                 res.json(err);
@@ -102,6 +113,7 @@ module.exports = function (app, studentModel, developerModel) {
                 }
             );
     }
+
 
     function removeCourseByIdForDeveloper(req, res) {
 

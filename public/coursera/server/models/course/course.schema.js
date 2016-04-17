@@ -1,15 +1,17 @@
 module.exports = function (mongoose) {
-
+    
+    
+    // TODO: define video schema, pull it out
     var CourseSchema = mongoose.Schema({
         name: String,
         description: String,
         likes: Number,
-        videos: {
+        videos: [{
             title: String,
             description: String,
             imgUrl: String,
             youtubeId: String
-        }
+        }]
     },  {collection : 'course'});
     
     return CourseSchema;

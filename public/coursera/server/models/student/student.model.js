@@ -1,4 +1,4 @@
-module.exports = function (db, mongoose) {
+module.exports = function (mongoose) {
 
     "use strict";
 
@@ -38,13 +38,31 @@ module.exports = function (db, mongoose) {
         return StudentModel.findById(userId);
     }
 
-    function addCourseToStudent(studentId, newCourse) {
+    function addCourseToStudent(student, newCourseId) {
 
+        var courses = student.courses_registerd;
 
+        console.log("student:" + JSON.stringify(student));
+        console.log("courses:" + JSON.stringify(courses));
+        console.log("newCourseId: " + newCourseId);
+
+        courses.push(mongoose.Types.ObjectId(newCourseId));
+
+        return student.save();
     }
 
-    function removeCourseToStudent() {
-
+    function removeCourseToStudent(studentId, courseId) {
+        var student = StudentModel.findById(studentId);
+        var courses = student.courses_registerd;
+        
+        for (var i in courses) {
+            var course = courses[i];
+            if (course._id == courseId) {
+                courses.splice(i, 1);
+            }
+        }
+        
+        return student.save();
     }
 
 };

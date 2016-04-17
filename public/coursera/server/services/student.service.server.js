@@ -1,4 +1,4 @@
-module.exports = function (app, studentModel, developerModel) {
+module.exports = function (app, studentModel, developerModel, courseModel) {
 
     "use strict";
 
@@ -8,8 +8,8 @@ module.exports = function (app, studentModel, developerModel) {
 
     app.post("/api/coursera/student/login", findUserByCredentials);                                 // OK
 
-    app.post("/api/coursera/student/:studentId/course", addCourseToStudent);
-    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseToStudent);
+    app.get("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // --
+    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseToStudent);         // --
 
     function createStudent(req, res) {
         console.log(">> createStudent");
@@ -74,19 +74,31 @@ module.exports = function (app, studentModel, developerModel) {
                 }
             );
     }
-    
+
     // TODO: fix needed
     function addCourseToStudent(req, res) {
         console.log(">> addCourseToStudent");
 
         var studentId = req.params.studentId;
-        var newCourse = req.body;
+        var newCourseId = req.params.courseId;
+
+        console.log("studentId: " + studentId);
+        console.log("newCourseId: " + newCourseId);
 
         studentModel
-            .addCourseToStudent(studentId, newCourse)
+            .findStudentById(studentId)
             .then(
                 function (student) {
-                    res.json(student);
+                    studentModel
+                        .addCourseToStudent(student, newCourseId)
+                        .then(
+                            function (student) {
+                                res.json(student);
+                            },
+                            function (err) {
+                                res.json(err);
+                            }
+                        );
                 },
                 function (err) {
                     res.json(err);
@@ -100,8 +112,18 @@ module.exports = function (app, studentModel, developerModel) {
         console.log(">> removeCourseToStudent");
 
         var studentId = req.params.studentId;
-        var newCourse = req.params.courseId;
+        var courseId = req.params.courseId;
 
+        studentModel
+            .removeCourseToStudent(studentId, courseId)
+            .then(
+                function (student) {
+                    res.json(student);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
     }
 
 };

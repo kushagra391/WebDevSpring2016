@@ -37,10 +37,17 @@ module.exports = function (mongoose) {
         return DeveloperModel.find({username: username, password: password});
     }
 
-    function addCourseForDeveloper(developer, newCourse) {
+    function addCourseForDeveloper(developer, newCourseId) {
+        console.log("addCourseForDeveloper");
         var courses = developer.courses_created;
+        console.log("developer: " + JSON.stringify(developer));
+        console.log("courses: " + courses);
+        console.log("newCourseId: " + newCourseId);
 
-        courses.push(newCourse);
+        // courses.push(newCourse);
+        courses.push(mongoose.Types.ObjectId(newCourseId));
+
+        console.log("returning...");
         return developer.save();
     }
 
