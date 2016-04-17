@@ -53,11 +53,15 @@ module.exports = function (mongoose) {
 
     function removeCourseForDeveloper(developer, courseId) {
         console.log("CourseID: " + courseId);
+        // console.log("Developer: "+ developer);
+
         var courses = developer.courses_created;
+        console.log(">> courses: " + JSON.stringify(courses));
         for (var i in courses) {
             var course = courses[i];
+            console.log(i + "--> " + course);
 
-            if (course._id == courseId) {
+            if (course == courseId) {
                 console.log("++ Course Spliced: " + course._id);
                 courses.splice(i, 1);
             }

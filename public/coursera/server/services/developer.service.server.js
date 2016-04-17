@@ -8,7 +8,7 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.post("/api/coursera/developer/login", findUserByCredentials);                                   // OK
 
     app.post("/api/coursera/developer/:developerId/course", addCourseForDeveloper);                     // OK
-    app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // 
+    app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // OK
 
     function findDeveloperById(req, res) {
         var developerId = req.params.developerId;
@@ -114,7 +114,6 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
             );
     }
 
-
     function removeCourseByIdForDeveloper(req, res) {
 
         var developerId = req.params.developerId;
@@ -124,23 +123,43 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
             .findDeveloperById(developerId)
             .then(
                 function (developer) {
-
                     developerModel
                         .removeCourseForDeveloper(developer, courseId)
                         .then(
-                            function (doc) {
-                                res.json(doc);
+                            function (developer) {
+                                // remove course entry from CourseModel
+
+                                courseModel
+                                    .findCourseById(courseId)
+                                    .then(
+                                        function (course) {
+                                            console.log("Course located, deleting it");
+                                            courseModel
+                                                .deleteCourse(course)
+                                                .then(
+                                                    function () {
+                                                        // course deleted
+                                                        res.json(developer);
+                                                    },
+                                                    function (err) {
+                                                        res.json(err);
+                                                    }
+                                                );
+                                        },
+                                        function (err) {
+                                            res.json(err);
+                                        }
+                                    );
                             },
                             function (err) {
                                 res.json(err);
                             }
                         );
-
                 },
                 function (err) {
                     res.json(err);
                 }
-            )
+            );
 
     }
 

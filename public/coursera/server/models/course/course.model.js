@@ -6,19 +6,20 @@ module.exports = function (mongoose) {
     var CourseModel = mongoose.model('Course', CourseSchema);
 
     var api = {
-        createNewCourse : createNewCourse,
-        findAllCourses : findAllCourses,
-        findCourseById : findCourseById,
-        addVideoToCourse : addVideoToCourse,
-        removeVideoFromCourse : removeVideoFromCourse
-        
+        createNewCourse: createNewCourse,
+        findAllCourses: findAllCourses,
+        findCourseById: findCourseById,
+        addVideoToCourse: addVideoToCourse,
+        removeVideoFromCourse: removeVideoFromCourse,
+        deleteCourse: deleteCourse
+
     };
     return api;
-    
+
     function createNewCourse(newCourse) {
         return CourseModel.create(newCourse);
     }
-    
+
     function findAllCourses() {
         return CourseModel.find();
     }
@@ -40,7 +41,7 @@ module.exports = function (mongoose) {
         var videos = course.videos;
 
         for (var i in videos) {
-            var content  = videos[i];
+            var content = videos[i];
             if (content._id == contentId) {
                 videos.splice(i, 1);
             }
@@ -48,5 +49,8 @@ module.exports = function (mongoose) {
 
         return course.save();
     }
-   
+
+    function deleteCourse(course) {
+        return course.remove();
+    }
 };

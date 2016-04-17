@@ -7,7 +7,7 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.post("/api/coursera/course/:courseId", addVideoToCourse);                               // OK
 
     app.delete("/api/coursera/course/:courseId/content/:contentId", deleteVideoByIdFromCourse); // OK
-
+    
     function findAllCourses(req, res) {
         console.log(">> findAllCourses");
 
