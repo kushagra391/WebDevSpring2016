@@ -12,7 +12,7 @@ module.exports = function (db, mongoose) {
         findAllStudents: findAllStudents,
 
         findUserByCredentials: findUserByCredentials,
-        findUserById: findUserById,
+        findStudentById: findStudentById,
 
         addCourseToStudent: addCourseToStudent,
         removeCourseToStudent: removeCourseToStudent
@@ -34,7 +34,7 @@ module.exports = function (db, mongoose) {
         return StudentModel.find({username: username, password: password});
     }
 
-    function findUserById(userId) {
+    function findStudentById(userId) {
         return StudentModel.findById(userId);
     }
 

@@ -2,11 +2,11 @@ module.exports = function (app, studentModel, developerModel) {
 
     "use strict";
 
-    app.post("/api/coursera/student", createStudent);                                               // OK
     app.get("/api/coursera/student/all", findAllStudents);                                          // OK
+    app.get("/api/coursera/student/:id", findStudentById);                                          // OK
+    app.post("/api/coursera/student", createStudent);                                               // OK
 
     app.post("/api/coursera/student/login", findUserByCredentials);                                 // OK
-    app.get("/api/coursera/student/:id", findUserById);                                             // OK
 
     app.post("/api/coursera/student/:studentId/course", addCourseToStudent);
     app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseToStudent);
@@ -59,12 +59,12 @@ module.exports = function (app, studentModel, developerModel) {
 
     }
 
-    function findUserById(req, res) {
+    function findStudentById(req, res) {
         console.log(">> findUserById");
 
         var userid = req.params.id;
         studentModel
-            .findUserById(userid)
+            .findStudentById(userid)
             .then(
                 function (doc) {
                     res.json(doc);

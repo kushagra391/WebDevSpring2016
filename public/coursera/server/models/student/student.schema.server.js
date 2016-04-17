@@ -6,7 +6,7 @@ module.exports = function (mongoose) {
         name: String,
         username: String,
         password: String,
-        courses_registerd: [CourseSchema]
+        courses_registerd: [String]
     }, {collection: 'student'});
 
     return StudentSchema;
