@@ -46,7 +46,8 @@ module.exports = function (mongoose) {
         console.log("courses:" + JSON.stringify(courses));
         console.log("newCourseId: " + newCourseId);
 
-        courses.push(mongoose.Types.ObjectId(newCourseId));
+        // courses.push(mongoose.Types.ObjectId(newCourseId));
+        courses.push(newCourseId);
 
         return student.save();
     }
@@ -54,14 +55,14 @@ module.exports = function (mongoose) {
     function removeCourseToStudent(studentId, courseId) {
         var student = StudentModel.findById(studentId);
         var courses = student.courses_registerd;
-        
+
         for (var i in courses) {
             var course = courses[i];
             if (course._id == courseId) {
                 courses.splice(i, 1);
             }
         }
-        
+
         return student.save();
     }
 
