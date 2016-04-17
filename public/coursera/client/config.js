@@ -48,6 +48,11 @@
                 controller: "CourseController",
                 controllerAs: "model"
             })
+            .when("/course/:courseId/content/:contentIndex", {
+                templateUrl: "views/course/contentPage/content.view.html",
+                controller: "ContentController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

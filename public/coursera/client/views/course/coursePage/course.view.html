@@ -11,5 +11,9 @@
     <h3>{{model.course.name}}</h3>
     <h5>{{model.course.description}}</h5>
     <h4>{{model.course.likes}}</h4>
-    <h5 ng-repeat="video in model.course.videos">{{video}}</h5>
+    <div ng-repeat="video in model.course.videos">
+        <!--<h5>{{video}}</h5>-->
+        <h4 ng-click="model.redirectToContent($index)"><a href="#">{{video.title}}</a></h4>
+        <h5>{{video.description}}</h5>
+    </div>
 

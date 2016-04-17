@@ -32,6 +32,8 @@
 
         init();
 
+        /********************* Scope Methods ********************/
+
         function addVideo(courseIndex, videoIndex) {
 
             var videoItem = vm.data.items[videoIndex];
@@ -44,8 +46,10 @@
             if (videotype == TYPE_VIDEO) {
 
                 var video = {
+                    title: videoItem.snippet.title,
+                    description: videoItem.snippet.description,
                     imgUrl: videoItem.snippet.thumbnails.default.url,
-                    videoUrl: videoItem.id.videoId
+                    youtubeId: videoItem.id.videoId
                 };
 
                 // add video to course
@@ -92,21 +96,6 @@
             }
         }
 
-        function getVideoType(videoItem) {
-            var typeString = videoItem.id.kind;
-            console.log("typeString: " + typeString);
-
-            if (typeString.toLowerCase().indexOf(TYPE_PLAYLIST) != -1) {
-                return TYPE_PLAYLIST;
-            }
-            else if (typeString.toLowerCase().indexOf(TYPE_VIDEO) != -1) {
-                return TYPE_VIDEO;
-            }
-            else
-                return null;
-
-        }
-
         function parseVideosFromPlaylist(videoItem, courseId) {
 
             var playlistId = videoItem.id.playlistId;
@@ -124,18 +113,21 @@
                     var playlistVideoItem = videos[i];
                     // console.log(JSON.stringify(playlistVideoItem));
                     var video = {
+                        title: playlistVideoItem.snippet.title,
+                        description: playlistVideoItem.snippet.description,
                         imgUrl: playlistVideoItem.snippet.thumbnails.default.url,
-                        videoUrl: playlistVideoItem.snippet.resourceId.videoId
+                        youtubeId: playlistVideoItem.snippet.resourceId.videoId
                     };
 
                     CourseService.addVideoToCourse(video, courseId, vm.developer._id);
                     console.log(i + " >> " + "Adding " + playlistVideoItem.snippet.title + "to courseID: " + courseId);
                 }
 
-
                 return response;
             }
         }
+
+        /********************* Helper Methods ********************/
 
         function getPlaylistUrl(playlistId) {
 
@@ -144,6 +136,20 @@
                 playlistId + "&key=" + api_key;
         }
 
+        function getVideoType(videoItem) {
+            var typeString = videoItem.id.kind;
+            console.log("typeString: " + typeString);
+
+            if (typeString.toLowerCase().indexOf(TYPE_PLAYLIST) != -1) {
+                return TYPE_PLAYLIST;
+            }
+            else if (typeString.toLowerCase().indexOf(TYPE_VIDEO) != -1) {
+                return TYPE_VIDEO;
+            }
+            else
+                return null;
+
+        }
     }
 
 })();

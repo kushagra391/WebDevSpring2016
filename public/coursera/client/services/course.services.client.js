@@ -29,7 +29,8 @@
                     "name": "Chemistry",
                     "description": "Physics Science Aenean ut pellentesque purus. Integer nec ex hendrerit, laoreet felis a, fermentum nisi. Aliquam erat volutpat. Duis bibendum, erat vel varius dignissim, lacus magna scelerisque urna, a egestas sem odio non nulla. Suspendisse ultrices pulvinar nibh. Etiam vehicula tincidunt imperdiet. Etiam sit amet bibendum orci. Sed convallis urna aliquet, molestie odio a, volutpat augue. Cras sollicitudin vitae purus sed accumsan. Integer id augue lobortis mi ullamcorper cursus. Duis et consectetur tellus. Nam ut accumsan neque, non pretium nibh. Cras a consectetur odio, a rhoncus sem. Duis egestas urna eu feugiat lacinia.",
                     "likes": 2,
-                    "videos": ["v1", "v2", "v3", "v4", "v5", "v6"]
+                    "videos": []
+                    // "videos": ["v1", "v2", "v3", "v4", "v5", "v6"]
                 },
                 {
                     "_id": "4",

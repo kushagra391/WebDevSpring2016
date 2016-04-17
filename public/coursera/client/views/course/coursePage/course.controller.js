@@ -6,11 +6,13 @@
         .module('testApp')
         .controller('CourseController', CourseController);
 
-    function CourseController($routeParams, StudentService, CourseService) {
+    function CourseController($routeParams, $location, StudentService, CourseService) {
         var vm = this;
 
         function init() {
             console.log("Hello from CourseController: " + $routeParams.courseId);
+
+            vm.$location = $location;
 
             vm.course = CourseService.findCourseById($routeParams.courseId);
             vm.name = vm.course.name;
@@ -21,9 +23,16 @@
 
             vm.addCourse = addCourse;
             vm.removeCourse = removeCourse;
+            vm.redirectToContent = redirectToContent;
         }
 
         init();
+
+        function redirectToContent(videoIndex) {
+            var contentUrl = "/course/" + vm.course._id + "/content/" + videoIndex;
+            console.log("Redirecting to url: " + contentUrl);
+            $location.url(contentUrl);
+        }
 
         function addCourse() {
             var courseId = $routeParams.courseId;
@@ -40,7 +49,6 @@
             console.log('Add courseID: ' + courseId + " to studentID: " + studentId);
             StudentService.removeCourseToStudent(courseId, studentId);
         }
-        
 
     }
 
