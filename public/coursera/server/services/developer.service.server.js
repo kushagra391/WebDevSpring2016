@@ -2,6 +2,9 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     "use strict";
 
+    app.get("/api/coursera/developer/loggedin", loggedIn);
+    app.post("/api/coursera/developer/logout", logout);
+
     app.get('/api/coursera/developer/all', findAllDevelopers);                                          // OK
     app.get('/api/coursera/developer/:developerId', findDeveloperById);
     app.post("/api/coursera/developer", createDeveloper);                                               // OK
@@ -11,6 +14,18 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // OK
 
     app.delete("/api/coursera/developer/:developerId", deleteDeveloperById);                            // OK
+
+    function loggedIn(req, res) {
+        res.json(req.session.currentDeveloper);
+    }
+
+    function logout(req, res) {
+        console.log("Session Destroyed !");
+
+        req.session.destroy();
+        res.send(200);
+    }
+
 
     function findDeveloperById(req, res) {
         var developerId = req.params.developerId;
@@ -64,6 +79,9 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
             .findUserByCredentials(credentials)
             .then(
                 function (developer) {
+                    req.session.currentDeveloper = developer;
+                    req.session.save();
+                    console.log("Storing to session " + req.session.currentDeveloper);
                     res.json(developer);
                 },
                 function (err) {

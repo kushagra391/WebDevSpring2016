@@ -29,12 +29,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer());
 
 // Session / Cookies
-app.use(cookieParser());
 app.use(session({
-    secret: "secrettext",
-    saveUninitialized: true,
-    resave: true
+    secret: "secrettext"
+
 }));
+app.use(cookieParser());
+
+// app.use(session({
+//     secret: "secrettext",
+//     saveUninitialized: true,
+//     resave: true
+// }));
 
 // Server listen + ip address set
 app.use(express.static(__dirname + '/public'));

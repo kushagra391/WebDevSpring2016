@@ -13,16 +13,24 @@
         function init() {
             console.log("UserID: " + $routeParams.profileId);
             vm.courses = [];
-            vm.developer = DeveloperService.getCurrentUser();
 
             vm.$location = $location;
             vm.searchKey = "";
             vm.searchYoutube = searchYoutube;
 
-            populateDeveloperCourses();
+            DeveloperService
+                .getCurrentUser()
+                .then(renderCurrentState);
+
         }
 
         init();
+
+        function renderCurrentState(response) {
+            vm.developer = response.data;
+
+            populateDeveloperCourses();
+        }
 
         function searchYoutube(searchKey) {
             console.log("Would search for :" + searchKey);
@@ -31,7 +39,7 @@
 
         function populateDeveloperCourses() {
 
-            var developer = DeveloperService.getCurrentUser();
+            var developer = vm.developer;
             var courseIds = developer.courses_created;
 
             for (var i in courseIds) {

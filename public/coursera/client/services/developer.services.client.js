@@ -33,6 +33,8 @@
                 }
             ],
 
+            logout : logout,
+
             createDeveloper: createDeveloper,
             findUserByCredentials: findUserByCredentials,
             getCurrentUser: getCurrentUser,
@@ -40,6 +42,10 @@
         };
 
         return model;
+
+        function logout() {
+            return $http.post("/api/coursera/logout");
+        }
 
         function createDeveloper(newDeveloper) {
             return $http.post('/api/coursera/developer', newDeveloper);
@@ -50,7 +56,7 @@
         }
 
         function getCurrentUser() {
-            return $rootScope.currentUser;
+            return $http.get("/api/coursera/developer/loggedin");
         }
 
         function setCurrentUser(user) {

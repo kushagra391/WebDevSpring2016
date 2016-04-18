@@ -34,6 +34,7 @@
             ],
 
             createStudent: createStudent,
+            logout : logout,
 
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
@@ -51,6 +52,10 @@
             return $http.post("/api/coursera/student", student);
         }
 
+        function logout() {
+            return $http.post("/api/coursera/student/logout");
+        }
+
         function findUserById(userId) {
 
             for (var i in model.students) {
@@ -65,22 +70,14 @@
 
         function findUserByCredentials(credential) {
 
-            var username = credential.username;
-            var password = credential.password;
+            return $http.post("/api/coursera/student/login", credential);
 
-            for (var i in model.students) {
-                var student = model.students[i];
-
-                if (student.username == username && student.password == password) {
-                    return student;
-                }
-            }
-
-            return null;
         }
 
         function getCurrentUser() {
-            return $rootScope.currentUser;
+            // return $rootScope.currentUser;
+
+            return $http.get("/api/coursera/student/loggedin");
         }
 
         function setCurrentUser(user) {
