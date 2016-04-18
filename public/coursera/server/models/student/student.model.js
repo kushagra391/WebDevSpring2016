@@ -69,7 +69,7 @@ module.exports = function (mongoose) {
 
             var course = course[i];
 
-            if (course._id == courseId) {
+            if (course == courseId) {
                 courses.splice(i, 1);
             }
         }

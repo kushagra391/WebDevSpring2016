@@ -8,8 +8,8 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     app.post("/api/coursera/student/login", findUserByCredentials);                                 // OK
 
-    app.get("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // --
-    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseFromStudent);         // --
+    app.get("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // OK
+    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseFromStudent);       // OK
 
     app.delete("/api/coursera/student/:studentId", deleteStudentById);                              // OK
 
@@ -115,17 +115,17 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
         var studentId = req.params.studentId;
         var courseId = req.params.courseId;
-        
+
         studentModel
             .findStudentById(studentId)
             .then(
                 function (student) {
-                    
+
                     studentModel
                         .removeCourseFromStudent(student, courseId)
                         .then(
-                            function (student) {
-                                res.json(student)
+                            function (doc) {
+                                res.json(student);
                             },
                             function (err) {
                                 res.json(err);
