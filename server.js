@@ -4,6 +4,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
 // Mongoose + db
 var mongoose = require('mongoose');
 var connectionString = 'mongodb://127.0.0.1:27017/courseraDB';
@@ -24,6 +27,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Multer
 app.use(multer());
+
+// Session / Cookies
+app.use(cookieParser());
+app.use(session({secret: "secrettext"}));
 
 // Server listen + ip address set
 app.use(express.static(__dirname + '/public'));

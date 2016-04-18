@@ -2,6 +2,8 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     "use strict";
 
+    app.get("/api/coursera/loggedin", loggedIn);
+
     app.get("/api/coursera/student/all", findAllStudents);                                          // OK
     app.get("/api/coursera/student/:id", findStudentById);                                          // OK
     app.post("/api/coursera/student", createStudent);                                               // OK
@@ -12,6 +14,10 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseFromStudent);       // OK
 
     app.delete("/api/coursera/student/:studentId", deleteStudentById);                              // OK
+
+    function loggedIn(req, res) {
+        res.json(req.session.currentUser);
+    }
 
     function createStudent(req, res) {
         console.log(">> createStudent");
@@ -51,14 +57,14 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
         studentModel
             .findUserByCredentials(credentials)
             .then(
-                function (doc) {
-                    res.json(doc);
+                function (user) {
+                    req.session.currentUser = user;
+                    res.json(user);
                 },
                 function (err) {
                     res.json(err);
                 }
             );
-
     }
 
     function findStudentById(req, res) {
