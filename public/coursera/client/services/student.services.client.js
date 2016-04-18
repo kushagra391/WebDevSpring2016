@@ -9,29 +9,6 @@
     function StudentService($rootScope, $http, CourseService) {
 
         var model = {
-            students: [
-                {
-                    "_id": "101",
-                    "name": "Kushagra",
-                    "username": "kv",
-                    "password": "kv",
-                    "courses_registerd": [CourseService.courses[0], CourseService.courses[2]]
-                },
-                {
-                    "_id": "202",
-                    "name": "Nikhil",
-                    "username": "nikhil34",
-                    "password": "234",
-                    "courses_registerd": [CourseService.courses[1], CourseService.courses[2], CourseService.courses[3]]
-                },
-                {
-                    "_id": "303",
-                    "name": "Bhatta",
-                    "username": "bhatta21",
-                    "password": "523",
-                    "courses_registerd": [CourseService.courses[0], CourseService.courses[3]]
-                }
-            ],
 
             createStudent: createStudent,
             logout : logout,
