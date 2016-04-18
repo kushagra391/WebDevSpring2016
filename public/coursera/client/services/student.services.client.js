@@ -6,7 +6,7 @@
         .module('testApp')
         .factory('StudentService', StudentService);
 
-    function StudentService($rootScope, CourseService) {
+    function StudentService($rootScope, $http, CourseService) {
 
         var model = {
             students: [
@@ -33,6 +33,8 @@
                 }
             ],
 
+            createStudent: createStudent,
+
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
 
@@ -40,10 +42,14 @@
             setCurrentUser: setCurrentUser,
 
             addCourseToStudent: addCourseToStudent,
-            removeCourseToStudent : removeCourseToStudent
+            removeCourseToStudent: removeCourseToStudent
         };
 
         return model;
+
+        function createStudent(student) {
+            return $http.post("/api/coursera/student", student);
+        }
 
         function findUserById(userId) {
 

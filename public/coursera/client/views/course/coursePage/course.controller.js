@@ -14,12 +14,9 @@
 
             vm.$location = $location;
 
-            vm.course = CourseService.findCourseById($routeParams.courseId);
-            vm.name = vm.course.name;
-            vm.description = vm.course.description;
-            vm.likes = vm.course.likes;
-            vm.videos = vm.course.videos;
-            console.log(JSON.stringify(vm.course));
+            CourseService
+                .findCourseById($routeParams.courseId)
+                .then(renderCourse);
 
             vm.addCourse = addCourse;
             vm.removeCourse = removeCourse;
@@ -27,6 +24,16 @@
         }
 
         init();
+
+        function renderCourse(response) {
+            vm.course = response.data;
+
+            vm.name = vm.course.name;
+            vm.description = vm.course.description;
+            vm.likes = vm.course.likes;
+            vm.videos = vm.course.videos;
+            // console.log(JSON.stringify(vm.course));
+        }
 
         function redirectToContent(videoIndex) {
             var contentUrl = "/course/" + vm.course._id + "/content/" + videoIndex;

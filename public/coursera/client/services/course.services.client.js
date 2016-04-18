@@ -51,16 +51,7 @@
         function findCourseById(courseId) {
 
             return $http.get("/api/coursera/course/" + courseId);
-
-            // for (var i in model.courses) {
-            //     if (model.courses[i]._id == courseId) {
-            //         console.log("Ids found for : " + courseId);
-            //         return model.courses[i];
-            //     }
-            // }
-            //
-            // console.log("No Ids found for : " + courseId);
-            // return null;
+           
         }
 
         function searchCourseByQueryString(searchKey) {
@@ -101,17 +92,6 @@
 
             return $http.post("/api/coursera/course/" + courseId, newVideo);
 
-            // console.log("CourseController: adding video to course");
-            //
-            // for (var i in model.courses) {
-            //     var course = model.courses[i];
-            //
-            //     if (course._id == courseId) {
-            //         course.videos.push(newVideo);
-            //
-            //         // console.log(JSON.stringify(model.courses));
-            //     }
-            // }
         }
 
     }

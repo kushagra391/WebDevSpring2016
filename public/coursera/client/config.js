@@ -13,6 +13,11 @@
                 controller: "HomeController",
                 controllerAs: "model"
             })
+            .when("/developerRegister", {
+                templateUrl: "views/developer/register/developer.register.view.html",
+                controller: "DeveloperRegisterController",
+                controllerAs: "model"
+            })
             .when("/developerLogin", {
                 templateUrl: "views/developer/login/developer.login.view.html",
                 controller: "DeveloperLoginController",
@@ -21,6 +26,11 @@
             .when("/developerProfile/:profileId", {
                 templateUrl: "views/developer/profile/developer.profile.view.html",
                 controller: "DeveloperProfileController",
+                controllerAs: "model"
+            })
+            .when("/studentRegister", {
+                templateUrl: "views/student/register/student.register.view.html",
+                controller: "StudentRegisterController",
                 controllerAs: "model"
             })
             .when("/studentLogin", {

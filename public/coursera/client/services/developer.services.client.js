@@ -33,6 +33,7 @@
                 }
             ],
 
+            createDeveloper: createDeveloper,
             findUserByCredentials: findUserByCredentials,
             getCurrentUser: getCurrentUser,
             setCurrentUser: setCurrentUser
@@ -40,28 +41,18 @@
 
         return model;
 
-        function findUserByCredentials(credential) {
-
-            return $http.post("/api/coursera/developer/login", credential);
-
-            // var username = credential.username;
-            // var password = credential.password;
-            //
-            // for (var i in model.developers) {
-            //     var developer = model.developers[i];
-            //
-            //     if (developer.username == username && developer.password == password) {
-            //         return developer;
-            //     }
-            // }
-            //
-            // return null;
+        function createDeveloper(newDeveloper) {
+            return $http.post('/api/coursera/developer', newDeveloper);
         }
-        
+
+        function findUserByCredentials(credential) {
+            return $http.post("/api/coursera/developer/login", credential);
+        }
+
         function getCurrentUser() {
             return $rootScope.currentUser;
         }
-        
+
         function setCurrentUser(user) {
             $rootScope.currentUser = user;
         }
