@@ -20,7 +20,27 @@
             vm.developer = DeveloperService.getCurrentUser();
             // only iff, user logged in
             if (vm.developer) {
-                vm.courses = vm.developer.courses_created;
+                vm.courses = [];
+                var courseIds = vm.developer.courses_created;
+
+                for (var i in courseIds) {
+
+                    var courseId = courseIds[i];
+                    CourseService
+                        .findCourseById(courseId)
+                        .then(
+                            function (response) {
+                                var course = response.data;
+                                var courseUrl = "#/course/" + course._id;
+                                course.url = courseUrl;
+                                vm.courses.push(course);
+                            },
+                            function (response) {
+                                console.log("Course not found for ID: " + courseId);
+                            }
+                        );
+                }
+
             }
 
             vm.searchKey = $routeParams.searchKey;
@@ -53,7 +73,16 @@
                 };
 
                 // add video to course
-                CourseService.addVideoToCourse(video, courseId, vm.developer._id);
+                CourseService
+                    .addVideoToCourse(video, courseId)
+                    .then(
+                        function (response) {
+                            console.log("Video added !");
+                        },
+                        function (response) {
+                            console.log("Video NOT added !");
+                        }
+                    );
 
                 // hide the add button
             }

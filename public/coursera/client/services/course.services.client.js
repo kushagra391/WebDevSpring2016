@@ -97,19 +97,21 @@
             return results;
         }
 
-        function addVideoToCourse(newVideo, courseId, userId) {
+        function addVideoToCourse(newVideo, courseId) {
 
-            console.log("CourseController: adding video to course");
+            return $http.post("/api/coursera/course/" + courseId, newVideo);
 
-            for (var i in model.courses) {
-                var course = model.courses[i];
-
-                if (course._id == courseId) {
-                    course.videos.push(newVideo);
-
-                    // console.log(JSON.stringify(model.courses));
-                }
-            }
+            // console.log("CourseController: adding video to course");
+            //
+            // for (var i in model.courses) {
+            //     var course = model.courses[i];
+            //
+            //     if (course._id == courseId) {
+            //         course.videos.push(newVideo);
+            //
+            //         // console.log(JSON.stringify(model.courses));
+            //     }
+            // }
         }
 
     }
