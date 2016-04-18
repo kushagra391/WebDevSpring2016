@@ -66,10 +66,11 @@ module.exports = function (mongoose) {
         var courses = student.courses_registerd;
 
         for (var i in courses) {
-
-            var course = course[i];
+            console.log(">> " + i);
+            var course = courses[i];
 
             if (course == courseId) {
+                console.log(">> " + i + " >> Match Found");
                 courses.splice(i, 1);
             }
         }

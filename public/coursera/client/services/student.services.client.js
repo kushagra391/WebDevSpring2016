@@ -11,7 +11,7 @@
         var model = {
 
             createStudent: createStudent,
-            logout : logout,
+            logout: logout,
 
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
@@ -20,7 +20,7 @@
             setCurrentUser: setCurrentUser,
 
             addCourseToStudent: addCourseToStudent,
-            removeCourseToStudent: removeCourseToStudent
+            removeCourseFromStudent: removeCourseFromStudent
         };
 
         return model;
@@ -61,26 +61,32 @@
             $rootScope.currentUser = user;
         }
 
-        function addCourseToStudent(courseId, studentId) {
+        function addCourseToStudent(studentId, courseId) {
 
-            var course = CourseService.findCourseById(courseId);
-            var student = findUserById(studentId);
+            // TODO: correctness measure (add only when the course is not already added)
 
-            var courses = student.courses_registerd;
-
-            courses.push(course); // save the new course
+            var url = "/api/coursera/student/" + studentId._id + "/course/" + courseId;
+            console.log(">> addCourseToStudent: " + url);
+            return $http.get(url);
 
         }
 
-        function removeCourseToStudent(courseId, studentId) {
-            var course = CourseService.findCourseById(courseId);
-            var student = findUserById(studentId);
+        function removeCourseFromStudent(studentId, courseId) {
 
-            var courses = student.courses_registerd;
+            // TODO: correctness measure
 
-            var courseIndex = findIndex(courses, course);
-            courses.splice(courseIndex, 1);
-            console.log("courseRemoved with index: " + courseIndex);
+            var url = "/api/coursera/student/" + studentId._id + "/course/" + courseId;
+            console.log(">> removeCourseFromStudent: " + url);
+            return $http.delete(url);
+
+            // var course = CourseService.findCourseById(courseId);
+            // var student = findUserById(studentId);
+            //
+            // var courses = student.courses_registerd;
+            //
+            // var courseIndex = findIndex(courses, course);
+            // courses.splice(courseIndex, 1);
+            // console.log("courseRemoved with index: " + courseIndex);
         }
 
         function findIndex(array, element) {

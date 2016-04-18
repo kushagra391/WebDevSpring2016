@@ -43,18 +43,57 @@
 
         function addCourse() {
             var courseId = $routeParams.courseId;
-            var studentId = StudentService.getCurrentUser()._id;
 
-            console.log('Add courseID: ' + courseId + " to studentID: " + studentId);
-            StudentService.addCourseToStudent(courseId, studentId);
+            StudentService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        var studentId = response.data;
+
+                        StudentService
+                            .addCourseToStudent(studentId, courseId)
+                            .then(
+                                function (response) {
+                                    // TODO: Notify, remove the add button
+                                    console.log('Course successfully added');
+                                },
+                                function (response) {
+                                    console.log('FATAL-2: Course successfully NOT added');
+                                }
+                            );
+                    },
+                    function (response) {
+                        console.log('FATAL-1: Course successfully NOT added');
+                    }
+                );
         }
 
         function removeCourse() {
-            var courseId = $routeParams.courseId;
-            var studentId = StudentService.getCurrentUser()._id;
 
-            console.log('Add courseID: ' + courseId + " to studentID: " + studentId);
-            StudentService.removeCourseToStudent(courseId, studentId);
+            var courseId = $routeParams.courseId;
+
+            StudentService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        var studentId = response.data;
+
+                        StudentService
+                            .removeCourseFromStudent(studentId, courseId)
+                            .then(
+                                function (response) {
+                                    // TODO: Notify, remove the add button
+                                    console.log('Course successfully removed');
+                                },
+                                function (response) {
+                                    console.log('FATAL-2: Course successfully NOT removed');
+                                }
+                            );
+                    },
+                    function (response) {
+                        console.log('FATAL-1: Course successfully NOT removed');
+                    }
+                );
         }
 
     }
