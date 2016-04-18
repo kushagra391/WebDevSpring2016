@@ -27,9 +27,22 @@
 
         function searchCatalogResults() {
             var searchkey = vm.searchKey;
-            vm.courses = CourseService.searchCourseByQueryString(searchkey);
 
-            $location.url("/searchCatalog/" + searchkey);
+            CourseService
+                .searchCourseByQueryString(searchkey)
+                .then(
+                    function (response) {
+
+                        vm.courses = response.data;
+                        console.log(JSON.stringify(vm.courses));
+
+                        $location.url("/searchCatalog/" + searchkey);
+
+                    },
+                    function (response) {
+                        console.log("FATAL: " + response.data);
+                    }
+                );
         }
 
         function redirectToCourse(index) {
