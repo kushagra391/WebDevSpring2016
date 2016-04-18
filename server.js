@@ -30,7 +30,11 @@ app.use(multer());
 
 // Session / Cookies
 app.use(cookieParser());
-app.use(session({secret: "secrettext"}));
+app.use(session({
+    secret: "secrettext",
+    saveUninitialized: true,
+    resave: true
+}));
 
 // Server listen + ip address set
 app.use(express.static(__dirname + '/public'));
