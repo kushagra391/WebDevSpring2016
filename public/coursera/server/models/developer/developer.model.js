@@ -13,8 +13,9 @@ module.exports = function (mongoose) {
         findUserByCredentials: findUserByCredentials,
 
         addCourseForDeveloper: addCourseForDeveloper,
-        removeCourseForDeveloper : removeCourseForDeveloper
+        removeCourseForDeveloper : removeCourseForDeveloper,
 
+        deleteDeveloperById : deleteDeveloperById
     };
     return api;
 
@@ -59,6 +60,14 @@ module.exports = function (mongoose) {
         }
 
         return developer.save();
+    }
+
+    function deleteDeveloperById(developerId) {
+
+        var developer = DeveloperModel.findById(developerId);
+
+        return developer.remove();
+
     }
 
 };

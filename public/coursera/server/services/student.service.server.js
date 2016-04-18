@@ -9,7 +9,9 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.post("/api/coursera/student/login", findUserByCredentials);                                 // OK
 
     app.get("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // --
-    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseToStudent);         // --
+    app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseFromStudent);         // --
+
+    app.delete("/api/coursera/student/:studentId", deleteStudentById);                              // OK
 
     function createStudent(req, res) {
         console.log(">> createStudent");
@@ -108,17 +110,43 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     }
 
     // TODO: fix needed
-    function removeCourseToStudent(req, res) {
-        console.log(">> removeCourseToStudent");
+    function removeCourseFromStudent(req, res) {
+        console.log(">> removeCourseFromStudent");
 
         var studentId = req.params.studentId;
         var courseId = req.params.courseId;
-
+        
         studentModel
-            .removeCourseToStudent(studentId, courseId)
+            .findStudentById(studentId)
             .then(
                 function (student) {
-                    res.json(student);
+                    
+                    studentModel
+                        .removeCourseFromStudent(student, courseId)
+                        .then(
+                            function (student) {
+                                res.json(student)
+                            },
+                            function (err) {
+                                res.json(err);
+                            }
+                        );
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
+    }
+
+    function deleteStudentById(req, res) {
+
+        var studentId = req.params.studentId;
+
+        studentModel
+            .deleteStudentById(studentId)
+            .then(
+                function (doc) {
+                    res.json(doc);
                 },
                 function (err) {
                     res.json(err);

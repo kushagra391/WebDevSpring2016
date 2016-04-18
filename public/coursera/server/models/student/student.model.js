@@ -15,7 +15,9 @@ module.exports = function (mongoose) {
         findStudentById: findStudentById,
 
         addCourseToStudent: addCourseToStudent,
-        removeCourseToStudent: removeCourseToStudent
+        removeCourseFromStudent: removeCourseFromStudent,
+
+        deleteStudentById: deleteStudentById
     };
     return api;
 
@@ -52,12 +54,21 @@ module.exports = function (mongoose) {
         return student.save();
     }
 
-    function removeCourseToStudent(studentId, courseId) {
+    function deleteStudentById(studentId) {
+
         var student = StudentModel.findById(studentId);
+
+        return student.remove();
+    }
+
+    function removeCourseFromStudent(student, courseId) {
+
         var courses = student.courses_registerd;
 
         for (var i in courses) {
-            var course = courses[i];
+
+            var course = course[i];
+
             if (course._id == courseId) {
                 courses.splice(i, 1);
             }

@@ -10,6 +10,8 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     app.post("/api/coursera/developer/:developerId/course", addCourseForDeveloper);                     // OK
     app.delete("/api/coursera/developer/:developerId/course/:courseId", removeCourseByIdForDeveloper);  // OK
 
+    app.delete("/api/coursera/developer/:developerId", deleteDeveloperById);                            // OK
+
     function findDeveloperById(req, res) {
         var developerId = req.params.developerId;
 
@@ -160,7 +162,23 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
                     res.json(err);
                 }
             );
+    }
 
+    function deleteDeveloperById(req, res) {
+
+        var developerId = req.params.developerId;
+
+        developerModel
+            .deleteDeveloperById(developerId)
+            .then(
+                function (doc) {
+                    console.log("Developer deleted successfully !");
+                    res.json(doc);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
     }
 
 };
