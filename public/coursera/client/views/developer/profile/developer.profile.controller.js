@@ -6,28 +6,52 @@
         .module('testApp')
         .controller('DeveloperProfileController', DeveloperProfileController);
 
-    function DeveloperProfileController($routeParams, $location, DeveloperService) {
+    function DeveloperProfileController($routeParams, $location, DeveloperService, CourseService) {
         var vm = this;
-        console.log("UserID: " + $routeParams.profileId);
-        
-        vm.developer = DeveloperService.getCurrentUser();
-        vm.courses = DeveloperService.getCurrentUser().courses_created;
-        populateCourseURL();
-        console.log("URLed courses: " + JSON.stringify(vm.courses));
+        vm.hello = "";
 
-        vm.$location = $location;
-        vm.searchKey = "";
-        vm.searchYoutube = searchYoutube;
+        function init() {
+            console.log("UserID: " + $routeParams.profileId);
+            vm.courses = [];
+            vm.developer = DeveloperService.getCurrentUser();
+
+            vm.$location = $location;
+            vm.searchKey = "";
+            vm.searchYoutube = searchYoutube;
+
+            populateDeveloperCourses();
+        }
+
+        init();
 
         function searchYoutube(searchKey) {
             console.log("Would search for :" + searchKey);
             $location.url('/searchYoutube/' + searchKey);
         }
 
-        function populateCourseURL() {
-            for (var i in vm.courses) {
-                var course = vm.courses[i];
-                course.url = "#/course/" + course._id;
+        function populateDeveloperCourses() {
+
+            var developer = DeveloperService.getCurrentUser();
+            var courseIds = developer.courses_created;
+
+            for (var i in courseIds) {
+
+                var courseId = courseIds[i];
+                CourseService
+                    .findCourseById(courseId)
+                    .then(
+                        function (response) {
+                            var course = response.data;
+
+                            var courseUrl = "#/course/" + course._id;
+                            course.url = courseUrl;
+
+                            vm.courses.push(course);
+                        },
+                        function (response) {
+                            console.log("Course not found for ID: " + courseId);
+                        }
+                    );
             }
         }
     }

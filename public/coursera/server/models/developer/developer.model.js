@@ -34,7 +34,7 @@ module.exports = function (mongoose) {
         var username = credentials.username;
         var password = credentials.password;
 
-        return DeveloperModel.find({username: username, password: password});
+        return DeveloperModel.findOne({username: username, password: password});
     }
 
     function addCourseForDeveloper(developer, newCourseId) {

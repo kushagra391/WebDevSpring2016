@@ -6,7 +6,7 @@
         .module('testApp')
         .factory('CourseService', CourseService);
 
-    function CourseService() {
+    function CourseService($http) {
 
         var model = {
             courses: [
@@ -49,15 +49,18 @@
         return model;
 
         function findCourseById(courseId) {
-            for (var i in model.courses) {
-                if (model.courses[i]._id == courseId) {
-                    console.log("Ids found for : " + courseId);
-                    return model.courses[i];
-                }
-            }
 
-            console.log("No Ids found for : " + courseId);
-            return null;
+            return $http.get("/api/coursera/course/" + courseId);
+
+            // for (var i in model.courses) {
+            //     if (model.courses[i]._id == courseId) {
+            //         console.log("Ids found for : " + courseId);
+            //         return model.courses[i];
+            //     }
+            // }
+            //
+            // console.log("No Ids found for : " + courseId);
+            // return null;
         }
 
         function searchCourseByQueryString(searchKey) {

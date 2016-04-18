@@ -6,7 +6,7 @@
         .module('testApp')
         .factory('DeveloperService', DeveloperService);
 
-    function DeveloperService($rootScope, CourseService) {
+    function DeveloperService($rootScope, $http, CourseService) {
 
         var model = {
             developers: [
@@ -42,18 +42,20 @@
 
         function findUserByCredentials(credential) {
 
-            var username = credential.username;
-            var password = credential.password;
+            return $http.post("/api/coursera/developer/login", credential);
 
-            for (var i in model.developers) {
-                var developer = model.developers[i];
-
-                if (developer.username == username && developer.password == password) {
-                    return developer;
-                }
-            }
-
-            return null;
+            // var username = credential.username;
+            // var password = credential.password;
+            //
+            // for (var i in model.developers) {
+            //     var developer = model.developers[i];
+            //
+            //     if (developer.username == username && developer.password == password) {
+            //         return developer;
+            //     }
+            // }
+            //
+            // return null;
         }
         
         function getCurrentUser() {

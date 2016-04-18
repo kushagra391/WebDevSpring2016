@@ -31,7 +31,7 @@ module.exports = function (mongoose) {
         var username = credentials.username;
         var password = credentials.password;
 
-        return StudentModel.find({username: username, password: password});
+        return StudentModel.findOne({username: username, password: password});
     }
 
     function findStudentById(userId) {

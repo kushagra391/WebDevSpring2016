@@ -15,16 +15,28 @@
         function login(user) {
             console.log("DeveloperLoginController: login()");
 
-            var newUser = DeveloperService.findUserByCredentials(user);
-            console.log("newUser: " + newUser);
-            if (newUser != null) {
-                var userId = newUser._id;
-                DeveloperService.setCurrentUser(newUser);
-                $location.url('/developerProfile/' + userId);
+            DeveloperService
+                .findUserByCredentials(user)
+                .then(loginSuccess, error);
+
+            function loginSuccess(response) {
+                var newUser = response.data;
+                if (newUser != null) {
+                    var userId = String(newUser._id);
+                    DeveloperService.setCurrentUser(newUser);
+                    $location.url('/developerProfile/' + userId);
+                }
+                else {
+                    vm.error = "user / password did not match";
+                }
             }
-            else {
+
+            function error(response) {
+                console.log(">> login: " + "something went wrong");
                 vm.error = "user / password did not match";
             }
+
+
         }
     }
 
