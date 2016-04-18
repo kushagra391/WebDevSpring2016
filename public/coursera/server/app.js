@@ -7,5 +7,6 @@ module.exports = function (app, db, mongoose) {
     var studentService = require('./services/student.service.server')(app, studentModel, developerModel, courseModel);
     var developerService = require('./services/developer.service.server')(app, studentModel, developerModel, courseModel);
     var courseService = require('./services/course.service.server')(app, studentModel, developerModel, courseModel);
+    var contentService = require('./services/content.service.server')(app, studentModel, developerModel, courseModel);
 
 };

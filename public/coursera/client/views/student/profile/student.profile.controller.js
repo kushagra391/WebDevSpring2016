@@ -25,6 +25,7 @@
 
         init();
 
+        /* ----------------------------------------------------------------------------------------- */
 
         function renderCurrentState(response) {
             vm.currentStudent = response.data;
@@ -37,25 +38,24 @@
         function populateStudentCourses() {
             console.log("Populating Student Courses...");
 
-            var courseIds = vm.currentStudent.courses_registerd;
-            for (var i in courseIds) {
-                var courseId = courseIds[i];
-                CourseService
-                    .findCourseById(courseId)
-                    .then(
-                        function (response) {
-                            var course = response.data;
+            var studentId = vm.currentStudent._id;
+
+            CourseService
+                .findAllCoursesByStudentId(studentId)
+                .then(
+                    function (response) {
+                        vm.courses = response.data;
+                        for (var i in vm.courses) {
+                            var course = vm.courses[i];
+                            console.log("CourseID: " + course._id);
                             var courseUrl = "#/course/" + course._id;
                             course.url = courseUrl;
-
-                            vm.courses.push(course);
-                            console.log("Course pushed: " + JSON.stringify(course));
-                        },
-                        function (response) {
-                            console.log("Course not found for ID: " + courseId);
                         }
-                    );
-            }
+                    },
+                    function (response) {
+                        console.log("Courses not retrieved");
+                    }
+                );
         }
 
         function logout() {

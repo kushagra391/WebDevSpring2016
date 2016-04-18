@@ -55,7 +55,19 @@
                             .then(
                                 function (response) {
                                     // TODO: Notify, remove the add button
-                                    console.log('Course successfully added');
+
+                                    var user = response.data;
+
+                                    StudentService
+                                        .updateCurrentUser(user)
+                                        .then(
+                                            function (response) {
+                                                console.log('Course successfully added');
+                                            },
+                                            function (response) {
+                                                console.log("FATAL: course not added!"  + response);
+                                            }
+                                        )
                                 },
                                 function (response) {
                                     console.log('FATAL-2: Course successfully NOT added');

@@ -4,6 +4,8 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     app.get("/api/coursera/student/loggedin", loggedIn);
     app.post("/api/coursera/student/logout", logout);
+    app.post("/api/coursera/student/update", updateSession);
+
 
     app.get("/api/coursera/student/all", findAllStudents);                                          // OK
     app.get("/api/coursera/student/:id", findStudentById);                                          // OK
@@ -11,7 +13,7 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     app.post("/api/coursera/student/login", findUserByCredentials);                                 // OK
 
-    app.get("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // OK
+    app.put("/api/coursera/student/:studentId/course/:courseId", addCourseToStudent);               // OK
     app.delete("/api/coursera/student/:studentId/course/:courseId", removeCourseFromStudent);       // OK
 
     app.delete("/api/coursera/student/:studentId", deleteStudentById);                              // OK
@@ -26,6 +28,13 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
         req.session.destroy();
         res.send(200);
+    }
+
+    function updateSession(req, res) {
+        var newUser = req.data;
+        req.session.currentStudent = newUser;
+
+        console.log("User Session Updated");
     }
 
     function createStudent(req, res) {

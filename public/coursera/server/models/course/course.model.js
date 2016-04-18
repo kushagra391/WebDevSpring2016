@@ -8,6 +8,7 @@ module.exports = function (mongoose) {
     var api = {
         createNewCourse: createNewCourse,
         findAllCourses: findAllCourses,
+        findAllCoursesByIDs: findAllCoursesByIDs,
         findCourseById: findCourseById,
         addVideoToCourse: addVideoToCourse,
         removeVideoFromCourse: removeVideoFromCourse,
@@ -20,7 +21,16 @@ module.exports = function (mongoose) {
         return CourseModel.create(newCourse);
     }
 
-    function findAllCourses() {
+    function findAllCoursesByIDs(courseIdsArray) {
+        return CourseModel
+            .find({
+                "_id": {
+                    $in: courseIdsArray.map(function (o) { return o; })
+                }
+            });
+    }
+
+    function findAllCourses(courseIds) {
         return CourseModel.find();
     }
 

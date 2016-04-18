@@ -6,7 +6,7 @@
         .module('testApp')
         .controller('DeveloperProfileController', DeveloperProfileController);
 
-    function DeveloperProfileController($routeParams, $location, DeveloperService, CourseService) {
+    function DeveloperProfileController($routeParams, $location, $rootScope, DeveloperService, CourseService) {
         var vm = this;
         vm.hello = "";
 
@@ -17,6 +17,7 @@
             vm.$location = $location;
             vm.searchKey = "";
             vm.searchYoutube = searchYoutube;
+            vm.startNewCourse = startNewCourse;
 
             DeveloperService
                 .getCurrentUser()
@@ -25,6 +26,21 @@
         }
 
         init();
+
+        function startNewCourse(newCourse) {
+            console.log("Starting new course.." + JSON.stringify(newCourse.name) + "devID: " + vm.developer._id);
+            DeveloperService
+                .addCourseForDeveloper(vm.developer._id, newCourse)
+                .then(
+                    function (response) {
+                        $location.url("/searchYoutube/" + newCourse.name);
+                    },
+                    function (response) {
+                        console.log("FATAL: " + response.data);
+                    }
+                );
+        }
+
 
         function renderCurrentState(response) {
             vm.developer = response.data;
@@ -39,28 +55,24 @@
 
         function populateDeveloperCourses() {
 
-            var developer = vm.developer;
-            var courseIds = developer.courses_created;
+            var developerId = vm.developer._id;
 
-            for (var i in courseIds) {
-
-                var courseId = courseIds[i];
-                CourseService
-                    .findCourseById(courseId)
-                    .then(
-                        function (response) {
-                            var course = response.data;
-
+            CourseService
+                .findAllCoursesByDeveloperId(developerId)
+                .then(
+                    function (response) {
+                        vm.courses = response.data;
+                        for (var i in vm.courses) {
+                            var course = vm.courses[i];
+                            console.log("CourseID: " + course._id);
                             var courseUrl = "#/course/" + course._id;
                             course.url = courseUrl;
-
-                            vm.courses.push(course);
-                        },
-                        function (response) {
-                            console.log("Course not found for ID: " + courseId);
                         }
-                    );
-            }
+                    },
+                    function (response) {
+                        console.log("Courses not retrieved");
+                    }
+                );
         }
     }
 

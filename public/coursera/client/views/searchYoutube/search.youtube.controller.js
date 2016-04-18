@@ -6,6 +6,8 @@
         .module('testApp')
         .controller('SearchYoutubeController', SearchYoutubeController);
 
+
+    // TODO: This must be a protected page
     function SearchYoutubeController($routeParams, $http, $location, DeveloperService, CourseService) {
         var vm = this;
 
@@ -77,6 +79,7 @@
                     .addVideoToCourse(video, courseId)
                     .then(
                         function (response) {
+
                             console.log("Video added !");
                         },
                         function (response) {

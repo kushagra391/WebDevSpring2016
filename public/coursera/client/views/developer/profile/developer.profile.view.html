@@ -1,11 +1,9 @@
 <h3>Developer Profile</h3>
 
-
 <div>
     <h4>Developer's Name: {{model.developer.name}}</h4>
     <h4>Developer's Username: {{model.developer.username}}</h4>
 </div>
-
 
 <h4>List of Courses</h4>
 <div ng-repeat="course in model.courses">
@@ -26,3 +24,63 @@
 <button ng-click="model.addNewCourse(newCourse)" class="btn btn-primary">Add Course</button>
 <button class="btn btn-warn">Import Playlist</button>
 <button class="btn btn-warn">Import Channel</button>
+
+<button class="btn btn-warning"
+        ng-click=""
+        data-toggle="modal" data-target="#newCourse">
+    <span class="glyphicon glyphicon-pencil"></span>
+</button>
+
+<!--Modal-->
+<div class="modal fade" id="newCourse">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create a New Course !</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Course Name: </label>
+                        <div class="col-sm-10">
+                            <input ng-model="newCourse.name"
+                                   type="text" class="form-control" placeholder="Enter a name for the course">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Course Description: </label>
+                        <div class="col-sm-10">
+                                <textarea ng-model="newCourse.description" class="form-control" rows="5" id="options"
+                                          placeholder="Enter a description"></textarea>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <div class='row'>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary btn-block pull-left" data-dismiss="modal">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button ng-click="model.startNewCourse(newCourse)"
+                                type="submit" class="btn btn-primary btn-block  pull-right" data-dismiss="modal">OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

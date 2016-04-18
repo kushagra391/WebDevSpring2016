@@ -15,7 +15,9 @@
             createDeveloper: createDeveloper,
             findUserByCredentials: findUserByCredentials,
             getCurrentUser: getCurrentUser,
-            setCurrentUser: setCurrentUser
+            setCurrentUser: setCurrentUser,
+
+            addCourseForDeveloper : addCourseForDeveloper
         };
 
         return model;
@@ -38,6 +40,14 @@
 
         function setCurrentUser(user) {
             $rootScope.currentUser = user;
+        }
+
+        function addCourseForDeveloper(developerId, newCourse) {
+            console.log(">> addCourseForDeveloper");
+            console.log("/api/coursera/developer/" + developerId + "/course");
+            console.log(JSON.stringify(newCourse));
+
+            return $http.post("/api/coursera/developer/" + developerId + "/course", newCourse);
         }
     }
 

@@ -12,13 +12,14 @@
 
             createStudent: createStudent,
             logout: logout,
-
+        
             findUserByCredentials: findUserByCredentials,
             findUserById: findUserById,
 
             getCurrentUser: getCurrentUser,
             setCurrentUser: setCurrentUser,
-
+            updateCurrentUser : updateCurrentUser,
+            
             addCourseToStudent: addCourseToStudent,
             removeCourseFromStudent: removeCourseFromStudent
         };
@@ -61,13 +62,17 @@
             $rootScope.currentUser = user;
         }
 
+        function updateCurrentUser(user) {
+            return $http.post("/api/coursera/student/update", user);
+        }
+        
         function addCourseToStudent(studentId, courseId) {
 
             // TODO: correctness measure (add only when the course is not already added)
 
             var url = "/api/coursera/student/" + studentId._id + "/course/" + courseId;
             console.log(">> addCourseToStudent: " + url);
-            return $http.get(url);
+            return $http.put(url);
 
         }
 
@@ -79,27 +84,7 @@
             console.log(">> removeCourseFromStudent: " + url);
             return $http.delete(url);
 
-            // var course = CourseService.findCourseById(courseId);
-            // var student = findUserById(studentId);
-            //
-            // var courses = student.courses_registerd;
-            //
-            // var courseIndex = findIndex(courses, course);
-            // courses.splice(courseIndex, 1);
-            // console.log("courseRemoved with index: " + courseIndex);
         }
-
-        function findIndex(array, element) {
-
-            for (var i in array) {
-                if (array[i] == element) {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
     }
 
 })();
