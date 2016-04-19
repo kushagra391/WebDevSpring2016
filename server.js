@@ -53,8 +53,8 @@ require('./public/experiments/examples/mongoDemo/server/app.js')(app, db, mongoo
 
 // require('./public/experiments/projectSnippets/modelTesting/server/app')(app, db, mongoose);         // modelTesting
 
-require('./public/coursera/server/app')(app, db, mongoose);         // modelTesting
-// require('./public/project/server/app')(app, db, mongoose);         // modelTesting
+// require('./public/coursera/server/app')(app, db, mongoose);         // modelTesting
+require('./public/project/server/app')(app, db, mongoose);         // modelTesting
 
 app.get("/", function (req, res) {
     res.json("Hello !");
