@@ -6,7 +6,6 @@
         .module('testApp')
         .controller('SearchYoutubeController', SearchYoutubeController);
 
-
     // TODO: This must be a protected page
     function SearchYoutubeController($routeParams, $http, $location, DeveloperService, CourseService) {
         var vm = this;
@@ -19,31 +18,36 @@
             console.log('Hello from SearchYoutubeController');
             console.log('Searching for :' + $routeParams.searchKey);
 
-            vm.developer = DeveloperService.getCurrentUser();
-            // only iff, user logged in
-            if (vm.developer) {
-                vm.courses = [];
-                var courseIds = vm.developer.courses_created;
+            DeveloperService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        var developer = response.data;
+                        vm.developer = response.data;
 
-                for (var i in courseIds) {
+                        if (developer != null) {
 
-                    var courseId = courseIds[i];
-                    CourseService
-                        .findCourseById(courseId)
-                        .then(
-                            function (response) {
-                                var course = response.data;
-                                var courseUrl = "#/course/" + course._id;
-                                course.url = courseUrl;
-                                vm.courses.push(course);
-                            },
-                            function (response) {
-                                console.log("Course not found for ID: " + courseId);
-                            }
-                        );
-                }
+                            var developerId = developer._id;
 
-            }
+                            CourseService
+                                .findAllCoursesByDeveloperId(developerId)
+                                .then(
+                                    function (response) {
+                                        vm.courses = response.data;
+
+                                        for (var i in vm.courses) {
+                                            var course = vm.courses[i];
+                                            course.url = "#/course/" + course._id;
+                                        }
+                                    },
+                                    function (response) {
+                                        console.log("Error: Courses not found");
+                                    }
+                                )
+
+                        }
+                    }
+                );
 
             vm.searchKey = $routeParams.searchKey;
             vm.searchYoutubeResults = searchYoutubeResults;

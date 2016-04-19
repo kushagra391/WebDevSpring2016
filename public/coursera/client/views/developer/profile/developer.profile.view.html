@@ -14,22 +14,28 @@
 <div class="col-sm-6 col-md-6 col-lg-6 search-mid">
     <div class="input-group">
         <input ng-model="model.searchKey"
-               type="text" class="form-control" placeholder="Search catalog...">
+               type="text" class="form-control" placeholder="Search Youtube...">
                 <span class="input-group-btn">
                     <button ng-click="model.searchYoutube(model.searchKey)"
                             class="btn btn-primary" type="button"><b>Go !</b></button></span>
     </div><!-- /input-group -->
 </div>
 
-<button ng-click="model.addNewCourse(newCourse)" class="btn btn-primary">Add Course</button>
-<button class="btn btn-warn">Import Playlist</button>
-<button class="btn btn-warn">Import Channel</button>
+<!--<button ng-click="model.addNewCourse(newCourse)" class="btn btn-primary">Add Course</button>-->
+<hr>
+<div class="row">
+    <button class="btn btn-warning"
+            ng-click=""
+            data-toggle="modal" data-target="#newCourse">Create New Course
+        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+    </button>
+</div>
 
-<button class="btn btn-warning"
-        ng-click=""
-        data-toggle="modal" data-target="#newCourse">
-    <span class="glyphicon glyphicon-pencil"></span>
-</button>
+<div class="row">
+    <button class="btn btn-warn">Import Playlist</button>
+    <button class="btn btn-warn">Import Channel</button>
+</div>
+
 
 <!--Modal-->
 <div class="modal fade" id="newCourse">

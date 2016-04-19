@@ -16,7 +16,6 @@
             vm.$location = $location;
             vm.searchKey = $routeParams.searchKey;
 
-            vm.addCourse = addCourse;
             vm.redirectToCourse = redirectToCourse;
             vm.searchCatalogResults = searchCatalogResults;
 
@@ -50,12 +49,6 @@
             console.log("Redirecting to: " + course.name);
             $location.url("/course/" + course._id);
         }
-
-        function addCourse() {
-            console.log("Adding course to student");
-
-        }
-
     }
 
 })();

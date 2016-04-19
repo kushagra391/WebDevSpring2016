@@ -1,12 +1,15 @@
 
     <h3>CoursePage</h3>
     <div class="row">
-        <button ng-click="model.addCourse()" class="btn btn-primary pull-right">Add Course</button>
+        <button ng-click="model.addCourse()" class="btn btn-default ">Add Course</button>
+        <button ng-click="model.removeCourse()" class="btn btn-default ">Remove Course</button>
     </div>
     <hr>
+
     <div class="row">
-        <button ng-click="model.removeCourse()" class="btn btn-danger pull-right">Remove Course</button>
+        <button ng-click="model.deleteCourse()" class="btn btn-danger pull-right">Delete Course</button>
     </div>
+
 
     <h3>{{model.course.name}}</h3>
     <h5>{{model.course.description}}</h5>

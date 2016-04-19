@@ -18,8 +18,7 @@
 
             getCurrentUser: getCurrentUser,
             setCurrentUser: setCurrentUser,
-            updateCurrentUser : updateCurrentUser,
-            
+
             addCourseToStudent: addCourseToStudent,
             removeCourseFromStudent: removeCourseFromStudent
         };
@@ -62,10 +61,6 @@
             $rootScope.currentUser = user;
         }
 
-        function updateCurrentUser(user) {
-            return $http.post("/api/coursera/student/update", user);
-        }
-        
         function addCourseToStudent(studentId, courseId) {
 
             // TODO: correctness measure (add only when the course is not already added)

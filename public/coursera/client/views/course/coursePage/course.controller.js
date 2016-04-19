@@ -6,7 +6,7 @@
         .module('testApp')
         .controller('CourseController', CourseController);
 
-    function CourseController($routeParams, $location, StudentService, CourseService) {
+    function CourseController($routeParams, $location, StudentService, DeveloperService, CourseService) {
         var vm = this;
 
         function init() {
@@ -18,12 +18,41 @@
                 .findCourseById($routeParams.courseId)
                 .then(renderCourse);
 
+            DeveloperService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        vm.developer = response.data;
+                    }
+                )
+
             vm.addCourse = addCourse;
             vm.removeCourse = removeCourse;
             vm.redirectToContent = redirectToContent;
+
+            vm.deleteCourse = deleteCourse;
         }
 
         init();
+
+        // TODO: only the course owner can delete a course
+        function deleteCourse() {
+
+            var courseId = $routeParams.courseId;
+            var developerId = vm.developer._id;
+
+            CoruseService
+                .deleteCourseById(developerId, courseId)
+                .then(
+                    function (response) {
+                        console.log("Course Deleted Succesfully");
+                    },
+                    function (response) {
+                        console.log("ERROR");
+                    }
+                );
+            
+        }
 
         function renderCourse(response) {
             vm.course = response.data;
@@ -57,17 +86,7 @@
                                     // TODO: Notify, remove the add button
 
                                     var user = response.data;
-
-                                    StudentService
-                                        .updateCurrentUser(user)
-                                        .then(
-                                            function (response) {
-                                                console.log('Course successfully added');
-                                            },
-                                            function (response) {
-                                                console.log("FATAL: course not added!"  + response);
-                                            }
-                                        )
+                                    console.log('Course successfully added');
                                 },
                                 function (response) {
                                     console.log('FATAL-2: Course successfully NOT added');
