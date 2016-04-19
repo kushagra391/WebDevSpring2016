@@ -53,8 +53,8 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 // require('./public/experiments/projectSnippets/modelTesting/server/app')(app, db, mongoose);         // modelTesting
 
-// require('./public/coursera/server/app')(app, db, mongoose);         // modelTesting
-require('./public/project/server/app')(app, db, mongoose);         // modelTesting
+require('./public/coursera/server/app')(app, db, mongoose);         // modelTesting
+// require('./public/project/server/app')(app, db, mongoose);         // modelTesting
 
 app.get("/", function (req, res) {
     res.json("Hello !");
