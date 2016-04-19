@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Coursera!</title>
+
+    <!--Bootstrap-->
+    <link href="../../experiments/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+
+    <!--jQuery, jQueryUI-->
+    <script src="../../experiments/bower_components/jquery/dist/jquery.js"></script>
+    <!--<script src="../../../bower_components/jquery-ui/jquery-ui.js"></script>-->
+
+    <!--Bootstrap JS-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--Angular, Angular Route-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="main.controller.js"></script>
+
+    <!--Services-->
+    <script src="services/developer.services.client.js"></script>
+    <script src="services/student.services.client.js"></script>
+    <script src="services/course.services.client.js"></script>
+    <script src="services/content.services.client.js"></script>
+
+    <!--Controllers-->
+    <script src="views/header/header.controller.js"></script>
+
+    <script src="views/home/home.controller.js"></script>
+    <script src="views/developer/login/developer.login.controller.js"></script>
+    <script src="views/developer/profile/developer.profile.controller.js"></script>
+    <script src="views/student/login/student.login.controller.js"></script>
+    <script src="views/student/profile/student.profile.controller.js"></script>
+    <script src="views/course/coursePage/course.controller.js"></script>
+    <script src="views/course/contentPage/content.controller.js"></script>
+
+    <script src="views/developer/register/developer.register.controller.js"></script>
+    <script src="views/student/register/student.register.controller.js"></script>
+
+    <script src="views/searchCatalog/search.catalog.controller.js"></script>
+    <script src="views/searchYoutube/search.youtube.controller.js"></script>
+
+</head>
+<body>
+
+<!--<div class="container" ng-controller="MainController">-->
+<div ng-controller="MainController">
+    <!--header-->
+    <header>
+        <div ng-include="'views/header/header.view.html'"></div>
+    </header>
+
+    <div ng-view></div>
+
+</div>
+
+</body>
+</html>

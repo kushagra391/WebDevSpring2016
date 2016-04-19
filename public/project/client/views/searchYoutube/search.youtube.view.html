@@ -1,0 +1,65 @@
+<h3>Search Youtube</h3>
+
+<div ng-repeat="course in model.courses">
+    <h4><a ng-ref="{{courses.url}}">{{course.name}}</a></h4>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6 col-md-6 col-lg-6 search-mid">
+        <div class="input-group">
+            <input ng-model="model.searchKey"
+                   type="text" class="form-control" placeholder="Search catalog...">
+                <span class="input-group-btn">
+                    <button ng-click="model.searchYoutubeResults(model.searchKey)"
+                            class="btn btn-primary" type="button"><b>Go !</b></button></span>
+        </div><!-- /input-group -->
+    </div>
+</div>
+
+<h3>Search Results</h3>
+<div class="col-lg-8 col-lg-offset-2">
+
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table table-striped table-hover search-padding">
+
+            <thead>
+            <tr>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>LinkID</th>
+                <th>Type</th>
+                <th>Add</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="video in model.data.items">
+                <td><img ng-src="{{video.snippet.thumbnails.default.url}}"></td>
+                <td>{{video.snippet.title}}</td>
+                <td>{{video.id.videoId}}</td>
+                <td>{{video.id.kind}}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to
+                            <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="course in model.courses">
+                                <a ng-click="model.addVideo($index, $parent.$index)">{{course.name}}</a>
+                            </li>
+
+                            <li>
+                                <a><i>Another Course</i></a>
+                            </li>
+
+                            <!--<div class="dropdown-divider"></div>-->
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<h3>Hello! {{model.currentStudent.name}}</h3>
+
+<h3>List of courses</h3>
+<div ng-repeat="course in model.courses">
+    <h3><a href="{{course.url}}">{{course.name}}</a></h3>
+    <h5>{{course.description}}</h5>
+    <h4>{{course.url}}</h4>
+</div>
+
+<div class="col-sm-6 col-md-6 col-lg-6 search-mid">
+    <div class="input-group">
+        <input ng-model="model.searchKey"
+               type="text" class="form-control" placeholder="Search catalog...">
+                <span class="input-group-btn">
+                    <button ng-click="model.searchCatalog(model.searchKey)"
+                            class="btn btn-primary" type="button"><b>Go !</b></button></span>
+    </div><!-- /input-group -->
+</div>
+
+
+<button class="btn btn-danger" ng-click="model.logout()">Logout</button>
