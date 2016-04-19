@@ -46,8 +46,11 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
             .createStudent(newStudent)
             .then(success, failure);
 
-        function success(doc) {
-            res.json(doc)
+        function success(user) {
+            // req.session.destroy();
+            req.session.currentStudent = user;
+            req.session.save();
+            res.json(user)
         }
 
         function failure(err) {

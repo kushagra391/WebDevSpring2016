@@ -20,26 +20,20 @@
         init();
 
         function registerStudent(newStudent) {
-            console.log(newStudent);
+            console.log("Trying registration for: " + JSON.stringify(newStudent));
 
             StudentService
                 .createStudent(newStudent)
-                .then(registerSuccess, registerFailure);
-
-            function registerSuccess(response) {
-                console.log("Registration Success !");
-                var student = response.data;
-
-                StudentService.setCurrentUser(student);
-
-                console.log("Routing to profile page.");
-                $location.url("/studentProfile/" + student._id);
-            }
-
-            function registerFailure(response) {
-                console.log(response);
-            }
-
+                .then(
+                    function (response) {
+                        console.log("User registered, added to session");
+                        var student = response.data;
+                        $location.url("/studentProfile/" + student._id);
+                    },
+                    function (response) {
+                        console.log("User NOT registered");
+                    }
+                );
         }
 
     }

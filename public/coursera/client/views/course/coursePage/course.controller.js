@@ -24,17 +24,36 @@
                     function (response) {
                         vm.developer = response.data;
                     }
-                )
+                );
 
             vm.addCourse = addCourse;
             vm.removeCourse = removeCourse;
             vm.redirectToContent = redirectToContent;
 
             vm.deleteCourse = deleteCourse;
+            
+            vm.getContentUrl = getContentUrl;
         }
 
         init();
 
+        
+        function getContentUrl(videoIndex) {
+           console.log(">> Inside getContentUrl");
+            var url = "#/developerLogin";
+
+            var courseId = $routeParams.courseId;
+            var videos = vm.course.videos;
+            var video = videos[videoIndex];
+
+            // console.log("Content clicked: " + JSON.stringify(video));
+
+            url = "#/course/" + courseId + "/content/" + video._id;
+            console.log(url);
+            return url;
+        }
+        
+        
         // TODO: only the course owner can delete a course
         function deleteCourse() {
 
@@ -66,8 +85,10 @@
 
         function redirectToContent(videoIndex) {
             var contentUrl = "/course/" + vm.course._id + "/content/" + videoIndex;
-            console.log("Redirecting to url: " + contentUrl);
-            $location.url(contentUrl);
+            // console.log("Redirecting to url: " + contentUrl);
+            // $location.url(contentUrl);
+            console.log(">> Redirecting.. ");
+            $location.url('/developerLogin');
         }
 
         function addCourse() {

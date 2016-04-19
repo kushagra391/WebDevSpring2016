@@ -28,7 +28,6 @@
                         if (developer != null) {
 
                             var developerId = developer._id;
-
                             CourseService
                                 .findAllCoursesByDeveloperId(developerId)
                                 .then(
@@ -44,7 +43,6 @@
                                         console.log("Error: Courses not found");
                                     }
                                 )
-
                         }
                     }
                 );
