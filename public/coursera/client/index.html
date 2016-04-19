@@ -8,6 +8,8 @@
     <link href="../../experiments/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
 
+    <link href="css/signin.css" rel="stylesheet">
+
     <!--jQuery, jQueryUI-->
     <script src="../../experiments/bower_components/jquery/dist/jquery.js"></script>
     <!--<script src="../../../bower_components/jquery-ui/jquery-ui.js"></script>-->
@@ -48,8 +50,12 @@
 <body>
 
 <div class="container" ng-controller="MainController">
-    <!--<h2>Hello from index.html</h2>-->
-    <!--{{msg}}-->
+    <!--header-->
+    <header>
+        <div ng-include="'views/header/header.view.html'"></div>
+    </header>
+
+
 
     <div ng-view></div>
 

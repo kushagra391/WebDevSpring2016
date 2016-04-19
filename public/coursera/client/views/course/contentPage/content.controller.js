@@ -11,27 +11,36 @@
         var vm = this;
         console.log("Hello from ContentController");
 
-        var courseId = $routeParams.courseId;
-        var contentIndex = $routeParams.contentIndex;
-        console.log("ContentIndex: " + contentIndex);
+        function init() {
+            var courseId = $routeParams.courseId;
+            var contentIndex = $routeParams.contentIndex;
+            console.log("ContentIndex: " + contentIndex);
 
-        ContentService
-            .findVideoByIdAndCourseId(courseId, contentIndex)
-            .then(
-                function (response) {
-                    vm.video = response.data;
-                    console.log("Content retrieved: \n" + JSON.stringify(vm.video));
-                },
-                function (response) {
-                    console.log("Content not retrieved");
-                }
-            );
+            ContentService
+                .findVideoByIdAndCourseId(courseId, contentIndex)
+                .then(
+                    function (response) {
+                        vm.video = response.data;
+                        console.log("Content retrieved: \n" + JSON.stringify(vm.video));
+                    },
+                    function (response) {
+                        console.log("Content not retrieved");
+                    }
+                );
 
-        // var courses = CourseService.findCourseById(courseId);
-        // var videos = courses.videos;
-        // var video = videos[contentIndex];
-        //
-        // vm.video = video;
+            ContentService
+                .findAllVideosByCourseId(courseId)
+                .then(
+                    function (response) {
+                        vm.playlist = response.data;
+                    },
+                    function (response) {
+                        console.log("Playlist not retrieved");
+                    }
+                );
+        }
+
+        init();
     }
 
 })();
