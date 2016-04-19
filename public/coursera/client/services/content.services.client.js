@@ -18,11 +18,11 @@
         return api;
 
         function findAllVideosByCourseId(courseId) {
-            $http.get("/api/coursera/course/" + courseId + "/video/all");
+            return $http.get("/api/coursera/course/" + courseId + "/video/all");
         }
 
         function findVideoByIdAndCourseId(courseId, videoId) {
-            $http.get("/api/coursera/course/" + courseId + "/video/" + videoId);
+            return $http.get("/api/coursera/course/" + courseId + "/video/" + videoId);
         }
 
     }

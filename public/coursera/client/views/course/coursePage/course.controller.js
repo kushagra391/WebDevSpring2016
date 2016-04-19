@@ -39,17 +39,14 @@
 
         
         function getContentUrl(videoIndex) {
-           console.log(">> Inside getContentUrl");
-            var url = "#/developerLogin";
+           // console.log(">> Inside getContentUrl");
 
             var courseId = $routeParams.courseId;
             var videos = vm.course.videos;
             var video = videos[videoIndex];
-
             // console.log("Content clicked: " + JSON.stringify(video));
-
-            url = "#/course/" + courseId + "/content/" + video._id;
-            console.log(url);
+            var url = "#/course/" + courseId + "/content/" + video._id;
+            // console.log(url);
             return url;
         }
         
