@@ -1,34 +1,100 @@
-<div ng-controller="HeaderController">
+<div ng-controller="HeaderController as model">
 
-    <!--Navigation Bar-->
-    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <!--<div class="container-fluid">-->
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand active" href="#">Coursera</a>
-            </div>
-
-            <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="#">Home</a></li>-->
-            </ul>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right">
-                    <li ng-hide="currentUser"><a href="#/register">Register</a></li>
-                    <li ng-hide="currentUser"><a href="#/login">Login</a></li>
-                    <li ng-show="currentUser"><a href="#">
-                        {{currentUser.username.toString().charAt(0).toUpperCase() +
-                        currentUser.username.toString().slice(1)}}
-                    </a></li>
-                    <li ng-show="currentUser"
-                        ng-click="logout()"><a href="#">Sign Out</a></li>
-                </ul>
-            </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Coursera!</a>
         </div>
-    </nav>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+                <!--<li><a href="#">Link</a></li>-->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input ng-model="model.searchKey" type="text" class="form-control" placeholder="Browse.. ">
+                    </div>
+                    <button ng-click="model.searchCatalog()" type="submit" class="btn btn-default">Search</button>
+                </form>
+
+                <!--<li><a href="#">Sign In</a></li>-->
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Sign In <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/developerLogin">Developer</a></li>
+                        <li><a href="#/studentLogin">Student</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Register<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/developerRegister">Developer</a></li>
+                        <li><a href="#/studentRegister">Student</a></li>
+                    </ul>
+                </li>
+
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
+                       <!--aria-expanded="false">Student <span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Profile</a></li>-->
+                        <!--<li><a href="#">Messages</a></li>-->
+                        <!--<li><a href="#">Courses</a></li>-->
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">Signout</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
 </div>
+
+<!--<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">-->
+<!--<div class="container">-->
+<!--<div class="navbar-header">-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"-->
+<!--aria-expanded="false" aria-controls="navbar">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--<a class="navbar-brand" href="#home"><span class=""></span>Coursera!</a>-->
+<!--</div>-->
+<!--<div id="navbar" class="navbar-collapse collapse">-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+<!--&lt;!&ndash;Register&ndash;&gt;-->
+<!--<li ng-hide="currentUser"-->
+<!--ng-class="">-->
+<!--<a href="#register">SignIn</span></a></li>-->
+<!--&lt;!&ndash;Login&ndash;&gt;-->
+<!--<li ng-hide="currentUser"-->
+<!--ng-class="">-->
+<!--<a href="#login">Login</span></a></li>-->
+<!--<li ng-show="currentUser">-->
+<!--<a ng-click="logout()">Logout</span></a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->

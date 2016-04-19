@@ -1,8 +1,8 @@
-/**
- * Created by Kushagra on 3/12/2016.
- */
-
 (function () {
+
+    "use strict";
+
     angular
-        .module('CourseraApp', ['ngRoute']);
+        .module("testApp", ["ngRoute"]);
+
 })();

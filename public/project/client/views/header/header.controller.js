@@ -1,20 +1,31 @@
-(function() {
+(function () {
+    
+    "use strict";
+    
+    angular 
+        .module('testApp')
+        .controller("HeaderController", HeaderController);
+    
+    function HeaderController($location) {
+        
+        var vm = this;
+        console.log(">> HomeController");
 
-    angular
-        .module('CourseraApp')
-        .controller('HeaderController', HeaderController);
+        function init() {
+            vm.$location = $location;
 
-    function HeaderController($scope, $location, UserService) {
-        $scope.$location = $location;
-        $scope.logout = logout;
-
-        function logout() {
-            UserService.setCurrentUser(null);
-            $location.url('/home');
-
-            console.log("Logout successful. Routed to /home.");
+            vm.searchKey = "";
+            vm.searchCatalog = searchCatalog;
         }
-
+        init();
+        
+        function searchCatalog() {
+            console.log("Redirecting to searchcatalog with : " + vm.searchKey);
+            $location.url('/searchCatalog/' + vm.searchKey);
+        }
+        
+        
     }
-
+    
+    
 })();
