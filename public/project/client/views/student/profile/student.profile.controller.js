@@ -15,7 +15,6 @@
             vm.searchKey = ""; // init
 
             vm.searchCatalog = searchCatalog;
-            vm.logout = logout;
 
             StudentService
                 .getCurrentUser()
@@ -56,22 +55,6 @@
                         console.log("Courses not retrieved");
                     }
                 );
-        }
-
-        function logout() {
-            // TODO: move to header
-            console.log("Destroying Session, logout clicked !");
-
-            StudentService
-                .logout()
-                .then(
-                    function (response) {
-                        console.log("Session Destroyed !");
-                    },
-                    function (err) {
-                        console.log("Not destroyed");
-                    }
-                )
         }
 
         function searchCatalog(searchKey) {

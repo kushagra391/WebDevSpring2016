@@ -23,7 +23,7 @@
         return model;
 
         function logout() {
-            return $http.post("/api/coursera/logout");
+            return $http.post("/api/coursera/developer/logout");
         }
 
         function createDeveloper(newDeveloper) {
@@ -39,7 +39,7 @@
         }
 
         function setCurrentUser(user) {
-            $rootScope.currentUser = user;
+            $rootScope.currentDeveloper = user;
         }
 
         function addCourseForDeveloper(developerId, newCourse) {

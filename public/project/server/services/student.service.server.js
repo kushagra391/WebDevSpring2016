@@ -23,9 +23,7 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
     }
 
     function logout(req, res) {
-
         console.log("Session Destroyed !");
-
         req.session.destroy();
         res.send(200);
     }

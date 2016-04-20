@@ -14,7 +14,6 @@
             logout: logout,
         
             findUserByCredentials: findUserByCredentials,
-            findUserById: findUserById,
 
             getCurrentUser: getCurrentUser,
             setCurrentUser: setCurrentUser,
@@ -33,32 +32,16 @@
             return $http.post("/api/coursera/student/logout");
         }
 
-        function findUserById(userId) {
-
-            for (var i in model.students) {
-                var user = model.students[i];
-                if (user._id == userId) {
-                    return user;
-                }
-            }
-
-            return null;
-        }
-
         function findUserByCredentials(credential) {
-
             return $http.post("/api/coursera/student/login", credential);
-
         }
 
         function getCurrentUser() {
-            // return $rootScope.currentUser;
-
             return $http.get("/api/coursera/student/loggedin");
         }
 
         function setCurrentUser(user) {
-            $rootScope.currentUser = user;
+            $rootScope.currentStudent = user;
         }
 
         function addCourseToStudent(studentId, courseId) {

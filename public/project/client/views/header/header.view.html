@@ -33,7 +33,7 @@
 
                 <!--<li><a href="#">Sign In</a></li>-->
 
-                <li class="dropdown">
+                <li ng-hide='currentStudent || model.currentStudent || currentDeveloper || model.currentDeveloper' class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Sign In <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -42,7 +42,7 @@
                     </ul>
                 </li>
 
-                <li class="dropdown">
+                <li ng-hide="currentStudent || model.currentStudent || currentDeveloper || model.currentDeveloper" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Register<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -51,17 +51,29 @@
                     </ul>
                 </li>
 
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"-->
-                       <!--aria-expanded="false">Student <span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Profile</a></li>-->
-                        <!--<li><a href="#">Messages</a></li>-->
-                        <!--<li><a href="#">Courses</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li><a href="#">Signout</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
+                <li ng-show="currentStudent || model.currentStudent" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Student <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/studentProfile/{{model.currentStudent._id}}">Profile</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="#/studentProfile/{{model.currentStudent._id}}">Courses</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-click="model.logoutStudent()"><a>Signout</a></li>
+                    </ul>
+                </li>
+
+                <li ng-show="currentDeveloper || model.currentDeveloper" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Developer <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-click="model.logoutDeveloper()"><a>Signout</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
