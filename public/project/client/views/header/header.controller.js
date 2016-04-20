@@ -6,7 +6,7 @@
         .module('testApp')
         .controller("HeaderController", HeaderController);
 
-    function HeaderController($location, DeveloperService, StudentService) {
+    function HeaderController($rootScope, $location, DeveloperService, StudentService) {
 
         var vm = this;
         console.log(">> HeaderController");
@@ -19,6 +19,9 @@
 
             vm.logoutStudent = logoutStudent;
             vm.logoutDeveloper = logoutDeveloper;
+
+            vm.redirectToStudentProfile = redirectToStudentProfile;
+            vm.redirectToDeveloperProfile = redirectToDeveloperProfile;
 
             DeveloperService
                 .getCurrentUser()
@@ -52,6 +55,57 @@
 
         init();
 
+
+        function redirectToDeveloperProfile() {
+            DeveloperService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        console.log("INFO: Response Data: " + response.data);
+                        if (response.data != null) {
+
+
+                            vm.currentDeveloper = response.data;
+                            var url = "/developerProfile/" + vm.currentDeveloper._id;
+
+                            console.log("Redirecting.. URL: " + url);
+                            $location.url(url);
+                        } else {
+                            console.log("HeaderController >> Developer NOT logged in!");
+                        }
+                    },
+                    function (response) {
+                        console.log("ERROR: Current Developer not retrieved. " + response);
+                    }
+                );
+        }
+
+
+        function redirectToStudentProfile() {
+
+            StudentService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        console.log("INFO: Response Data: " + response.data);
+                        if (response.data != null) {
+
+
+                            vm.currentStudent = response.data;
+                            var url = "/studentProfile/" + vm.currentStudent._id;
+
+                            console.log("Redirecting.. URL: " + url);
+                            $location.url(url);
+                        } else {
+                            console.log("HeaderController >> Student NOT logged in!");
+                        }
+                    },
+                    function (response) {
+                        console.log("ERROR: Current Student not retrieved. " + response);
+                    }
+                );
+        }
+
         function logoutStudent() {
             console.log("Destroying Session for Student, logout clicked !");
             StudentService
@@ -59,6 +113,7 @@
                 .then(
                     function (response) {
                         console.log("Student Session Destroyed !");
+                        vm.currentStudent = null;
                         StudentService.setCurrentUser(null);
                         $location.url('/home');
                     },
@@ -74,7 +129,10 @@
                 .logout()
                 .then(
                     function (response) {
-                        console.log("Student Session Destroyed !");
+                        console.log("Developer Session Destroyed !");
+
+                        vm.currentDeveloper = null;
+
                         DeveloperService.setCurrentUser(null);
                         $location.url('/home');
                     },
