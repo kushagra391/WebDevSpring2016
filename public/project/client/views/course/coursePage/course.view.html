@@ -9,7 +9,6 @@
 
 <div class="container">
 
-    <h3>CoursePage</h3>
     <div class="row">
         <button ng-show="model.isStudent()" ng-click="model.addCourse()" class="btn btn-default ">Add Course</button>
         <button ng-show="model.isStudent()" ng-click="model.removeCourse()" class="btn btn-default ">Remove Course
@@ -19,33 +18,43 @@
 
     <div class="row">
 
-    </div>
-
-    <div class="col-sm-8 col-sm-offset-4">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>{{model.course.name}}</h3>
-                <h5>{{model.course.description}}</h5>
+        <div class="col-sm-4">
+            <div ng-show="model.studentLogin()">
+                <button ng-hide="model.ifStudentLikedCourse()" ng-click="model.likeCourse()" class="btn btn-default btn-block btn-lg">Like Course</button>
+                <button ng-show="model.ifStudentLikedCourse()" ng-click="model.unlikeCourse()" class="btn btn-primary btn-block btn-lg">Unlike Course</button>
+                <button ng-hide="model.ifStudentHasCourse()" ng-click="model.addCourse()" class="btn btn-warning btn-block btn-lg">Add Course</button>
+                <!--<button ng-click="model.addCourse()" class="btn btn-warning btn-block btn-lg">Add Course</button>-->
+                <button ng-show="model.ifStudentHasCourse()" ng-click="model.removeCourse()" class="btn btn-danger btn-block btn-lg">Remove Course</button>
             </div>
-            <div class="panel-body">
-                <div ng-repeat="video in model.course.videos">
-                    <!--<h5>{{video}}</h5>-->
-                    <!--<h4 ng-click="model.redirectToContent($index)"><a href="#/developerLogin">{{video.title}}</a></h4>-->
-                    <h4><a ng-href="{{model.getContentUrl($index)}}">{{video.title}}</a></h4>
-                    <h5>{{video.description}}</h5>
+        </div>
+
+        <div class="col-sm-8">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>{{model.course.name}}</h3>
+                    <h5>{{model.course.description}}</h5>
+                </div>
+                <div class="panel-body">
+                    <div ng-repeat="video in model.course.videos">
+                        <!--<h5>{{video}}</h5>-->
+                        <!--<h4 ng-click="model.redirectToContent($index)"><a href="#/developerLogin">{{video.title}}</a></h4>-->
+                        <h4><a ng-href="{{model.getContentUrl($index)}}">{{video.title}}</a></h4>
+                        <h5>{{video.description}}</h5>
+                    </div>
+                </div>
+
+                <div ng-show="model.developerLogin()" class="panel-footer">
+                    <button ng-click="model.redirectToYoutube()" class="btn btn-default btn-lg btn-block">
+                        Add more lecture videos
+                    </button>
+                    <button ng-click="model.deleteCourse()"
+                            class="btn btn-danger btn-lg btn-block">
+                        Delete Course
+                    </button>
                 </div>
             </div>
 
-            <div ng-show="model.isDeveloper()" class="panel-footer">
-                <button ng-click="model.redirectToYoutube()" class="btn btn-default btn-lg btn-block">
-                    Add more lecture videos
-                </button>
-                <button ng-show="model.isDeveloper()" ng-click="model.deleteCourse()"
-                        class="btn btn-danger btn-lg btn-block">
-                    Delete Course
-                </button>
-            </div>
         </div>
 
     </div>

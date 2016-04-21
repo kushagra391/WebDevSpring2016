@@ -6,6 +6,7 @@ module.exports = function (app, likeModel) {
     app.get("/api/coursera/like/:likeId", findLikeById);                                                // OK
     app.get("/api/coursera/like/course/:courseId", findLikesForCourseId);                               // OK
     app.post("/api/coursera/like", addLikeForStudentAndCourse);                                         // OK
+    app.delete("/api/coursera/like/all", removeAllLikes);                                           // OK
     app.delete("/api/coursera/like/:likeId", removeLikeById);                                           // OK
     app.delete("/api/coursera/like/course/:courseId/student/:studentId", removeLikeForStudentAndCourse);// OK
 
@@ -68,6 +69,20 @@ module.exports = function (app, likeModel) {
                 }
             );
 
+    }
+
+    function removeAllLikes(req, res) {
+
+        likeModel
+            .removeAllLikes()
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
     }
 
     function removeLikeById(req, res) {

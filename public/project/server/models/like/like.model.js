@@ -11,6 +11,7 @@ module.exports = function (mongoose) {
         findAllLikes: findAllLikes,
         addLikeForStudentAndCourse: addLikeForStudentAndCourse,
         removeLikeForStudentAndCourse: removeLikeForStudentAndCourse,
+        removeAllLikes : removeAllLikes,
         removeLikeById: removeLikeById,
         findLikesForCourseId: findLikesForCourseId
 
@@ -31,6 +32,10 @@ module.exports = function (mongoose) {
 
     function removeLikeForStudentAndCourse(courseId, studentId) {
         return LikeModel.remove({courseId: courseId}, {studentId: studentId});
+    }
+
+    function removeAllLikes() {
+        return LikeModel.remove();
     }
 
     function removeLikeById(likeId) {
