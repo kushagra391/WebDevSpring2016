@@ -1,13 +1,59 @@
-<h3>ContentController</h3>
+<div class="container">
 
-<div>
-    <h3>{{model.video.title}}</h3>
-    <h4>{{model.video.description}}</h4>
-    <h4>{{model.video.imgUrl}}</h4>
-    <h4>{{model.video.youtubeId}}</h4>
+    <h2>{{model.video.title}}</h2>
+
+    <hr>
+
+    <div class="row">
+
+        <!--Video Content-->
+        <div class="col-sm-12">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" ng-src="{{model.getUrl(model.video.youtubeId)}}"></iframe>
+            </div>
+
+            <div>
+                <h3>{{model.video.title}}</h3>
+                <h4>{{model.video.description}}</h4>
+                <!--<h4>{{model.video.imgUrl}}</h4>-->
+                <!--<h4>{{model.video.youtubeId}}</h4>-->
+            </div>
+
+        </div>
+
+        <hr class="button-divider">
+
+        <!--Playlist-->
+        <div class="col-sm-12">
+            <h3>Course Playlist</h3>
+            <!--<div ng-repeat="videoItem in model.playlist">-->
+            <!--<h4><a ng-href="{{model.getContentUrl($index)}}">{{videoItem.title}}</a></h4>-->
+            <!--</div>-->
+
+            <ul class="list-group">
+                <div ng-repeat="videoItem in model.playlist">
+
+                    <li class="list-group-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" ng-src="{{videoItem.imgUrl}}" height="50" width="60s">
+                                </a>
+                            </div>
+
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <a ng-href="{{model.getContentUrl($index)}}">{{videoItem.title}}</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <!--<li class="list-group-item"><a ng-href="{{model.getContentUrl($index)}}">{{videoItem.title}}</a></li>-->
+            </ul>
+
+        </div>
+
+    </div>
+
 </div>
-
-<hr>
-<button class="btn btn-info">Next</button>
-<hr>
-<button class="btn btn-info">Previous</button>

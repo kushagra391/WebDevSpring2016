@@ -48,6 +48,11 @@
                 controller: "SearchCatalogController",
                 controllerAs: "model"
             })
+            .when("/searchYoutube", {
+                templateUrl: "views/searchYoutube/youtube.view.html",
+                controller: "YoutubeController",
+                controllerAs: "model"
+            })
             .when("/searchYoutube/:searchKey", {
                 templateUrl: "views/searchYoutube/search.youtube.view.html",
                 controller: "SearchYoutubeController",

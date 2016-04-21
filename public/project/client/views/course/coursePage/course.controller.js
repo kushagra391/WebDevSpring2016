@@ -29,14 +29,31 @@
             vm.addCourse = addCourse;
             vm.removeCourse = removeCourse;
             vm.redirectToContent = redirectToContent;
+            vm.redirectToYoutube = redirectToYoutube;
+
 
             vm.deleteCourse = deleteCourse;
+            
+            vm.isDeveloper = isDeveloper;
+            vm.isStudent = isStudent;
             
             vm.getContentUrl = getContentUrl;
         }
 
         init();
 
+        function redirectToYoutube() {
+            $location.url("/searchYoutube");
+        }
+
+        function isDeveloper() {
+            return true;
+        }
+        
+        function isStudent() {
+            return false;
+        }
+        
         
         function getContentUrl(videoIndex) {
            // console.log(">> Inside getContentUrl");
@@ -57,7 +74,7 @@
             var courseId = $routeParams.courseId;
             var developerId = vm.developer._id;
 
-            CoruseService
+            CourseService
                 .deleteCourseById(developerId, courseId)
                 .then(
                     function (response) {

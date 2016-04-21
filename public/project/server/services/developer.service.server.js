@@ -63,6 +63,8 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
             .createDeveloper(newDeveloper)
             .then(
                 function (developer) {
+                    req.session.currentDeveloper = developer;
+                    req.session.save();
                     res.json(developer);
                 },
                 function (err) {

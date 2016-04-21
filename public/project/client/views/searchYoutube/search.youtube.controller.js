@@ -7,7 +7,7 @@
         .controller('SearchYoutubeController', SearchYoutubeController);
 
     // TODO: This must be a protected page
-    function SearchYoutubeController($routeParams, $http, $location, DeveloperService, CourseService) {
+    function SearchYoutubeController($routeParams, $http, $location, $sce, DeveloperService, CourseService) {
         var vm = this;
 
         var TYPE_PLAYLIST = "playlist";
@@ -50,6 +50,7 @@
             vm.searchKey = $routeParams.searchKey;
             vm.searchYoutubeResults = searchYoutubeResults;
             vm.addVideo = addVideo;
+            vm.getUrl = getUrl;
 
             searchYoutubeResults();
         }
@@ -57,6 +58,11 @@
         init();
 
         /********************* Scope Methods ********************/
+
+        function getUrl(videoId) {
+            var url = "http://www.youtube.com/embed/" + videoId + "?autoplay=0";
+            return $sce.trustAsResourceUrl(url);
+        }
 
         function addVideo(courseIndex, videoIndex) {
 

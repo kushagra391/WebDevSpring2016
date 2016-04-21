@@ -1,23 +1,55 @@
+<header class="course-image">
+    <div class="headline">
+        <div class="container">
+            <!--<h1>Coursera !</h1>-->
+            <h2>{{model.course.name}}</h2>
+        </div>
+    </div>
+</header>
+
+<div class="container">
 
     <h3>CoursePage</h3>
     <div class="row">
-        <button ng-click="model.addCourse()" class="btn btn-default ">Add Course</button>
-        <button ng-click="model.removeCourse()" class="btn btn-default ">Remove Course</button>
+        <button ng-show="model.isStudent()" ng-click="model.addCourse()" class="btn btn-default ">Add Course</button>
+        <button ng-show="model.isStudent()" ng-click="model.removeCourse()" class="btn btn-default ">Remove Course
+        </button>
     </div>
     <hr>
 
     <div class="row">
-        <button ng-click="model.deleteCourse()" class="btn btn-danger pull-right">Delete Course</button>
+
     </div>
 
+    <div class="col-sm-8 col-sm-offset-4">
 
-    <h3>{{model.course.name}}</h3>
-    <h5>{{model.course.description}}</h5>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>{{model.course.name}}</h3>
+                <h5>{{model.course.description}}</h5>
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="video in model.course.videos">
+                    <!--<h5>{{video}}</h5>-->
+                    <!--<h4 ng-click="model.redirectToContent($index)"><a href="#/developerLogin">{{video.title}}</a></h4>-->
+                    <h4><a ng-href="{{model.getContentUrl($index)}}">{{video.title}}</a></h4>
+                    <h5>{{video.description}}</h5>
+                </div>
+            </div>
+
+            <div ng-show="model.isDeveloper()" class="panel-footer">
+                <button ng-click="model.redirectToYoutube()" class="btn btn-default btn-lg btn-block">
+                    Add more lecture videos
+                </button>
+                <button ng-show="model.isDeveloper()" ng-click="model.deleteCourse()"
+                        class="btn btn-danger btn-lg btn-block">
+                    Delete Course
+                </button>
+            </div>
+        </div>
+
+    </div>
+
     <h4>{{model.course.likes}}</h4>
-    <div ng-repeat="video in model.course.videos">
-        <!--<h5>{{video}}</h5>-->
-        <!--<h4 ng-click="model.redirectToContent($index)"><a href="#/developerLogin">{{video.title}}</a></h4>-->
-        <h4><a ng-href="{{model.getContentUrl($index)}}">{{video.title}}</a></h4>
-        <h5>{{video.description}}</h5>
-    </div>
 
+</div>

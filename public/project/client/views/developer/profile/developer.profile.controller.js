@@ -13,11 +13,15 @@
         function init() {
             console.log("UserID: " + $routeParams.profileId);
             vm.courses = [];
+            vm.courseTypes = ["Arts And Humanity", "Business", "Web Development", "Computer Science", "Data Science",
+                "Life Science", "Mathematics", "Social Science"];
 
             vm.$location = $location;
             vm.searchKey = "";
             vm.searchYoutube = searchYoutube;
             vm.startNewCourse = startNewCourse;
+            vm.redirectToYoutube = redirectToYoutube;
+
 
             DeveloperService
                 .getCurrentUser()
@@ -26,6 +30,10 @@
         }
 
         init();
+
+        function redirectToYoutube() {
+            $location.url("/searchYoutube");
+        }
 
         function startNewCourse(newCourse) {
             console.log("Starting new course.." + JSON.stringify(newCourse.name) + "devID: " + vm.developer._id);
@@ -49,8 +57,14 @@
         }
 
         function searchYoutube(searchKey) {
-            console.log("Would search for :" + searchKey);
-            $location.url('/searchYoutube/' + searchKey);
+
+            if (searchKey == null) {
+                $location.url('/searchYoutube/' + "video lectures");
+            }
+            else {
+                console.log("Would search for :" + searchKey);
+                $location.url('/searchYoutube/' + searchKey);
+            }
         }
 
         function populateDeveloperCourses() {

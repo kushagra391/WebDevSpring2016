@@ -20,6 +20,19 @@ body {
     -o-background-size: cover;
 }
 
+.course-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    /*background: url('http://placehold.it/1900x500') no-repeat center center scroll;*/
+    background: url('http://boottours.com/rw_common/themes/composition_2.1_mb_working_copy/images/editable_images/bokeh-dark.jpg') no-repeat center center scroll;
+    /*background: url('http://e2ua.com/data/wallpapers/17/WDF_657011.jpg') no-repeat center center scroll;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .headline {
     padding: 120px 0;
 }

@@ -13,6 +13,9 @@
             console.log("hello from SearchCatalogController");
             console.log("searchKey:" + $routeParams.searchKey);
 
+            vm.courseTypes = ["Arts And Humanity", "Business", "Web Development", "Computer Science", "Data Science",
+                "Life Science", "Mathematics", "Social Science"];
+
             vm.$location = $location;
             vm.searchKey = $routeParams.searchKey;
 
@@ -33,6 +36,11 @@
                     function (response) {
 
                         vm.courses = response.data;
+
+                        vm.message = buildMessage(vm.courses.length);
+
+                        vm.resultsCount = vm.courses.length;
+
                         console.log(JSON.stringify(vm.courses));
 
                         $location.url("/searchCatalog/" + searchkey);
@@ -48,6 +56,20 @@
             var course = vm.courses[index];
             console.log("Redirecting to: " + course.name);
             $location.url("/course/" + course._id);
+        }
+
+        function buildMessage(resultCount) {
+
+            if (resultCount > 0) {
+                var string = resultCount + " Results Found !";
+            }
+
+            else {
+                var string = "Sorry, no courses found. Please retry for a different course, or browse the complete catalog.";
+            }
+
+            return string;
+
         }
     }
 
