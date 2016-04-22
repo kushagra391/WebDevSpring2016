@@ -27,7 +27,7 @@
                             vm.isDeveloperLoggedIn = true;
                         }
                         else {
-                            vm.isStudentLoggedIn = false;
+                            vm.isDeveloperLoggedIn = false;
                         }
                     }
                 );
@@ -41,7 +41,6 @@
                             console.log("STUDENTLOGIN: Student logged in");
                             vm.student = response.data;
                             vm.isStudentLoggedIn = true;
-
 
                             var courseId = $routeParams.courseId;
                             LikeService
@@ -78,15 +77,12 @@
             vm.deleteCourse = deleteCourse;
             vm.redirectToContent = redirectToContent;
             vm.redirectToYoutube = redirectToYoutube;
-
             vm.getContentUrl = getContentUrl;
 
             vm.studentLogin = studentLogin;
             vm.ifStudentLikedCourse = ifStudentLikedCourse;
             vm.ifStudentHasCourse = ifStudentHasCourse;
             vm.developerLogin = developerLogin;
-
-            // vm.ifStudentLikedCourse = ifStudentLikedCourse;
 
         }
 
@@ -95,7 +91,6 @@
         function ifStudentHasCourse() {
             return vm.isStudentHasCourse;
         }
-
 
         /* ================================== */
 
@@ -106,12 +101,12 @@
                 var like = likes[i];
 
                 if (like.studentId == studentId) {
-                    vm.isStudentLikes =  true;
+                    vm.isStudentLikes = true;
                     return;
                 }
             }
 
-            vm.isStudentLikes =  false;
+            vm.isStudentLikes = false;
         }
 
         function ifStudentHasTakenCourseHelper(studentId, courses) {
@@ -311,10 +306,6 @@
                 );
         }
 
-
-
     }
-
-
 
 })();

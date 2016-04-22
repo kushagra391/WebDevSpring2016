@@ -17,6 +17,9 @@
             </label>
         </div>
         <button ng-click="model.login(user)" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        <hr class="button-divider">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
     </form>
 
 </div>

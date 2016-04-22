@@ -7,7 +7,8 @@
         .controller('SearchYoutubeController', SearchYoutubeController);
 
     // TODO: This must be a protected page
-    function SearchYoutubeController($routeParams, $http, $location, $sce, DeveloperService, CourseService) {
+    function SearchYoutubeController($routeParams, $location, $sce,
+                                     DeveloperService, CourseService, YoutubeAPIService) {
         var vm = this;
 
         var TYPE_PLAYLIST = "playlist";
@@ -122,12 +123,17 @@
             var url = url_prefix + searchKey + url_suffix;
             console.log(url);
 
-            return $http.get(url)
-                .success(render);
+            return YoutubeAPIService
+                .getYoutubeQueryResults(url)
+                .then(render);
+
+            // return $http.get(url)
+            //     .success(render);
 
             function render(response) {
-                console.log(response);
-                vm.data = response;
+                console.log("Youtube Response: " + JSON.stringify(response));
+                // vm.data = response;
+                vm.data = response.data;
 
                 console.log(vm.data.items[0].id.videoId);
                 console.log(vm.data.items[0].snippet.thumbnails.default.url);
@@ -142,12 +148,18 @@
 
             var url = getPlaylistUrl(playlistId);
 
-            $http.get(url)
-                .success(render);
+
+            YoutubeAPIService
+                .getYoutubeQueryResults(url)
+                .then(render);
+
+            // $http.get(url)
+            //     .success(render);
 
             function render(response) {
 
-                var videos = response.items;
+                // var videos = response.items;
+                var videos = response.data.items;
 
                 for (var i in videos) {
                     var playlistVideoItem = videos[i];
