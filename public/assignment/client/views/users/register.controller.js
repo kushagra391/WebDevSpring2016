@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($rootScope, $location, $http, UserService) {
+    function RegisterController($rootScope, $location, UserService) {
 
         var vm = this;
 
@@ -39,13 +39,19 @@
                 return;
             }
 
-            $http.post("/api/assignment/register", user)
-                .success(function (currentUser) {
-                    if (currentUser != null) {
-                        $rootScope.currentUser = currentUser;
-                        $location.url("/profile/" + currentUser._id);
+            UserService
+                .register(user)
+                .then(
+                    function (response) {
+                        if (response != null) {
+
+                            $rootScope.currentUser = response.data;
+                            $location.url("/profile/" + response.data._id);
+                        }
                     }
-                });
+                );
+
+
         }
 
     }

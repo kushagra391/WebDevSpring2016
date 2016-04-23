@@ -12,28 +12,18 @@
             logout: logout,
             register: register,
             findAllUsers: findAllUsers,
-            deleteUser: deleteUser,
             updateUser: updateUser,
-            createUser: createUser,
             getCurrentUser : getCurrentUser,
             setCurrentUser : setCurrentUser
         };
         return api;
 
         function logout() {
-            return $http.post("/logout");
-        }
-
-        function createUser(user) {
-            return $http.post('/rest/user', user);
+            return $http.post("/api/assignment/logout");
         }
 
         function updateUser(userId, user) {
             return $http.put('/api/assignment/rest/user/' + userId, user);
-        }
-
-        function deleteUser(userId) {
-            return $http.delete('/rest/user/' + userId);
         }
 
         function findAllUsers() {
@@ -41,11 +31,11 @@
         }
 
         function register(user) {
-            return $http.post("/register", user);
+            return $http.post("/api/assignment/register", user);
         }
 
         function login(user) {
-            return $http.post("/login", user);
+            return $http.post("/api/assignment/login", user);
         }
 
         function getCurrentUser() {

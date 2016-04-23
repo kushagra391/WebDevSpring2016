@@ -9,8 +9,10 @@ module.exports = function (app, userModel) {
     var auth = function (req, res, next) {
 
         if (!req.isAuthenticated()) {
+            console.log("AUTH: " + " user NOT authenticated for work");
             res.send(401);
         } else {
+            console.log("AUTH: " + " user authenticated for work");
             next();
         }
     };
@@ -186,10 +188,15 @@ module.exports = function (app, userModel) {
 
     function updateUser(req, res) {
         var newUser = req.body;
+
+        console.log(">> updateUser for : " + JSON.stringify(newUser));
+
         if (!isAdmin(req.user)) {
+            console.log(">> is NOT Admin");
             delete newUser.roles;
         }
         if (typeof newUser.roles == "string") {
+            console.log(">> typeof roles is string");
             newUser.roles = newUser.roles.split(",");
         }
 
@@ -197,15 +204,22 @@ module.exports = function (app, userModel) {
             .updateUser(req.params.id, newUser)
             .then(
                 function (user) {
-                    return findAllUsers();
-                },
-                function (err) {
-                    res.status(400).send(err);
-                }
-            )
-            .then(
-                function (users) {
-                    res.json(users);
+                    console.log(">> update user successull, now calling findAllUsers");
+                    // return findAllUsers();
+
+                    userModel
+                        .findAllUsers()
+                        .then(
+                            function (users) {
+                                console.log("returning from findAllUsers: " + JSON.stringify(users));
+                                res.json(users);
+                            },
+                            function (err) {
+                                console.log("returning from findAllUsers, something bad happened ");
+                                res.status(400).send(err);
+                            }
+                        );
+
                 },
                 function (err) {
                     res.status(400).send(err);
@@ -214,7 +228,10 @@ module.exports = function (app, userModel) {
     }
 
     function createUser(req, res) {
+
         var newUser = req.body;
+        console.log(">> createUser() for : " + JSON.stringify(newUser));
+
         if (newUser.roles && newUser.roles.length > 1) {
             newUser.roles = newUser.roles.split(",");
         } else {
@@ -228,6 +245,9 @@ module.exports = function (app, userModel) {
                 function (user) {
                     // if the user does not already exist
                     if (user == null) {
+
+                        console.log(">> createUser: creating a new user, as user not found");
+
                         // create a new user
                         return userModel.createUser(newUser)
                             .then(
@@ -241,6 +261,7 @@ module.exports = function (app, userModel) {
                             );
                         // if the user already exists, then just fetch all the users
                     } else {
+                        console.log(">> createUser: user already exists with similar credentials");
                         return userModel.findAllUsers();
                     }
                 },
@@ -250,34 +271,15 @@ module.exports = function (app, userModel) {
             )
             .then(
                 function (users) {
+                    console.log(">> returning all users");
                     res.json(users);
                 },
                 function () {
+                    console.log(">> NOT returning all users");
                     res.status(400).send(err);
                 }
             );
 
-        //UserModel.findOne({username: req.body.username}, function(err, user)
-        //{
-        //    if(user == null)
-        //    {
-        //        user = new UserModel(newUser);
-        //        user.save(function(err, user)
-        //        {
-        //            UserModel.find(function(err, users)
-        //            {
-        //                res.json(users);
-        //            });
-        //        });
-        //    }
-        //    else
-        //    {
-        //        UserModel.find(function(err, users)
-        //        {
-        //            res.json(users);
-        //        });
-        //    }
-        //});
     }
 
     ///////////////////////////////////////////////////////

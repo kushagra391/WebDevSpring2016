@@ -6,12 +6,19 @@
         .module("FormBuilderApp")
         .controller("SidebarController", SidebarController);
 
-    function SidebarController($scope, $location, UserService) {
-        $scope.$location = $location;
+    function SidebarController($location, UserService) {
 
-        $scope.redirectToProfile = redirectToProfile;
+        var vm = this;
+
+        function init() {
+            vm.$location = $location;
+            vm.redirectToProfile = redirectToProfile;
+        }
+
+        init();
 
         function redirectToProfile() {
+            console.log("redirecting to profile");
             $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
         }
 

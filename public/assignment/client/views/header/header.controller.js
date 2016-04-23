@@ -15,9 +15,15 @@
 
         $scope.logout = function () {
             UserService.setCurrentUser(null);
-            $location.url('/home');
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        console.log("Logout Successful");
+                        $location.url('/home');
+                    }
+                );
 
-            console.log("logout successful");
         };
     }
 })();
