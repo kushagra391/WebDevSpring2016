@@ -1,57 +1,36 @@
 <div class="main">
     <h2 class="page-header">Admin</h2>
-    <h3>Users</h3>
 
+    <h2>User List</h2>
     <table class="table table-striped">
-        <thead>
         <tr>
-            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Username</th>
-            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Password</th>
-            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Role</th>
-            <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>&nbsp;Action</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <!--First Row (also the input row)-->
-        <tr>
-            <td><input type="text" class="form-control" placeholder="username"></td>
-            <td><input type="text" class="form-control" placeholder="password"></td>
-            <td><input type="text" class="form-control" placeholder="role1, role2"></td>
+            <td>&nbsp;</td>
+            <td><input ng-model="user.username" class="form-control" placeholder="username"/></td>
+            <td><input ng-model="user.password" class="form-control" type="password" placeholder="password"/></td>
+            <td><input ng-model="user.firstName" class="form-control" placeholder="first"/></td>
+            <td><input ng-model="user.lastName" class="form-control" placeholder="last"/></td>
+            <td><input ng-model="user.email" class="form-control" type="email" placeholder="email"/></td>
+            <td><input ng-model="user.roles" class="form-control" placeholder="roles"/></td>
             <td>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
-                    </div>
-                    <div class="col-xs-6">
-                        <span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
-                    </div>
-                </div>
-            </td>
+                <button ng-click="model.add(user)" class="btn btn-primary">&plus;</button>
+            <td>
+                <button ng-click="model.update(user)" class="btn btn-success">&check;</button>
         </tr>
 
-        <!--Populate user entries-->
-        <tr ng-repeat="user in users">
+        </tr>
+        <tr ng-repeat="user in model.users">
+            <td>{{user._id}}</td>
             <td>{{user.username}}</td>
-            <td></td>
+            <td>&nbsp;</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.roles}}</td>
             <td>
-                <div ng-repeat="role in user.roles">
-                    {{role}}
-                </div>
-            </td>
-
+                <button ng-click="model.remove(user)" class="btn btn-danger">X</button>
             <td>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <span class="glyphicon glyphicon-plus icon-class" aria-hidden="true"></span>
-                    </div>
-                    <div class="col-xs-6">
-                        <span class="glyphicon glyphicon-ok icon-class" aria-hidden="true"></span>
-                    </div>
-                </div>
-            </td>
+                <button ng-click="model.select(user)" class="btn btn-success">...</button>
         </tr>
-        </tbody>
-
     </table>
+
 </div>

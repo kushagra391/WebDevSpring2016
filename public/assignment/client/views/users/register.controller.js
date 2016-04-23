@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($rootScope, $location, UserService) {
+    function RegisterController($rootScope, $location, $http, UserService) {
 
         var vm = this;
 
@@ -39,70 +39,15 @@
                 return;
             }
 
-            UserService
-                .findUserByUsername(user.username)
-                .then(success, failure);
-
-            function success(response) {
-
-                console.log(response);
-
-                var responseUser = response.data;
-
-                // no user found with the user name
-                if (responseUser == null) {
-                    console.log("null >> user does not exists");
-                    registerUser(user);
-                    return;
-                }
-
-                // user already exists with a similar name
-                if (responseUser.username === user.username) {
-                    console.log("== >> user already exists");
-                    return;
-                }
-            }
-
-            function failure(response) {
-                console.log("FAILURE: something went wrong");
-            }
-
-            // UserService
-            //     .findUserByUsername(user.username)
-            //     .then(function (response) {''
-            //         if (!response.data) {
-            //             console.log('response.data == true: user exists');
-            //             vm.error = 'ERROR: user exists';
-            //         } else {
-            //             console.log('response.data == false: user does  not exists, proceed to user registration');
-            //             registerUser(user);
-            //         }
-            //     });
+            $http.post("/api/assignment/register", user)
+                .success(function (currentUser) {
+                    if (currentUser != null) {
+                        $rootScope.currentUser = currentUser;
+                        $location.url("/profile/" + currentUser._id);
+                    }
+                });
         }
 
-        // Helper to execute final leg for user registration
-        function registerUser(user) {
-            console.log("registerUser(): confirmed: user registration attempted");
-
-            UserService
-                .createUser(user)
-                .then(registerSuccess, registerError);
-        }
-
-        function registerSuccess(response) {
-
-            console.log('registerSuccess');
-
-            UserService.setCurrentUser(response.data);
-            $location.url('/profile' + '/' + UserService.getCurrentUser()._id);
-
-            vm.message = 'Success: Registration done.';
-        }
-
-        function registerError() {
-            console.log('registerError');
-            vm.error = 'Failure: Registration failed';
-        }
     }
 
 })();

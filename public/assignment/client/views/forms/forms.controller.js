@@ -22,7 +22,16 @@
 
             vm.redirectToField = redirectToField;
 
-            vm.currentUser = UserService.getCurrentUser();
+            // vm.currentUser = UserService.getCurrentUser();
+            UserService
+                .getCurrentUser()
+                .then(
+                    function (response) {
+                        vm.currentUser = response.data;
+                    }
+                );
+
+
             FormService
                 .findAllForms()
                 .then(function (res) {
@@ -48,6 +57,13 @@
         }
 
         function addForm(form) {
+
+            console.log("---------------------------------------");
+            console.log("Adding form..");
+            console.log("User: " + JSON.stringify(vm.currentUser));
+            console.log("Form: " + JSON.stringify(form));
+            console.log("---------------------------------------");
+
             if (!form.title) {
                 vm.error = "Please provide a form name.";
                 return;
