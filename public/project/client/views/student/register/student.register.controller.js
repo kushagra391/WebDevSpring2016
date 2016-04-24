@@ -52,7 +52,7 @@
                         console.log("User registered, added to session");
                         var student = response.data;
 
-                        // StudentService.setCurrentUser(student);
+                        StudentService.setCurrentUser(student);
                         $location.url("/studentProfile/" + student._id);
                     },
                     function (response) {
