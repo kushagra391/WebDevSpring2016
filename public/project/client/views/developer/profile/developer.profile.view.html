@@ -107,7 +107,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3">Course Field: </label>
                             <div class="col-sm-6">
-                                <select class="form-control">
+                                <select ng-model= "newCourse.courseType" class="form-control">
                                     <option ng-repeat="courseType in model.courseTypes">
                                         {{courseType}}
                                     </option>

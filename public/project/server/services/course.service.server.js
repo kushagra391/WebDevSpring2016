@@ -11,6 +11,23 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
     app.delete("/api/coursera/course/:courseId/content/:contentId", deleteVideoByIdFromCourse); // OK
     app.delete("/api/coursera/course/:courseId", deleteCourseById);
+    app.delete("/api/coursera/course", deleteAllCourses);
+
+    function deleteAllCourses(req, res) {
+
+        console.log("Deleting all courses");
+
+        courseModel
+            .deleteAllCourses()
+            .then(
+                function (doc) {
+                    res.json(doc);
+                },
+                function (err) {
+                    res.json(err);
+                }
+            );
+    }
 
     function findAllCourses(req, res) {
         console.log(">> findAllCourses");
@@ -120,12 +137,13 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
 
                         var text1 = course.name;
                         console.log(text1.toLowerCase());
-                        if (text1.toLowerCase().indexOf(searchKey) != -1) {
+                        if (text1.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
                             console.log("Match found: name");
                             results.push(course);
                         }
                     }
 
+                    /*
                     for (var i in courses) {
                         console.log("searching in description >> " + i);
                         var course = courses[i];
@@ -133,11 +151,26 @@ module.exports = function (app, studentModel, developerModel, courseModel) {
                         var text2 = course.description;
 
                         if (
-                            text2.toLowerCase().indexOf(searchKey) != -1) {
+                            text2.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
                             console.log("Match found: description");
                             results.push(course);
                         }
                     }
+                     */
+
+                    for (var i in courses) {
+                        console.log("searching in types >> " + i);
+                        var course = courses[i];
+
+                        var text2 = course.courseType;
+
+                        if (
+                            text2.toLowerCase().indexOf(searchKey.toLowerCase()) != -1) {
+                            console.log("Match found: description");
+                            results.push(course);
+                        }
+                    }
+
 
                     res.json(results);
                 },

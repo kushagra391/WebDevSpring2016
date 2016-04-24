@@ -36,6 +36,9 @@
         }
 
         function startNewCourse(newCourse) {
+
+            console.log("Creating new course: " + JSON.stringify(newCourse));
+
             console.log("Starting new course.." + JSON.stringify(newCourse.name) + "devID: " + vm.developer._id);
             DeveloperService
                 .addCourseForDeveloper(vm.developer._id, newCourse)

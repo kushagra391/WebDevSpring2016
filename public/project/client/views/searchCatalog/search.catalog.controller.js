@@ -21,11 +21,21 @@
 
             vm.redirectToCourse = redirectToCourse;
             vm.searchCatalogResults = searchCatalogResults;
+            vm.searchCourseType = searchCourseType;
 
             searchCatalogResults();
         }
 
         init();
+
+        function searchCourseType(index) {
+
+            console.log(vm.courseTypes[index] + " searched << ");
+
+            vm.searchKey = vm.courseTypes[index];
+            searchCatalogResults();
+
+        }
 
         function searchCatalogResults() {
             var searchkey = vm.searchKey;

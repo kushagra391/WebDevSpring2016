@@ -5,6 +5,7 @@ module.exports = function (mongoose) {
     var CourseSchema = mongoose.Schema({
         name: String,
         description: String,
+        courseType: String,
         likes: Number,
         videos: [{
             title: String,

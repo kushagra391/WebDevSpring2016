@@ -12,10 +12,15 @@ module.exports = function (mongoose) {
         findCourseById: findCourseById,
         addVideoToCourse: addVideoToCourse,
         removeVideoFromCourse: removeVideoFromCourse,
-        deleteCourse: deleteCourse
+        deleteCourse: deleteCourse,
+        deleteAllCourses : deleteAllCourses
 
     };
     return api;
+
+    function deleteAllCourses() {
+        return CourseModel.remove();
+    }
 
     function createNewCourse(newCourse) {
         return CourseModel.create(newCourse);

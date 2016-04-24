@@ -55,7 +55,6 @@
 
         init();
 
-
         function redirectToDeveloperProfile() {
             DeveloperService
                 .getCurrentUser()
@@ -63,7 +62,6 @@
                     function (response) {
                         console.log("INFO: Response Data: " + response.data);
                         if (response.data != null) {
-
 
                             vm.currentDeveloper = response.data;
                             var url = "/developerProfile/" + vm.currentDeveloper._id;
@@ -80,7 +78,6 @@
                 );
         }
 
-
         function redirectToStudentProfile() {
 
             StudentService
@@ -89,7 +86,6 @@
                     function (response) {
                         console.log("INFO: Response Data: " + response.data);
                         if (response.data != null) {
-
 
                             vm.currentStudent = response.data;
                             var url = "/studentProfile/" + vm.currentStudent._id;
@@ -143,8 +139,16 @@
         }
 
         function searchCatalog() {
-            console.log("Redirecting to searchcatalog with : " + vm.searchKey);
-            $location.url('/searchCatalog/' + vm.searchKey);
+
+            if (vm.searchKey) {
+                console.log("Redirecting to searchcatalog with : " + vm.searchKey);
+                $location.url('/searchCatalog/' + vm.searchKey);
+            }
+            else {
+                console.log("Redirecting to searchcatalog without searchkey ");
+                $location.url('/searchCatalog');
+
+            }
         }
 
     }

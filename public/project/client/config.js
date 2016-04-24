@@ -43,6 +43,11 @@
                 controller: "StudentProfileController",
                 controllerAs: "model"
             })
+            .when("/searchCatalog", {
+                templateUrl: "views/searchCatalog/catalog.view.html",
+                controller: "CatalogController",
+                controllerAs: "model"
+            })
             .when("/searchCatalog/:searchKey", {
                 templateUrl: "views/searchCatalog/search.catalog.view.html",
                 controller: "SearchCatalogController",

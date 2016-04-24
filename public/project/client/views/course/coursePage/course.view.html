@@ -22,8 +22,8 @@
             <div ng-show="model.studentLogin()">
                 <button ng-hide="model.ifStudentLikedCourse()" ng-click="model.likeCourse()" class="btn btn-default btn-block btn-lg">Like Course</button>
                 <button ng-show="model.ifStudentLikedCourse()" ng-click="model.unlikeCourse()" class="btn btn-primary btn-block btn-lg">Unlike Course</button>
-                <button ng-show="model.ifStudentHasCourse()" ng-click="model.addCourse()" class="btn btn-warning btn-block btn-lg">Add Course</button>
-                <button ng-hide="model.ifStudentHasCourse()" ng-click="model.removeCourse()" class="btn btn-danger btn-block btn-lg">Remove Course</button>
+                <button ng-hide="model.ifStudentHasCourse()" ng-click="model.addCourse()" class="btn btn-warning btn-block btn-lg">Add Course</button>
+                <button ng-show="model.ifStudentHasCourse()" ng-click="model.removeCourse()" class="btn btn-danger btn-block btn-lg">Remove Course</button>
             </div>
         </div>
 
