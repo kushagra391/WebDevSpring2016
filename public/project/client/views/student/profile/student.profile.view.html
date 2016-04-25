@@ -11,6 +11,24 @@
 
     <hr div="button-divider">
 
+
+
+    <div class="container">
+        <!--<h1>Coursera !</h1>-->
+        <!--<h2>Search Course Catalog</h2>-->
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="input-group">
+                <input ng-model="model.searchKey"
+                       type="text" class="form-control input-lg" placeholder="Start browsing the course catalog..">
+                <span class="input-group-btn">
+                    <button ng-click="model.searchCatalog(model.searchKey)"
+                            class="btn btn-success btn-lg" type="button"><b>Search !</b></button></span>
+            </div><!-- /input-group -->
+        </div>
+    </div>
+
+    <hr div="button-divider">
+
     <div class="row">
 
         <div class="col-sm-4">
